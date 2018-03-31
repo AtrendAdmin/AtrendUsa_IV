@@ -1,0 +1,192 @@
+﻿@model ContactUsModel
+@using Nop.Web.Models.Common;
+@{
+    Layout = "~/Views/Shared/_ColumnsTwo.cshtml";
+
+    //title, description, keywords
+    Html.AddTitleParts(T("PageTitle.BecomeADealer").Text);
+    Html.AddMetaDescriptionParts(T("MegaDescription.BecomeADealer").Text);
+    Html.AddMetaKeywordParts(T("MegaKeywords.BecomeADealer").Text);
+
+    //page class
+    Html.AppendPageCssClassParts("html-contact-page");
+}
+
+@*Added By IV Santosh*@
+<style type="text/css">
+    ul.hs-error-msgs.inputs-list li label {
+        text-align: center;
+        float: none;
+        width: auto;
+    }
+</style>
+@*End of Added By IV Santosh*@
+
+<div class="page contact-page">
+
+    <div class="page-title">
+        <h1>Become A Dealer</h1>
+    </div>
+    <div class="page-body">
+        @Html.Action("TopicBlock", "Topic", new { systemName = "BecomeADealer" })
+        @Html.Widget("contactus_top")
+        @if (Model.SuccessfullySent)
+            {
+            <div class="result">
+                @Model.Result
+            </div>
+        }
+        else
+        {
+            using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                var validationSummary = Html.ValidationSummary(true);
+                if (!MvcHtmlString.IsNullOrEmpty(validationSummary))
+                {
+                    <div class="message-error">@validationSummary</div>
+                }
+                <div class="fieldset">
+                    <div class="form-fields">
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.CompanyName)
+                            @Html.TextBoxFor(model => model.CompanyName, new { @class = "company-name", placeholder = T("ContactUs.CompanyName.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.CompanyName)
+                        </div>
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.BusinessAddress)
+                            @Html.TextBoxFor(model => model.BusinessAddress, new { @class = "address", placeholder = T("ContactUs.BusinessAddress.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.BusinessAddress)
+                        </div>
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.StateProvince)
+                            @Html.TextBoxFor(model => model.StateProvince, new { @class = "state", placeholder = T("ContactUs.State.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.StateProvince)
+                        </div>
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.City)
+                            @Html.TextBoxFor(model => model.City, new { @class = "city", placeholder = T("ContactUs.City.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.City)
+                        </div>
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.ZipCode)
+                            @Html.TextBoxFor(model => model.ZipCode, new { @class = "zipcode", placeholder = T("ContactUs.ZipCode.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.ZipCode)
+                        </div>
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.ActgEmail)
+                            @Html.TextBoxFor(model => model.ActgEmail, new { @class = "email", placeholder = T("ContactUs.ActgEmail.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.ActgEmail)
+                        </div>
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.BusinessPhoneNumber)
+                            @Html.TextBoxFor(model => model.BusinessPhoneNumber, new { @class = "phone", placeholder = T("ContactUs.PhoneNumber.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.BusinessPhoneNumber)
+                        </div>
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.FaxNumber)
+                            @Html.TextBoxFor(model => model.FaxNumber, new { @class = "phone", placeholder = T("ContactUs.Fax.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.FaxNumber)
+                        </div>
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.Country)
+                            @Html.TextBoxFor(model => model.Country, new { @class = "country", placeholder = T("ContactUs.Country.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.Country)
+                        </div>
+                        <div class="page-title">
+                            <h1>Principal Owner or Stockholder</h1>
+                        </div>
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.FirstName)
+                            @Html.TextBoxFor(model => model.FirstName, new { @class = "fullname", placeholder = T("ContactUs.FirstName.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.FirstName)
+                        </div>
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.LastName)
+                            @Html.TextBoxFor(model => model.LastName, new { @class = "fullname", placeholder = T("ContactUs.LastName.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.LastName)
+                        </div>
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.HomeAddress)
+                            @Html.TextBoxFor(model => model.HomeAddress, new { @class = "address", placeholder = T("ContactUs.HomeAddress.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.HomeAddress)
+                        </div>
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.Title)
+                            @Html.TextBoxFor(model => model.Title, new { @class = "address", placeholder = T("ContactUs.Title.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.Title)
+                        </div>
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.HomePhoneNumber)
+                            @Html.TextBoxFor(model => model.HomePhoneNumber, new { @class = "phone", placeholder = T("ContactUs.HomePhoneNumber.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.HomePhoneNumber)
+                        </div>
+                        @if (Model.DisplayCaptcha)
+                        {
+                            <div class="captcha-box">
+                                @Html.Raw(Html.GenerateCaptcha())
+                            </div>
+                        }
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.KeyInterest)
+                            @Html.TextBoxFor(model => model.KeyInterest, new { @class = "phone", placeholder = T("ContactUs.KeyInterest.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.KeyInterest)
+                        </div>
+                        <div class="inputs">
+                            @Html.LabelFor(model => model.AdditionalComments)
+                            @Html.TextAreaFor(model => model.AdditionalComments, new { @class = "enquiry", placeholder = T("ContactUs.AdditionalComments.Hint") })
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.AdditionalComments)
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <input type="submit" name="send-email" class="button-1 contact-us-button" value="@T("ContactUs.Button")" />
+                </div>
+                <div style="margin-bottom:20px;"> @*Added style attribute by IV Santosh*@
+                    <p>By clicking "Submit" you are agreeing to the <a href="/conditions-of-use">Terms and Conditions</a>.</p>
+                </div>
+            }
+
+            /*Added By IV Santosh*/
+            @*<div class="fieldset" style="margin:0px;">
+                <div class="form-fields">
+                    <div class="page-title">
+                        <h1>Principal Owner or Stockholder</h1>
+                    </div>
+                </div>
+              </div>*@
+
+            <div class="become-delear">
+                <!--[if lte IE 8]>
+                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                <![endif]-->
+                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+                <script>
+                    hbspt.forms.create({
+                        portalId: "4252505",
+                        formId: "131ced99-346d-497e-9d3f-584a7eba56fc",
+                        css: ''
+                    });
+                </script>
+            </div>
+            /*End of Added By IV Santosh*/
+        }
+        @Html.Widget("contactus_bottom")
+    </div>
+</div>

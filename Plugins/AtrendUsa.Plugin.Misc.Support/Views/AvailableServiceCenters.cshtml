@@ -1,0 +1,27 @@
+﻿@using Nop.Web.Framework
+@using Nop.Web.Framework.UI
+@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+
+    Html.AddTitleParts("Available Service Centers");
+    Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.Support/Content/themes/atrendusa/atrendusa.css");
+
+    ViewBag.activeTab = "availableServiceCenters";
+
+    var mapAddress = T("AtrendUsa.Plugin.Misc.Support.AvailableServiceCentersMapAddress").Text;
+    var mapQuery = System.Uri.EscapeUriString(mapAddress);
+}
+
+<div class="page support-page available-service-centers-page">
+    <div class="page-body">
+        <div id="quickTabs" class="productTabs ui-tabs ui-widget ui-widget-content ui-corner-all" data-ajaxenabled="false">
+            @Html.Partial("~/Plugins/AtrendUsa.Plugin.Misc.Support/Views/Partials/TabsHeader.cshtml")
+            <div class="productTabs-body">
+                @Html.Action("TopicBlock", "Topic", new { systemName = "AvailableServiceCenters" })
+            </div>
+            <div class="service-centers-map">
+                <iframe src="https://maps.google.com/maps?q=@mapQuery&z=15&output=embed"></iframe>
+            </div>
+        </div>
+    </div>
+</div>

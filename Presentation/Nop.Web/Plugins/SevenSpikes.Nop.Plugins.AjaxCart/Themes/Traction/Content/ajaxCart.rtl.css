@@ -1,0 +1,20 @@
+﻿
+.ajax-cart-button-wrapper input[type="text"] {
+	float: right;
+	margin-right: 0;
+	margin-left: 1px;
+}
+.ajax-cart-button-wrapper select{
+    padding-right: 18px;
+}
+.item-box .ajax-cart-button-wrapper input[type="button"] {
+	float: right;
+}
+.miniProductDetailsView .add-to-cart > *,
+.miniProductDetailsView .add-button-wrap {
+    float: right;
+	margin: 0;
+}
+.item-box .ajax-cart-button-wrapper select {
+    padding: 0 10px 0 14px;
+}

@@ -1,0 +1,88 @@
+﻿@using Nop.Core
+@using Nop.Core.Infrastructure
+@using Nop.Services.Configuration
+@using Nop.Web.Framework.UI
+@model Nop.Web.Models.Common.SocialModel
+@{
+    Layout = "";
+
+    var storeId = EngineContext.Current.Resolve<IStoreContext>().CurrentStore.Id;
+    var instagramUrl = EngineContext.Current.Resolve<ISettingService>().GetSettingByKey("tractionthemesettings.instagramurl", String.Empty, storeId, true);
+
+    Html.AppendCssFileParts("~/Content/Storefront/css/style.css");
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@Html.NopTitle()</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta name="description" content="@(Html.NopMetaDescription())" />
+    <meta name="keywords" content="@(Html.NopMetaKeywords())" />
+    <meta name="generator" content="nopCommerce" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    @Html.NopCssFiles(Url, ResourceLocation.Head)
+</head>
+<body class="b-body">
+    <div class="b-site-container">
+        <div class="b-content">
+            <div class="b-wrap">
+                <h1 class="b-title">INTRODUCING the ATREND FAMILY of BRANDS</h1>
+                <a class="b-store b-store_main" href="@T("Storefront.StoreUrl.Atrend")">
+                    <img src="~/Content/Storefront/images/atrend-logo.png" alt="Atrend">
+                </a>
+                <div class="b-text">
+                    Visit our main site
+                    <hr>Browse our brand sites
+                </div>
+                <div class="b-row">
+                    @if (!String.IsNullOrEmpty(Convert.ToString(T("Storefront.StoreUrl.BBOX"))))
+                    {
+                        <a class="b-store" href="@T("Storefront.StoreUrl.BBOX")">
+                            <img src="~/Content/Storefront/images/bbox-logo.png" alt="Bbox">
+                        </a>
+                    }
+                    @if (!String.IsNullOrEmpty(Convert.ToString(T("Storefront.StoreUrl.Surge"))))
+                    {
+                        <a class="b-store" href="@T("Storefront.StoreUrl.Surge")">
+                            <img src="~/Content/Storefront/images/surge-logo.png" alt="Surge">
+                        </a>
+                    }
+                    @if (!String.IsNullOrEmpty(Convert.ToString(T("Storefront.StoreUrl.Zapco"))))
+                    {
+                        <a class="b-store" href="@T("Storefront.StoreUrl.Zapco")">
+                            <img src="~/Content/Storefront/images/zapco-logo.png" alt="Zapco">
+                        </a>
+                    }
+                </div>
+                <div class="b-text">
+                    <hr>join us online
+                </div>
+                <ul class="b-soc-links">
+                    @if (!String.IsNullOrEmpty(Model.FacebookLink))
+                    {
+                        <li class="b-soc-links__item b-soc-links__item_facebook"><a href="@Model.FacebookLink"><span class="fa fa-facebook"></span></a></li>
+                    }
+
+                    @if (!String.IsNullOrEmpty(Model.TwitterLink))
+                    {
+                        <li class="b-soc-links__item b-soc-links__item_twitter"><a href="@Model.TwitterLink"><span class="fa fa-twitter"></span></a></li>
+                    }
+                    @if (!String.IsNullOrEmpty(instagramUrl))
+                    {
+                        <li class="b-soc-links__item b-soc-links__item_instagram"><a href="@instagramUrl"><span class="fa fa-instagram"></span></a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <footer class="b-footer">
+            <div class="b-copyright">© @DateTime.Now.Year Atrend USA Inc. All rights reserved.</div>
+        </footer>
+    </div>
+    @Html.Widget("body_end_html_tag_before")
+
+    <!-- Added by IV Santosh -->
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/4252505.js"></script>
+    <!-- End of HubSpot Embed Code -->
+</body>
+</html>

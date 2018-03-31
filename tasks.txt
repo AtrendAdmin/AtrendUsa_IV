@@ -1,0 +1,21 @@
+Atrend USA
+
+ - Fix unsecure connections - done
+
+ - Set up Zopim - done
+
+ - Set up email - done
+
+ - Set up google analytics - done
+
+ - Create screenshots - tutorial
+ 
+ - Set up payment systems - done
+
+ - Resolve questions with resources - done
+
+ - Resolve questions with Monitoring
+
+ - Add warm up module
+
+ - resolve a problem with minified css and IE

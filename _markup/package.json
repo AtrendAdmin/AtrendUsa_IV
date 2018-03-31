@@ -1,0 +1,61 @@
+{
+  "name": "vuvuzela",
+  "version": "1.0.0",
+  "description": "Vuvuzela is just an another build system for front-end",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "upgrade": "ncu --upgradeAll",
+    "postupgrade": "npm install",
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://stash.svarogsystems.com/scm/fe/frontend-environment.git"
+  },
+  "keywords": [
+    "gulp",
+    "pug",
+    "sass",
+    "bootstrap"
+  ],
+  "author": "s.demin",
+  "license": "ISC",
+  "devDependencies": {
+    "backstopjs": "^2.6.11",
+    "bower": "^1.7.9",
+    "browser-sync": "^2.12.3",
+    "chalk": "^1.1.3",
+    "fs": "0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-cache": "^0.4.5",
+    "gulp-concat": "^2.6.0",
+    "gulp-csso": "^3.0.0",
+    "gulp-filter": "^5.0.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-newer": "^1.1.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-pug": "^3.0.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-size": "^2.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^2.1.2",
+    "gulp-useref": "^3.1.2",
+    "gulp-zip": "^4.0.0",
+    "gulp.spritesmith": "^6.2.1",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.0",
+    "merge-stream": "^1.0.0",
+    "moment": "^2.18.1",
+    "path": "^0.12.7",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.2.0",
+    "tiny-lr": "^1.0.3",
+    "vinyl-buffer": "^1.0.0"
+  }
+}

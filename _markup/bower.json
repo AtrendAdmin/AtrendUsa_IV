@@ -1,0 +1,28 @@
+{
+  "name": "vuvuzela",
+  "description": "Vuvuzela is just an another build system for front-end",
+  "main": "gulpfile.js",
+  "authors": [
+    "s.demin"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "gulp",
+    "pug",
+    "sass",
+    "bootstrap"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "^3.3.6",
+    "font-awesome": "^4.7.0",
+    "object-fit-images": "*"
+  }
+}

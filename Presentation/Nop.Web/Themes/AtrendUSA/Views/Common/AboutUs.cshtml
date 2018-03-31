@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+    //title
+    Html.AddTitleParts(T("About").Text);
+}
+<div class="page about-us-page">
+    <div class="page-body">
+        <div id="tabs" class="about-us-tabs">
+            <div id="tabs-titles" class="tabs-titles">
+                <ul>
+                    @*todo: configure from model->for now not configurable*@
+                    <li><a href=@T("#tabs-who-we-are")>Who We Are</a></li>
+                    <li><a href=@T("#tabs-what-we-do")>What We Do</a></li>
+                    <li><a href=@T("#tabs-where-we-are")>Where We Are</a></li>
+                </ul>
+            </div>
+            <div id="tabs-who-we-are">
+                @Html.Action("TopicBlock", "Topic", new { systemName = "WhoWeAre" })
+            </div>
+            <div id="tabs-what-we-do">
+                @Html.Action("TopicBlock", "Topic", new { systemName = "WhatWeDo" })
+            </div>
+            <div id="tabs-where-we-are">
+                @Html.Action("TopicBlock", "Topic", new { systemName = "WhereWeAre" })
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    jQuery(function ($) {
+        $("#tabs").tabs({
+            collapsible: false,
+            event: 'click',
+            active: 0,
+            heightStyle: 'auto',
+            hide: 'fadeOut',
+            show: 'fadeIn',
+        });
+        $("#tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
+        $("#tabs li").removeClass("ui-corner-top").addClass("ui-corner-left");
+    });
+</script>

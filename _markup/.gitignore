@@ -1,0 +1,6 @@
+# Libraries root
+bower_components
+node_modules
+
+# Compiled files
+build/*

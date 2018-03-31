@@ -1,0 +1,32 @@
+﻿.navbar-header .echo-uncomplicated {
+    float: left;
+    background-size: 125px 40px;
+    width: 125px;
+    height: 40px;
+    margin: 8px 6px 6px;
+    border: 0;
+    outline: 0;
+}
+
+.content {
+    margin-top: 70px;
+}
+
+.push-right {
+    float: right;
+}
+
+#historyTbl tbody tr:last-child > td {
+    padding-bottom: 15px !important;
+    border-bottom: 2px solid #E5E5E5 !important;
+}
+
+#historyTbl tfoot > tr > td {
+    padding-top: 15px !important;
+}
+
+iframe {
+    width: 100%;
+    height: 75px;
+    border: 0;
+}

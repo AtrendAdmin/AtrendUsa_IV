@@ -1,0 +1,140 @@
+﻿@using System.Security.Policy
+@using System.Web.Optimization
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewBag.Title = "Product Mass Upload Tool";
+}
+<!-- Nav tabs -->
+<div class="content" role="form">
+    <ul id="tabs" class="nav nav-tabs">
+        <li><a id="uploadTab" href="#upload" data-toggle="tab">Upload Product Images</a></li>
+        <li><a id="uploadTab" href="#upload" data-toggle="tab">Upload Products</a></li>
+        <li><a id="historyTab" data-bind="click: $root.loadUploadHistory" href="#history" data-toggle="tab">View History</a></li>
+        <li><a id="helpTab" href="#help" data-toggle="tab">Help</a></li>
+    </ul>
+    <div id="tabContent" class="tab-content">
+        <div class="tab-pane active" id="upload">
+            <div id="uploadDiv" class="container">
+                <fieldset>
+                    <legend></legend>
+                    <div class="form-group">
+                        // unfortunatelly cannot use FormData since IE8,9 have to be supported... Todo: refactor, use FormData instead of iFrame
+                        <iframe id="uploadIframe" src='@Url.Action("UploadFile", "Upload")' frameborder="0"></iframe>
+                    </div>
+                </fieldset>
+            </div>
+            <div id="progressDiv" class="container">
+                <fieldset>
+                    <div class="form-group">
+                        <div class="progress progress-striped" data-bind="{ visible: $root.showProgress, css: $root.inProgress}">
+                            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-bind="style: { width: $root.progressPercent }">
+                            </div>
+                        </div>
+                        <table class="table-condensed" data-bind="visible: $root.hasUploadTrace">
+                            <tbody data-bind="foreach: $root.uploadTrace">
+                                <tr>
+                                    <td>
+                                        <span data-bind="text: $data.message"></span>
+                                        <div data-bind="if: $data.fileName">
+                                            <button type="button" class="btn btn-link" data-bind="{ click: $data.download, text: $data.fileName }" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="tab-pane" id="history">
+            <div class="container" data-bind="visible: $root.hasHistory">
+                <fieldset>
+                    <legend></legend>
+                    <div class="form-group">
+                        <table id="historyTbl" class="table table-condensed table-hover">
+                            <thead>
+                                <tr>
+                                    <th>File</th>
+                                    <th>Upload Date</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: $root.uploadHistory">
+                                <tr>
+                                    <td>
+                                        <button type="button" class="btn btn-link" data-bind="{ click: $data.download, text: $data.fileName }" />
+                                    </td>
+                                    <td><span data-bind="text: $data.uploadDate"></span></td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="tfoot">
+                                <tr>
+                                    <td class="text-center">
+                                        <button type="button" id="showMoreBtn" class="btn btn-default" data-bind="click: $root.loadMoreUploadHistory">Show More</button>
+                                    </td>
+                                    <td>
+                                        <span id="backToTopBtn" class="btn" data-bind="click: $root.backToTop"><i class="fa fa-arrow-circle-up"></i>&nbsp;Back to top</span>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="tab-pane" id="help">
+            <div class="container">
+                <fieldset>
+                    <legend></legend>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-default" data-bind="click: $root.downloadTemplate">Download Template</button>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend></legend>
+                    <div class="form-group">
+                        <dl class="dl-horizontal">
+                            <dt><i>Availability</i></dt>
+                            <dd>Upload functionality is only available outside of business hours. Please try again between @Model.OpenHours CST.</dd>
+                            <dd>&nbsp;</dd>
+                            <dt><i>Required Fields</i></dt>
+                            <dd>Column headers in bold indicate a required field</dd>
+                            <dd>&nbsp;</dd>
+                            <dt><i>Location Data</i></dt>
+                            <dd>&nbsp;</dd>
+                            <dt style="font-weight: normal">State/Province Code</dt>
+                            <dd>Use Codes for states and provinces. Even though a required field, system will NOT assume  state/province as a required field when Country is NOT US or CA or MX</dd>
+                            <dt style="font-weight: normal">Zip/Postal</dt>
+                            <dd>No 9-digit zip codes allowed for US. Even though a required field, system will NOT assume zip/postal as a required field when Country is NOT US or CA or MX</dd>
+                            <dt style="font-weight: normal">Country Code</dt>
+                            <dd>Country use US for United States and CA for Canada, MX for Mexico, etc..</dd>
+                            <dt style="font-weight: normal">G#</dt>
+                            <dd>When G# is entered for a warehouse, system will ignore the data under address columns and use the G# to locate parent location.</dd>
+                            <dd>&nbsp;</dd>
+                            <dt><i>Customer Data</i></dt>
+                            <dd>&nbsp;</dd>
+                            <dt style="font-weight: normal">E#</dt>
+                            <dd>E# should be the same for all record entries in the spreadsheet - No account names are allowed</dd>
+                            <dd>&nbsp;</dd>
+                            <dt><i>Contact Data</i></dt>
+                            <dd>&nbsp;</dd>
+                            <dt style="font-weight: normal">Contact Phone</dt>
+                            <dd>No special characters and notation allowed except +. Only enter the digits for the phone number (e.g. 3125555555, +13125555555 )</dd>
+                            <dd>&nbsp;</dd>
+                            <dt><i>Shipping Hours</i></dt>
+                            <dd>All entries must be in HH:MM and military format</dd>
+                            <dt><i>Receiving Hours</i></dt>
+                            <dd>All entries must be in HH:MM and military format</dd>
+                        </dl>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Latest compiled and minified JavaScript -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//s.echo.com/v0.2.4//dist/js/echox-bootstrap.min.js"></script>
+<script src="//s.echo.com/v0.2.4//dist/js/knockout.min.js"></script>
+@Scripts.Render("~/bundles/uploadJs")
+
+

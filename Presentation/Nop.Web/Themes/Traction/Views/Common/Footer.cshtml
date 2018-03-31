@@ -1,0 +1,117 @@
+﻿@model FooterModel
+@using Nop.Web.Models.Common;
+@using Nop.Core.Domain.Tax;
+@using Nop.Core.Infrastructure;
+@using Nop.Core;
+@using Nop.Services.Configuration;
+@using Nop.Core.Domain.Tax;
+
+@{
+    var workingLanguageId = EngineContext.Current.Resolve<IWorkContext>().WorkingLanguage.Id;
+
+    var storeId = EngineContext.Current.Resolve<IStoreContext>().CurrentStore.Id;
+    var removeDesignedBy = EngineContext.Current.Resolve<ISettingService>().GetSettingByKey("tractionthemesettings.removedesignedby", false, storeId, true);
+    var removeCopyright = EngineContext.Current.Resolve<ISettingService>().GetSettingByKey("tractionthemesettings.removecopyright", false, storeId, true);
+}
+
+<div class="footer">
+    <div class="footer-upper">
+        <div class="center">
+            <div class="footer-block contacts">
+                <div class="title">
+                    <strong>@T("SevenSpikes.Themes.Traction.Common.FooterContact")</strong>
+                </div>
+                <ul>
+                    <li class="phone">@T("SevenSpikes.Themes.Traction.Common.Phone")</li>
+                    <li class="fax">@T("SevenSpikes.Themes.Traction.Common.Fax")</li>
+                    <li class="email">@T("SevenSpikes.Themes.Traction.Common.Email")</li>
+                    <li class="skype">@T("SevenSpikes.Themes.Traction.Common.Skype")</li>
+                </ul>
+            </div>
+            <div class="footer-block links">
+                <div class="title">
+                    <strong>@T("SevenSpikes.Themes.Traction.Common.FooterInformation")</strong>
+                </div>
+                <ul>
+                    @foreach (var topic in Model.Topics.Where(x => x.IncludeInFooterColumn1).ToList())
+                    {
+                        <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
+                    }
+                    @if (Model.SitemapEnabled)
+                    {
+                        <li><a href="@Url.RouteUrl("Sitemap")">@T("Sitemap")</a></li>
+                    }
+                    @if (Model.AllowCustomersToApplyForVendorAccount)
+                    {
+                        <li><a href="@Url.RouteUrl("ApplyVendorAccount")">@T("Vendors.ApplyAccount")</a></li>
+                    }
+                </ul>
+            </div>
+            @Html.Widget("traction_new_products_footer")
+            <div class="footer-block">
+                @Html.Action("HomePageNews", "News")
+            </div>
+        </div>
+    </div>
+    <div class="footer-middle">
+        <div class="center">
+            @Html.Action("Social", "Common")
+            @Html.Action("NewsletterBox", "Newsletter")
+            <ul class="accepted-payment-methods">
+                <li class="method1"></li>
+                <li class="method2"></li>
+                <li class="method3"></li>
+                <li class="method4"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-lower">
+        <div class="center">
+            <div class="footer-disclaimer">
+                <span>@T("Content.CopyrightNotice", DateTime.Now.Year, Model.StoreName)</span>
+                @if (Model.DisplayTaxShippingInfoFooter)
+                {
+                    var inclTax = EngineContext.Current.Resolve<IWorkContext>().TaxDisplayType == TaxDisplayType.IncludingTax;
+                    <span class="footer-tax-shipping">
+                        @T(inclTax ? "Footer.TaxShipping.InclTax" : "Footer.TaxShipping.ExclTax", Url.RouteUrl("Topic", new { SeName = Html.GetTopicSeName("shippinginfo") }))
+                    </span>
+                }
+            </div>
+            @if (!removeCopyright)
+            {
+                <div class="footer-powered-by">
+                    @* Powered by <a href="http://www.nopcommerce.com/">nopCommerce</a> *@
+                    @*Would you like to remove the "Powered by nopCommerce" link in the bottom of the footer?
+                        Please find more info here http://www.nopcommerce.com/copyrightremoval.aspx*@
+                </div>
+            }
+            @if (!removeDesignedBy)
+            {
+                <div class="footer-designed-by">
+                    Designed by <a href="http://www.nop-templates.com/" target="_blank">Nop-Templates.com</a>
+                </div>
+            }
+
+            <div class="footer-store-theme">
+                @Html.Action("StoreThemeSelector", "Common")
+            </div>
+        </div>
+    </div>
+    @Html.Widget("footer")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var maxHeight = -1;
+
+            $('.footer-block>ul, .footer-block .news-items').each(function () {
+                maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+            });
+
+            $('.footer-block>ul, .footer-block .news-items').each(function () {
+                $(this).height(maxHeight);
+            });
+
+        });
+    </script>
+
+</div>

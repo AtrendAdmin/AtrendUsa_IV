@@ -1,0 +1,26 @@
+﻿@{
+    var siteLockSite = System.Web.Configuration.WebConfigurationManager.AppSettings["SiteLockSite"];
+    var goDaddySealId = System.Web.Configuration.WebConfigurationManager.AppSettings["GoDaddySealId"];
+    var authorizeNetSealId = System.Web.Configuration.WebConfigurationManager.AppSettings["AuthorizeNetSealId"];
+}
+
+<div style="float: right">
+    <div style="display: inline-block; margin-right: 20px">
+        <span id="siteseal">
+            <script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=@goDaddySealId"></script>
+        </span>
+    </div>
+    <div style="display: inline-block; margin-right: 20px">
+        <a href="#" onclick="window.open('https://www.sitelock.com/verify.php?site=@siteLockSite', 'SiteLock', 'width=600,height=600,left=160,top=170');">
+            <img alt="website security" title="SiteLock" src="//shield.sitelock.com/shield/@siteLockSite" />
+        </a>
+    </div>
+    <!-- (c) 2005, 2014. Authorize.Net is a registered trademark of CyberSource Corporation -->
+    <div style="display: inline-block" class="AuthorizeNetSeal">
+        @* //todo move to web config*@
+        <script type="text/javascript" language="javascript">var ANS_customer_id = "@authorizeNetSealId";</script>
+        <script type="text/javascript" language="javascript" src="//verify.authorize.net/anetseal/seal.js"></script> <a href="http://www.authorize.net/" id="AuthorizeNetText" target="_blank">Online Payment System</a>
+    </div>
+</div>
+
+

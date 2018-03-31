@@ -1,0 +1,242 @@
+﻿@model AtrendUsa.Plugin.Misc.Support.Models.FreightOrderClaimModel
+@using Nop.Web.Framework
+@using Nop.Web.Framework.Security.Captcha
+@using Nop.Web.Framework.UI
+@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+
+    Html.AddTitleParts("Freight Order Claim");
+
+    //Html.AddCssFileParts("https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css");
+    //Html.AddScriptParts("https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js");
+
+
+    Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.Support/Content/themes/atrendusa/select2.min.css"); /*Added By Santosh*/
+    Html.AddScriptParts("~/Plugins/AtrendUsa.Plugin.Misc.Support/Content/themes/atrendusa/select2.min.js"); /*Added By Santosh*/
+
+    Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.Support/Content/themes/atrendusa/atrendusa.css");
+    Html.AddScriptParts("~/Plugins/AtrendUsa.Plugin.Misc.Support/Content/themes/atrendusa/file-upload-button.js");
+
+    ViewBag.activeTab = "freightOrder";
+}
+
+
+<script>
+    $(document).ready(function() {
+        $("#dpModelNum").select2();
+        $('.js-example-basic-multiple').select2({placeholder: "Select Model Numbers",});});
+</script>
+
+<script>
+    window.ATTACHMENT_TYPES = [];
+    @foreach (var t in Model.AllowedAttachmentsTypes)
+    {
+        @:window.ATTACHMENT_TYPES.push("@t");
+                                                                                    }
+    window.MAX_ATTACHMENTS_SIZE = @Model.MaxAllowedAttachmentsSize;
+</script>
+<div class="page contact-page support-page">
+    <div class="page-body">
+        <div id="quickTabs" class="productTabs ui-tabs ui-widget ui-widget-content ui-corner-all" data-ajaxenabled="false">
+            @Html.Partial("~/Plugins/AtrendUsa.Plugin.Misc.Support/Views/Partials/TabsHeader.cshtml")
+            <div class="productTabs-body">
+                @if (Model.SuccessfullySent)
+                {
+                    <div class="result">
+                        @Model.Result
+                    </div>
+                }
+                else
+                {
+                    <div class="topic-block">
+                        <div class="topic-block-title">
+                            @*<h2>Freight Order Claim</h2>*@ @*Commented by IV Santosh*@
+                            <h2>Submit Claim</h2> @*Added by IV Santosh*@
+                        </div>
+                        <div class="topic-block-body">
+                            <ul class="ul-disc">
+                                <li>Use this section to submit a freight claim on all pallet orders received. For claim consideration it is necessary that you attach files before submitting that show damages of product.</li>
+                                <li>Please also attach a copy of the Bill of Lading which was signed when your pallets were received showing that the pallets were received with damages.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    using (Html.BeginForm("FreightOrderClaim", "Support", FormMethod.Post, new { enctype = "multipart/form-data", @class = "upload-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        var validationSummary = Html.ValidationSummary(true);
+                        if (!MvcHtmlString.IsNullOrEmpty(validationSummary))
+                        {
+                            <div class="message-error">@validationSummary</div>
+                        }
+                        <div class="fieldset">
+                            <div class="title">
+                                <strong>@T("AtrendUsa.Plugin.Misc.Support.Address")</strong>
+                            </div>
+                            <div class="form-fields">
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.CompanyName, new { }, ":")
+                                    @Html.EditorFor(m => m.CompanyName, new { htmlAttributes = new { placeholder = "Enter your company name" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.CompanyName)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.FirstName, new { }, ":")
+                                    @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { placeholder = "Enter your first name" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.FirstName)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.LastName, new { }, ":")
+                                    @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { placeholder = "Enter your last name" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.LastName)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.Email, new { }, ":")
+                                    @Html.EditorFor(m => m.Email, new { htmlAttributes = new { placeholder = "Enter your email" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.Email)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.CountryId, new { }, ":")
+                                    @Html.DropDownListFor(model => model.CountryId, Model.AvailableCountries)
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(model => model.CountryId)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.StateProvince, new { }, ":")
+                                    @Html.EditorFor(m => m.StateProvince, new { htmlAttributes = new { placeholder = "Enter your state" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.StateProvince)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.City, new { }, ":")
+                                    @Html.EditorFor(m => m.City, new { htmlAttributes = new { placeholder = "Enter your city" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.City)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.AddressLine1, new { }, ":")
+                                    @Html.EditorFor(m => m.AddressLine1, new { htmlAttributes = new { placeholder = "Enter your address 1" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.AddressLine1)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.AddressLine2, new { }, ":")
+                                    @Html.EditorFor(m => m.AddressLine2, new { htmlAttributes = new { placeholder = "Enter your address 2" } })
+                                    @Html.ValidationMessageFor(m => m.AddressLine2)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.PostalCode, new { }, ":")
+                                    @Html.EditorFor(m => m.PostalCode, new { htmlAttributes = new { placeholder = "Enter your zip" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.PostalCode)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.Phone, new { }, ":")
+                                    @Html.EditorFor(m => m.Phone, new { htmlAttributes = new { placeholder = "Enter your phone number" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.Phone)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset">
+                            <div class="title">
+                                <strong>@T("AtrendUsa.Plugin.Misc.Support.Details")</strong>
+                            </div>
+                            <div class="form-fields">
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.ModelNumber, new { }, ":")
+                                    @*@Html.TextBoxFor(model => model.ModelNumber, new { placeholder = "Enter your model number" })
+                                        @Html.RequiredHint()
+                                        @Html.ValidationMessageFor(model => model.ModelNumber)*@
+                                    @Html.DropDownListFor(model => model.ModelNumberId, Model.AvailableModelNumbers,
+                                        new { @id = "dpModelNum", @class = "js-example-basic-multiple", @multiple = "multiple" })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(model => model.ModelNumberId)
+
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.SerialNumber, new { }, ":")
+                                    @Html.TextBoxFor(model => model.SerialNumber, new { placeholder = "Enter product serial number" })
+                                    @Html.ValidationMessageFor(model => model.SerialNumber)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.ExceptionType, new { }, ":")
+                                    @Html.EnumDropDownListFor(m => m.ExceptionType, "Select exception", new { @class = "exception-type" })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.ExceptionType)
+                                </div>
+                                <div class="inputs exception-hint damaged-goods">
+                                    <ul>
+                                        <li>Notate all damages on the Bill of Lading prior to signing it.</li>
+                                        <li>Refuse all damaged goods to the delivering carrier.</li>
+                                        <li>Notify @Model.StoreName about damages and provide copy of signed bill of lading.</li>
+                                    </ul>
+                                </div>
+                                <div class="inputs exception-hint shortages">
+                                    <ul>
+                                        <li>A piece count is provided on our Bill of Lading. Please confirm piece count prior to signing Bill of Lading.</li>
+                                        <li>Notate all shortages on the Bill of Lading prior to signing it.</li>
+                                        <li>Notify @Model.StoreName about shortages and provide copy of signed bill of lading.</li>
+                                    </ul>
+                                </div>
+                                <div class="inputs exception-hint warranty-issues">
+                                    <ul>
+                                        <li>Fill in @Model.StoreName claim Form</li>
+                                        <li>Provide picture of product showing visible issue</li>
+                                    </ul>
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.Problem, new { }, ":")
+                                    @Html.TextAreaFor(m => m.Problem)
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.Problem)
+                                </div>
+                                <div class="inputs uploaded">
+                                    @Html.LabelFor(m => m.UploadedDocuments, new { }, ":")
+                                    <div class="b-upload-button">
+                                        <div class="button-1 b-button">
+                                            <span>Add File</span>
+                                            @Html.TextBoxFor(m => m.UploadedDocuments, new { type = "file" })
+                                        </div>
+                                        <ul class="b-files-to-upload"></ul>
+                                    </div>
+                                    <span class="field-validation-error"></span>
+                                </div>
+                                @if (Model.DisplayCaptcha)
+                                {
+                                    <div class="captcha-box">
+                                        @Html.Raw(Html.GenerateCaptcha())
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <input type="submit" name="send-email" class="button-1" value="@T("AtrendUsa.Plugin.Misc.Support.Button")" />
+                        </div>
+                        <script>
+                            $(".exception-type").on("change",
+                                function (event) {
+                                    var EXCEPTION_TYPES = {
+                                        0: "damaged-goods",
+                                        1: "shortages",
+                                        2: "warranty-issues",
+                                        3: "overages"
+                                    }
+                                    $('.exception-hint').hide();
+                                    var selectedValue = parseInt($(this).val());
+                                    var cls = EXCEPTION_TYPES[selectedValue];
+
+                                    if (cls) {
+                                        $('.' + cls).show();
+                                    }
+                                }).trigger('change');
+                        </script>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

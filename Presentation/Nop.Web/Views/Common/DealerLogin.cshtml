@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/Shared/_ColumnsTwo.cshtml";
+
+    //title, description, keywords
+    Html.AddTitleParts(T("PageTitle.DealerLogin").Text);
+    Html.AddMetaDescriptionParts(T("MegaDescription.DealerLogin").Text);
+    Html.AddMetaKeywordParts(T("MegaKeywords.DealerLogin").Text);
+
+    //page class
+    Html.AppendPageCssClassParts("html-dealer-login-page");
+}
+<div class="page contact-page">
+    <div class="page-title">
+        <h1>Welcome</h1>
+    </div>
+    <div class="page-body">
+        <div class="fieldset">
+            <div class="title">
+                <strong>New Dealer</strong>
+            </div>
+            <br />
+            <div class="buttons">
+                <a href="@Url.RouteUrl("ContactUs")" class="button-1">Become A Dealer</a>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="fieldset">
+            <div class="title">
+                <strong>Now Commerce Dealer Account</strong>
+            </div>
+            <br />
+            <div class="buttons">
+                <a href="https://portal.nowcommerce.com/signin.aspx" class="button-1" target="_blank">Sign In</a>
+                <a href="@Url.RouteUrl("NowCommerceSignUp")" class="button-1">Sign Up</a>
+            </div>            
+        </div>
+    </div>
+</div>
+<style>
+    .buttons .button-1:not(:first-child) {
+        margin-left: 20px;
+    }
+</style>

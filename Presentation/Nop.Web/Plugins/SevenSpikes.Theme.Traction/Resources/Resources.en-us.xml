@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Language Name="English">
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Admin.Menu.MenuName">
+    <Value>Traction</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Admin.SettingsSubmenu.Traction">
+    <Value>Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="Sevenspikes.Themes.Admin.ManageResources.Traction">
+    <Value>Manage Resources</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Admin.Settings">
+    <Value>Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Admin.Settings.ThemeSettings">
+    <Value>Traction Theme Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Admin.Settings.ThemeSettings.Preset">
+    <Value>Preset</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Admin.Settings.ThemeSettings.Preset.Hint">
+    <Value>Choose your color preset of the theme.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Admin.Settings.ThemeSettings.EnableProductGridsTabsOnHomePage">
+    <Value>Enable Product Grids Tabs On Home Page</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Admin.Settings.ThemeSettings.EnableProductGridsTabsOnHomePage.Hint">
+    <Value>If enabled the Home Page Products, Bestsellers and New Products will appear in tabs on the home page.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.AffiliateExtras">
+    <Value>Affiliate and Extras</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.BecomeAffiliate">
+    <Value>Become Affiliate</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.Brands">
+    <Value>Brands</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.CompanyInfo">
+    <Value>Company info</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.CustomerAssistance">
+    <Value>Customer Assistance</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.CustomerServices">
+    <Value>Customer services</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.DeliveryInformation">
+    <Value>Delivery Information</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.Email">
+    <Value>support [at] tractionstore.com</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.EmailDomain">
+    <Value>store.com</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.EmailAt">
+    <Value>[at]</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.EmailName">
+    <Value>sales</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.FAQ">
+    <Value>Frequently Asked Questions</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.FollowUs">
+    <Value>Follow us</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.GiftVouchers">
+    <Value>Gift Vouchers</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.GoTo">
+    <Value>Go to...</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.GoToPage">
+    <Value>Product's page</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.Help">
+    <Value>Help</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.InternationalShipping">
+    <Value>International Shipping</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.LegalInformation">
+    <Value>Legal Information</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.LicenseAgreement">
+    <Value>License Agreement</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.Mobile">
+    <Value>+111 (Mobile) 012345</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.OurOffers">
+    <Value>Our Offers</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.PaymentOptions">
+    <Value>Payment options</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.Phone">
+    <Value>+222 (Phone) 987654</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.Search">
+    <Value>Search</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.SecurePayment">
+    <Value>Secure Payment</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.ServiceSupport">
+    <Value>Service and Support</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.ShippingReturns">
+    <Value>Shipping and Returns</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.Skype">
+    <Value>skype_Traction</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.Social">
+    <Value>Connect with us:</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.Fax">
+    <Value>+555 (Fax) 4523768</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.Location">
+    <Value>Brussel, Belgium</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.Info">
+    <Value>Info</Value>
+  </LocaleResource>
+   <LocaleResource Name="SevenSpikes.Themes.Traction.Common.FeaturedCategories">
+    <Value>Featured Categories</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.FooterContact">
+    <Value>Contacts</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.FooterInformation">
+    <Value>Information</Value>
+  </LocaleResource>
+  <LocaleResource Name="HomePage">
+    <Value>Home</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.Phone">
+  <Value>+111 (Phone) 987654</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.Fax">
+    <Value>+222 (Fax) 192837465</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.Mobile">
+    <Value>+333 (Mobile) 012345</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.EmailName">
+    <Value>info</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.EmailDomain">
+    <Value>store.com</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.Skype">
+    <Value>traction_theme</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Traction.Common.FAQ">
+    <Value>FAQ</Value>
+  </LocaleResource>
+  <LocaleResource Name="products.recentlyviewedproducts">
+    <Value>Recently viewed</Value>
+  </LocaleResource>
+</Language>

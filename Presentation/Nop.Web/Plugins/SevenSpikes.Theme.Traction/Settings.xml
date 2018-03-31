@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings>
+  <Setting Name="tractionthemesettings.preset">
+    <Value>c03</Value>
+  </Setting>
+  <Setting Name="tractionthemesettings.defaultpreset">
+    <Value>c03</Value>
+  </Setting>
+  <Setting Name="tractionthemesettings.defaultproductimageproportion">
+    <Value>100</Value>
+  </Setting>
+  <Setting Name="tractionthemesettings.defaultcategoryimageproportion">
+    <Value>70</Value>
+  </Setting>
+  <Setting Name="tractionthemesettings.productimageproportion">
+    <Value>100</Value>
+  </Setting>
+  <Setting Name="tractionthemesettings.categoryimageproportion">
+    <Value>70</Value>
+  </Setting>
+  <Setting Name="tractionthemesettings.EnableProductGridsTabsOnHomePage">
+    <Value>true</Value>
+  </Setting>
+  <Setting Name="sevenspikes.theme.traction.newproductsinfooternumber">
+    <Value>6</Value>
+  </Setting>  
+  <Setting Name="ordersettings.onepagecheckoutenabled">
+    <Value>false</Value>
+  </Setting>
+  <Setting Name="catalogsettings.showproductsfromsubcategories">
+    <Value>true</Value>
+  </Setting>
+  <Setting Name="mediasettings.productthumbpicturesize">
+    <Value>360</Value>
+  </Setting>
+  <Setting Name="mediasettings.productdetailspicturesize">
+    <Value>320</Value>
+  </Setting>
+  <Setting Name="mediasettings.minicartthumbpicturesize">
+    <Value>95</Value>
+  </Setting>
+  <Setting Name="mediasettings.manufacturerthumbpicturesize">
+    <Value>350</Value>
+  </Setting>
+  <Setting Name="mediasettings.categorythumbpicturesize">
+    <Value>370</Value>
+  </Setting>
+  <Setting Name="mediasettings.productthumbpicturesizeonproductdetailspage">
+    <Value>100</Value>
+  </Setting>
+  <Setting Name="mediasettings.associatedproductpicturesize">
+    <Value>320</Value>
+  </Setting>
+  <Setting Name="mediasettings.maximumimagesize">
+    <Value>1920</Value>
+  </Setting>
+  <Setting Name="cloudzoomsettings.zoomposition">
+    <Value>inside</Value>
+  </Setting>
+  <Setting Name="CloudZoomSettings.NumberOfPictureThumbnailsInCarousel-Traction">
+    <Value>3</Value>
+  </Setting>
+  <Setting Name="CloudZoomSettings.ResponsiveBreakpointsForThumbnailsCarousel-Traction">
+    <Value>[{"breakpoint":1001,"settings":{"slidesToShow":3,"slidesToScroll":3,"arrows":false,"dots":true,"vertical":false}},{"breakpoint":769,"settings":{"slidesToShow":4,"slidesToScroll":4,"arrows":false,"dots":true,"vertical":false}},{"breakpoint":400,"settings":{"slidesToShow":3,"slidesToScroll":3,"arrows":false,"dots":true,"vertical":false}}]</Value>
+  </Setting>
+  <Setting Name="JCarouselGeneralSettings.ResponsiveBreakpointsForSlickSlider-Traction">
+    <Value>[{"breakpoint":700,"settings":{"slidesToShow":3}},{"breakpoint":699,"settings":{"slidesToShow":2}},{"breakpoint":463,"settings":{"slidesToShow":1}}]</Value>
+  </Setting>
+  <Setting Name="NopAjaxFiltersSettings.WidgetZone">
+    <Value>left_side_column_before</Value>
+  </Setting>
+  <Setting Name="NopAjaxFiltersProSettings.WidgetZone">
+    <Value>home_page_search_widget</Value>
+  </Setting>
+  <Setting Name="NopAjaxCartSettings.ProductAddedToCartImageSize">
+    <Value>160</Value>
+  </Setting>
+  <Setting Name="MegaMenuSettings.MegaMenuCategoryTemplate">
+    <Value>CategoryMenuTemplate.WithPictures</Value>
+  </Setting>
+  <Setting Name="MegaMenuSettings.MegaMenuManufacturerTemplate">
+    <Value>ManufacturerMenuTemplate.WithPictures</Value>
+  </Setting>
+  <Setting Name="MegaMenuSettings.NumberOfCategoriesPerRow">
+    <Value>4</Value>
+  </Setting>
+  <Setting Name="QuickViewSettings.ProductItemSelectorChild">
+    <Value>.buttons</Value>
+  </Setting>
+  <Setting Name="QuickViewSettings.AccordionPanelsHeightStyle">
+    <Value>auto</Value>
+  </Setting>
+  <Setting Name="QuickViewSettings.ProductDetailsPictureSize">
+    <Value>250</Value>
+  </Setting>
+  <Setting Name="QuickViewSettings.ProductThumbPictureSize">
+    <Value>70</Value>
+  </Setting>
+  <Setting Name="megamenusettings.categoriesimagesize">
+    <Value>80</Value>
+  </Setting>
+  <Setting Name="newssettings.shownewsonmainpage">
+    <Value>True</Value>
+  </Setting>
+</Settings>

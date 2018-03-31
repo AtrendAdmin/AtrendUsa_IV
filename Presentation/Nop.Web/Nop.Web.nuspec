@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Nop.Web</id>
+    <version>$version$</version>
+    <description>Atrend USA Project</description>
+    <authors>Spark Equation</authors>
+  </metadata>
+  <files>
+    <!-- Nop.Web -->
+    <file src=".\bin\*.dll" target=".\content\bin" />
+    <file src=".\App_Data\**" target=".\content\App_Data" />
+    <file src=".\Content\**" target=".\content\Content" />
+    <file src=".\Plugins\**" target=".\content\Plugins" />
+    <file src=".\Scripts\**" target=".\content\Scripts" />
+    <file src=".\Themes\**" target=".\content\Themes" />
+    <file src=".\Views\**" target=".\content\Views" />
+    <file src=".\ErrorPage.htm" target=".\content\ErrorPage.htm" />
+    <file src=".\FileNotFound.htm" target=".\content\FileNotFound.htm" />
+    <file src=".\Global.asax" target=".\content\Global.asax" />
+    <file src=".\obj\$configuration$\Nop.Web.csproj.App.config" target=".\content\Web.config" />
+    <!-- Nop.Admin -->
+    <file src=".\bin\Nop.Admin.dll" target=".\content\Administration" />
+    <file src=".\Administration\Views\**" target=".\content\Administration\Views" />
+    <file src=".\Administration\Content\**" target=".\content\Administration\Content" />
+    <file src=".\Administration\Scripts\**" target=".\content\Administration\Scripts" />
+    <file src=".\Administration\db_backups\**" target=".\content\Administration\db_backups" />
+    <file src=".\Administration\sitemap.config" target=".\content\Administration\sitemap.config" />
+  </files>
+</package>

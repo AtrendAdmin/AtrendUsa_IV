@@ -1,0 +1,45 @@
+doctype
+html( lang="en" )
+    head
+        include _head.pug
+    body.b-body
+        .b-site-container
+            //- include _bHeader.pug
+            //- CONTENT ZONE START
+            .b-content
+                .b-wrap
+                    h1.b-title
+                        | INTRODUCING the ATREND FAMILY of BRANDS
+                    a(href='').b-store.b-store_main
+                        img(src='images/atrend-logo.png' alt='Atrend')
+                    .b-text
+                        | Visit our main site
+                        hr
+                        | Browse our brand sites
+                    .b-row
+                        a(href='').b-store
+                            img(src='images/bbox-logo.png' alt='Bbox')
+                        a(href='').b-store
+                            img(src='images/surge-logo.png' alt='Surge')
+                        a(href='').b-store
+                            img(src='images/oz-logo.png' alt='Oz Audio')
+                        a(href='').b-store
+                            img(src='images/zapco-logo.png' alt='Zapco')
+                    .b-text
+                        hr
+                        | join us online
+                    ul.b-soc-links
+                        li.b-soc-links__item.b-soc-links__item_facebook
+                            a(href='')
+                                span.fa.fa-facebook
+                        li.b-soc-links__item.b-soc-links__item_twitter
+                            a(href='')
+                                span.fa.fa-twitter
+                        li.b-soc-links__item.b-soc-links__item_instagram
+                            a(href='')
+                                span.fa.fa-instagram
+
+            //- CONTENT ZONE END
+            include _bFooter.pug
+
+        include _scripts.pug

@@ -1,0 +1,21 @@
+﻿@using Nop.Web.Framework
+@using Nop.Web.Framework.UI
+@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+
+    Html.AddTitleParts("Warranty");
+    Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.Support/Content/themes/atrendusa/atrendusa.css");
+
+    ViewBag.activeTab = "warranty";
+}
+
+<div class="page support-page warranty-page">
+    <div class="page-body">
+        <div id="quickTabs" class="productTabs ui-tabs ui-widget ui-widget-content ui-corner-all" data-ajaxenabled="false">
+            @Html.Partial("~/Plugins/AtrendUsa.Plugin.Misc.Support/Views/Partials/TabsHeader.cshtml")
+            <div class="productTabs-body">
+                @Html.Action("TopicBlock", "Topic", new { systemName = "Warranty" })
+            </div>
+        </div>
+    </div>
+</div>

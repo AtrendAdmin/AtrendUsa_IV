@@ -1,0 +1,52 @@
+﻿@using Nop.Web.Models.Catalog
+@using Nop.Core
+@using Nop.Core.Infrastructure;
+@using Nop.Services.Configuration;
+
+@model CategoryModel.SubCategoryModel
+
+@{
+    var controllerName = System.Web.HttpContext.Current.Request.RequestContext.RouteData.GetRequiredString("controller");
+    var actionName = System.Web.HttpContext.Current.Request.RequestContext.RouteData.GetRequiredString("action");
+
+    var isHomePage = controllerName.Equals("home", StringComparison.InvariantCultureIgnoreCase) &&
+                    actionName.Equals("index", StringComparison.InvariantCultureIgnoreCase);
+
+    var storeId = EngineContext.Current.Resolve<IStoreContext>().CurrentStore.Id;
+    var categoriesHoverEffect = EngineContext.Current.Resolve<ISettingService>().GetSettingByKey("brooklynthemesettings.categorieshovereffect", "hover-effect-1", storeId, true);
+}
+
+@if (isHomePage)
+{
+    <div class="category-item @categoriesHoverEffect">
+        <h2 class="title">
+            <a href="@Url.RouteUrl("Category", new { SeName = Model.SeName })" title="@Model.PictureModel.Title">
+                <span>
+                    @Model.Name
+                </span>
+            </a>
+        </h2>
+        <div class="picture">
+            <a href="@Url.RouteUrl("Category", new { SeName = Model.SeName })" title="@Model.PictureModel.Title">
+                <img alt="@Model.PictureModel.AlternateText" src="@Model.PictureModel.ImageUrl" title="@Model.PictureModel.Title" />
+            </a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="sub-category-item @categoriesHoverEffect">
+        <div class="picture">
+            <a href="@Url.RouteUrl("Category", new { SeName = Model.SeName })" title="@Model.PictureModel.Title">
+                <img alt="@Model.PictureModel.AlternateText" src="@Model.PictureModel.ImageUrl" title="@Model.PictureModel.Title" />
+            </a>
+        </div>
+        <h2 class="title">
+            <a href="@Url.RouteUrl("Category", new { SeName = Model.SeName })" title="@Model.PictureModel.Title">
+                <span>
+                    @Model.Name
+                </span>
+            </a>
+        </h2>
+    </div>
+}

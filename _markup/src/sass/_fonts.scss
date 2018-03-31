@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'GillSansMT';
+    font-weight: normal;
+    font-style: normal;
+    src: local('GillSansMT'),
+        url('../fonts/GillSansMT.woff2') format('woff2'),
+        url('../fonts/GillSansMT.woff') format('woff'),
+        url('../fonts/GillSansMT.ttf') format('ttf'),
+        url('../fonts/GillSansMT.eot') format('eot');
+    unicode-range: U+000-5FF; /* Latin glyphs */
+}

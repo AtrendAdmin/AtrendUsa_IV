@@ -1,0 +1,16 @@
+@import '_fonts'; // Fonts (custom webfonts)
+@import '_theme'; // Theme (bootstrap overrides)
+// @import '_sprite'; // Sprites
+// @import '_svgSprite'; // Svg Sprites
+
+// Frameworks
+@import '_bootstrap'; // Bootstrap components (u need to uncomment lines which you need)
+@import '../../bower_components/font-awesome/scss/font-awesome'; // Icon Font
+
+// Custom styles
+@import '_bFooter';
+@import '_bHeader';
+@import '_custom';
+
+// Sticky footer
+@import '_stickyfooter';

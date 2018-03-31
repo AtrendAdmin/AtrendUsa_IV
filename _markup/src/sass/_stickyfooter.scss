@@ -1,0 +1,26 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.b-site-container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.b-content {
+    flex: 1;
+}
+
+.b-header,
+.b-footer {
+    flex-shrink: 0;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .b-site-container { height: 100vh; }
+    .b-content { flex: 1 0 auto; }
+}

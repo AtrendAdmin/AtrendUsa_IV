@@ -1,0 +1,388 @@
+﻿/*=====================================================
+    
+    TABLETS LANDSCAPE & NETBOOKS
+
+=====================================================*/
+
+@media all and (min-width: 769px) {
+
+/* GLOBAL STYLES */
+
+.page {
+	clear: both;
+}
+
+/* QUICK TABS */
+
+.ui-tabs .ui-tabs-nav li {
+	display: inline-block;
+	width: auto;
+}
+.home-page .ui-tabs .ui-tabs-nav li {
+	display: table-cell;
+}
+
+/* FOOTER */
+
+.footer-upper {
+	width: 98%;
+}
+.footer-block {
+	width: 31.33333%;
+    margin: 0 1% 15px;
+}
+.footer-block:nth-of-type(2n+1) {
+	clear: none;
+}
+.footer-block:nth-of-type(3n+1) {
+	clear: both;
+}
+
+/* LEFT/RIGHT COLUMN */
+
+.block {
+	width: 31.33333%;
+    margin: 0 1%;
+}
+.block:nth-of-type(2n+1) {
+	clear: none;
+}
+.block:nth-of-type(3n+1) {
+	clear: both;
+}
+.block .tags li,
+.product-tags-all-page li {
+	margin: 0 5px;
+}
+
+/* CATEGORY PAGE & GRIDS */
+
+.product-selectors {
+	padding: 7px 0;
+}
+div.product-viewmode {
+	display: inline-block;
+}
+
+.item-box {
+	width: 31.33333%; /*three per row*/
+}
+.item-box:nth-child(1),
+.item-box:nth-child(2),
+.item-box:nth-child(3) {
+	margin-top: 0 !important;
+}
+.item-box:nth-child(2n+1) {
+	clear: none; /*revert the second item*/
+}
+.item-box:nth-child(3n+1) {
+	clear: both;
+}
+
+.product-grid .item-box,
+.product-list .item-box {
+	margin: 30px 1% 0;
+}
+
+.product-list .item-box {
+	float: none;
+	width: auto;
+	margin: 0 0 30px;
+	border-bottom: 1px dotted #ccc;
+	padding: 0 0 20px;
+}
+.product-list .item-box:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.product-list .item-box .picture {
+	float: left;
+	width: 200px;
+}
+.product-list .item-box .details {
+	margin-left: 220px;
+}
+.product-list .item-box .product-title {
+	height: auto;
+}
+.product-list .item-box .description {
+	display: block;
+}
+.product-list .item-box .buttons {
+	text-align: right;
+}
+.product-filters .product-filter{
+    float:right;
+    margin:0 0.5%;
+    max-width:100%;
+    width:32.3%;
+}
+.product-filters .product-filter:nth-child(3n+1){
+    clear:both;
+}
+
+/* PRODUCT PAGE */
+
+.product-essential,
+.product-variant-list {
+	text-align: right;
+}
+.gallery {
+	float: right;
+	width: 300px;
+}
+.gallery .picture {
+	width: auto;
+}
+.product-details-page .overview {
+	margin-right: 320px;
+}
+.overview .buttons {
+	text-align: right;
+}
+.overview .buttons div {
+	margin: 0 0 10px 10px;
+}
+.free-shipping {
+	float: left;
+    margin:15px 15px 15px 0;
+}
+.overview .qty-label,
+.variant-overview .qty-label {
+	position: static;
+	left: 0;
+	margin: 0 0 0 5px;
+}
+.variant-picture {
+	float: right;
+}
+.variant-picture + .variant-overview {
+	width: auto;
+	margin: 0 235px 0 0;
+}
+.variant-overview .add-to-cart-button {
+	margin-left: 10px;
+}
+.variant-overview .add-to-wishlist-button {
+	float: right;
+	clear: none;
+	margin: 4px 0;
+}
+
+.attributes {
+	margin: 15px 0;
+}
+.attributes dt {
+	float: right;
+	clear: right;
+	min-width: 60px;
+	margin-left: 10px;
+}
+.attributes dt label {
+	line-height: 32px;
+}
+.attributes dd {
+	float: right;
+	margin-left: 10px;
+}
+
+.rental-attributes dt {
+	width: 75px;
+}
+.rental-attributes .datepicker {
+	width: 120px;
+}
+
+.attribute-squares {
+	text-align: center;
+}
+.attribute-squares label {
+	margin: 0 0 0 10px;
+	padding: 0 !important;
+}
+
+.giftcard label {
+	display: inline-block;
+	width: 300px;
+	margin: 0 0 0 17px;
+	text-align: left;
+}
+
+/* SHOPPING CART & CHECKOUT */
+
+.shopping-cart-page .totals {
+	float: left;
+	margin: 0 15px;
+}
+.cart-collaterals {
+	float: right;
+	margin: 0 15px;
+}
+.cart-collaterals .deals {
+	background: none;
+	padding: 0;
+}
+.cart-collaterals .shipping {
+	margin: 0;
+}
+.checkout-page .address-item {
+	float: right;
+    width: 48%;
+    margin: 0 1% 20px;
+}
+.checkout-page .address-item:nth-child(2n+1) {
+	clear: both;
+}
+
+/* SEARCH & SITEMAP */
+
+.search-results .product-list {
+	border-top: 1px dotted #ccc;
+	padding-top: 30px;
+}
+
+/* BLOG & NEWS */
+
+.blog-page .post,
+.news-items .item {
+	margin: 0 0 40px;
+	border-bottom: 1px solid #ddd;
+	background: none;
+	padding: 0 0 15px;
+}
+.blog-page .post:after,
+.news-items .item:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.post-head,
+.news-head {
+	overflow: hidden;
+	background-color: #f6f6f6;
+	padding: 10px;
+}
+.post-head ~ *,
+.news-head ~ * {
+	display: block;
+}
+.post-title,
+.news-title {
+	margin-bottom: 0;
+	font-size: 18px;
+}
+.post-body,
+.news-body {
+	margin-bottom: 0;
+}
+.blog-page .tags,
+.blogpost-page .tags {
+	float: right;
+	max-width: 85%;
+	margin: 0;
+	background: none;
+}
+.blog-page .tags > *,
+.blogpost-page .tags > * {
+	float: right;
+}
+.blog-page .tags label,
+.blogpost-page .tags label {
+	margin: 0 10px 0 0;
+	line-height: 24px;
+}
+.blog-posts .buttons {
+	float: left;
+	padding: 10px;
+	line-height: 24px;
+}
+.blog-posts .buttons a {
+	color: #c03;
+}
+.new-comment {
+	clear: both;
+	padding-top: 40px;
+}
+.new-comment textarea {
+	width: 500px;
+}
+.blog-comment,
+.news-comment {
+	border-width: 0 0 1px;
+	padding: 0 0 15px;
+	text-align: right;
+}
+.comment-info {
+	float: right;
+	margin: 0;
+}
+.comment-info + .comment-content {
+	margin: 0 135px 0 0;
+}
+.news-list-homepage .news-head {
+	background: none;
+	padding: 0;
+}
+
+/* FORUM & PROFILE */
+
+.forum-search-box-text,
+.forum-search-text {
+	width: 400px !important;
+}
+.forum-search-box .basic {
+	float: right;
+}
+.forum-search-box .advanced {
+	float: right;
+	margin: 6px 6px 6px 0;
+}
+.forum-search-box .advanced a {
+	padding: 6px;
+	font-size: 11px;
+}
+.forums-table-section-title > a,
+.forums-table-section-title strong {
+	float: right;
+}
+.forums-table-section-title span {
+	float: left;
+}
+.forum-breadcrumb {
+	float: right;
+	text-align: right;
+}
+.pager.lower {
+	float: left;
+	margin: 0;
+}
+.forum-topic-page .actions {
+	float: right;
+}
+.topic-footer .actions {
+	float: right;
+}
+.topic-posts {
+	clear: both;
+}
+.forum-post .post-info,
+.topic-post .post-info,
+.profile-info-box .user-details,
+.topic-post .post-info {
+	float: right;
+}
+.forum-post .post-content,
+.topic-post .post-content,
+.profile-info-box .profile-stats,
+.topic-post .post-content {
+	min-width: 200px;
+	margin-right: 200px;
+}
+.forum-edit-page textarea,
+.private-message-send-page textarea {
+	width: 500px;
+	height: 180px;
+}
+
+}

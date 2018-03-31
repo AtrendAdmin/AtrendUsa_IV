@@ -1,0 +1,31 @@
+﻿@using Nop.Web.Framework
+@using Nop.Web.Framework.UI
+@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+
+    Html.AddTitleParts("Download");
+    Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.Support/Content/themes/atrendusa/atrendusa.css");
+
+    ViewBag.activeTab = "download";
+}
+
+<div class="page support-page download-page">
+    <div class="page-body">
+        <div id="quickTabs" class="productTabs ui-tabs ui-widget ui-widget-content ui-corner-all" data-ajaxenabled="false">
+            @Html.Partial("~/Plugins/AtrendUsa.Plugin.Misc.Support/Views/Partials/TabsHeader.cshtml")
+            <div class="productTabs-body">
+                @Html.Action("TopicBlock", "Topic", new { systemName = "Download" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .download-page table { width: 100%; }
+    .download-page table tr td:nth-child(1) { vertical-align: top; padding-right: 20px; width: 200px; }
+    .download-page table tr td:nth-child(1) img { width: 100%; height: auto; }
+    @@media (max-width: 1000px) {
+        .download-page table tr,
+        .download-page table td { display: block; margin: 0 auto; }
+    }
+</style>

@@ -1,0 +1,9 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewBag.Title = "Error";
+}
+<div class="content" role="form">
+    <p>
+        Sorry, an error occurred while processing your request. Please contact the Service Desk. Reference code: @ViewData["ErrorIdentifier"] .
+    </p>
+</div>

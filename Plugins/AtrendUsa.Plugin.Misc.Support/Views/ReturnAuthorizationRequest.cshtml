@@ -1,0 +1,187 @@
+﻿@model AtrendUsa.Plugin.Misc.Support.Models.ReturnAuthorizationRequestModel
+@using Nop.Web.Framework
+@using Nop.Web.Framework.Security.Captcha
+@using Nop.Web.Framework.UI
+@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+
+    Html.AddTitleParts("Return Authorization Request");
+    Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.Support/Content/themes/atrendusa/atrendusa.css");
+    Html.AddScriptParts("~/Plugins/AtrendUsa.Plugin.Misc.Support/Content/themes/atrendusa/file-upload-button.js");
+
+    //ViewBag.activeTab = "returnAuthorizationRequest"; @*Commented by IV Santosh*@
+    ViewBag.activeTab = "freightOrder"; @*Added by IV Santosh*@
+}
+<script>
+    window.ATTACHMENT_TYPES = [];
+    @foreach (var t in Model.AllowedAttachmentsTypes)
+    {
+        @:window.ATTACHMENT_TYPES.push("@t");
+    }
+    window.MAX_ATTACHMENTS_SIZE = @Model.MaxAllowedAttachmentsSize;
+</script>
+
+<div class="page contact-page support-page">
+    <div class="page-body">
+        <div id="quickTabs" class="productTabs ui-tabs ui-widget ui-widget-content ui-corner-all" data-ajaxenabled="false">
+            @Html.Partial("~/Plugins/AtrendUsa.Plugin.Misc.Support/Views/Partials/TabsHeader.cshtml")
+            <div class="productTabs-body">
+                @if (Model.SuccessfullySent)
+                {
+                    <div class="result">
+                        @Model.Result
+                    </div>
+                }
+                else
+                {
+                    <div class="topic-block">
+                        <div class="topic-block-title">
+                            <h2>Return Authorization Request</h2>
+                        </div>
+                        <div class="topic-block-body topic-block-body-center">
+                            <p>Please read warranty section to determine if you have a valid reason to submit an RA Request.</p>
+                            <p>Complete required information and someone will reach out to you.</p>
+                        </div>
+                    </div>
+
+                    using (Html.BeginForm("ReturnAuthorizationRequest", "Support", FormMethod.Post, new { enctype = "multipart/form-data", @class = "upload-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        var validationSummary = Html.ValidationSummary(true);
+                        if (!MvcHtmlString.IsNullOrEmpty(validationSummary))
+                        {
+                            <div class="message-error">@validationSummary</div>
+                        }
+                        <div class="fieldset">
+                            <div class="title">
+                                <strong>@T("AtrendUsa.Plugin.Misc.Support.Address")</strong>
+                            </div>
+                            <div class="form-fields">
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.FirstName, new { }, ":")
+                                    @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { placeholder = "Enter your first name" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.FirstName)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.LastName, new { }, ":")
+                                    @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { placeholder = "Enter your last name" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.LastName)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.Email, new { }, ":")
+                                    @Html.EditorFor(m => m.Email, new { htmlAttributes = new { placeholder = "Enter your email" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.Email)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.CountryId, new { }, ":")
+                                    @Html.DropDownListFor(model => model.CountryId, Model.AvailableCountries)
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(model => model.CountryId)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.StateProvince, new { }, ":")
+                                    @Html.EditorFor(m => m.StateProvince, new { htmlAttributes = new { placeholder = "Enter your state" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.StateProvince)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.City, new { }, ":")
+                                    @Html.EditorFor(m => m.City, new { htmlAttributes = new { placeholder = "Enter your city" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.City)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.AddressLine1, new { }, ":")
+                                    @Html.EditorFor(m => m.AddressLine1, new { htmlAttributes = new { placeholder = "Enter your address 1" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.AddressLine1)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.AddressLine2, new { }, ":")
+                                    @Html.EditorFor(m => m.AddressLine2, new { htmlAttributes = new { placeholder = "Enter your address 2" } })
+                                    @Html.ValidationMessageFor(m => m.AddressLine2)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.PostalCode, new { }, ":")
+                                    @Html.EditorFor(m => m.PostalCode, new { htmlAttributes = new { placeholder = "Enter your zip" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.PostalCode)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.Phone, new { }, ":")
+                                    @Html.EditorFor(m => m.Phone, new { htmlAttributes = new { placeholder = "Enter your phone number" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.Phone)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset">
+                            <div class="title">
+                                <strong>@T("AtrendUsa.Plugin.Misc.Support.Details")</strong>
+                            </div>
+                            <div class="form-fields">
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.ModelNumber, new { }, ":")
+                                    @Html.TextBoxFor(model => model.ModelNumber, new { placeholder = "Enter your model number" })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(model => model.ModelNumber)
+                                </div>
+                                <div class="inputs reversed">
+                                    @Html.CheckBoxFor(m => m.IsUnderWarranty)
+                                    @Html.LabelFor(m => m.IsUnderWarranty)
+                                    @Html.ValidationMessageFor(m => m.IsUnderWarranty)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.DatePurchased, new { }, ":")
+                                    @Html.EditorFor(m => m.DatePurchased, new { htmlAttributes = new { placeholder = "Enter warranty date" } })
+                                    @Html.ValidationMessageFor(m => m.DatePurchased)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.SerialNumber, new { }, ":")
+                                    @Html.EditorFor(m => m.SerialNumber, new { htmlAttributes = new { placeholder = "Enter product serial number" } })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.SerialNumber)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.Dealer, new { }, ":")
+                                    @Html.EditorFor(m => m.Dealer, new { htmlAttributes = new { placeholder = "Enter dealer name" } })
+                                    @Html.ValidationMessageFor(m => m.Dealer)
+                                </div>
+                                <div class="inputs">
+                                    @Html.LabelFor(m => m.Problem, new { }, ":")
+                                    @Html.TextAreaFor(m => m.Problem)
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.Problem)
+                                </div>
+                                <div class="inputs uploaded">
+                                    @Html.LabelFor(m => m.UploadedDocuments, new { }, ":")
+                                    <div class="b-upload-button">
+                                        <div class="button-1 b-button">
+                                            <span>Add File</span>
+                                            @Html.TextBoxFor(m => m.UploadedDocuments, new { type = "file" })
+                                        </div>
+                                        <ul class="b-files-to-upload"></ul>
+                                    </div>
+                                    <span class="field-hint">You must show proof of purchase in order to validate your request</span>
+                                    <span class="field-validation-error"></span>
+                                </div>
+                                @if (Model.DisplayCaptcha)
+                                {
+                                    <div class="captcha-box">
+                                        @Html.Raw(Html.GenerateCaptcha())
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <input type="submit" name="send-email" class="button-1" value="@T("AtrendUsa.Plugin.Misc.Support.Button")" />
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

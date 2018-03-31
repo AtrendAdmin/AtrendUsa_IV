@@ -1,0 +1,165 @@
+﻿/*=====================================================
+    
+    TABLETS PORTRAIT & SMARTPHONES LANDSCAPE
+
+=====================================================*/
+
+@media all and (min-width: 481px) {
+	
+/* HEADER */
+
+.search-box input.search-box-text {
+	width: 300px !important;
+}
+.ui-autocomplete.ui-menu.ui-widget.ui-widget-content {
+	width: 300px !important; /*txtfield + button*/
+}
+.eu-cookie-bar-notification {
+    width: 450px;
+    max-width: 95%;
+    margin-left: -225px;
+}
+
+/* QUICK TABS */
+
+.ui-tabs .ui-tabs-nav li {
+	width: 350px;
+}
+
+/* FOOTER */
+
+.footer-upper {
+	width: 95%;
+}
+.footer-block {
+    float: left;
+	width: 46%;
+    margin: 0 2% 15px;
+}
+.footer-block:nth-of-type(2n+1) {
+	clear: both;
+}
+.newsletter-email input[type="text"] {
+	width: 300px;
+}
+
+/* LEFT/RIGHT COLUMN */
+
+.side-2 {
+	width: 100%;
+}
+.side-2:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.block {
+    float: left;
+	width: 46%;
+    margin: 0 2%;
+}
+.block:nth-of-type(2n+1) {
+	clear: both;
+}
+.block-account-navigation {
+	float: none !important;
+	margin: auto !important;
+}
+
+/* CATEGORY PAGE & GRIDS */
+
+.product-selectors span {
+	display: inline-block;
+	vertical-align: middle;
+}
+.item-box {
+	width: 48%; /*two per row*/
+	margin: 20px 1% 0;
+}
+.item-box:nth-child(1),
+.item-box:nth-child(2) {
+	margin-top: 0 !important;
+}
+.item-box:nth-child(2n+1) {
+	clear: both;
+}
+.item-box .product-title {
+	height: 40px;
+	overflow: hidden;
+}
+.home-page-category-grid {
+	padding: 30px 2%;
+}
+.sub-category-grid,
+.manufacturer-grid,
+.vendor-grid {
+	overflow: hidden; /*fix manufacturer-grid offset*/
+	background: none;
+	padding: 0;
+}
+.home-page .product-grid .item-grid {
+	padding: 0 1%;
+}
+.product-grid .item-box,
+.product-list .item-box {
+	margin: 40px 1% 0;
+	border: none;
+	padding: 0 1%;
+}
+.product-grid .title {
+	margin-bottom: 30px;
+}
+
+/* PRODUCT PAGE */
+
+.attributes .datepicker {
+	width: 320px;
+}
+.ui-datepicker {
+	width: 320px;
+}
+
+/* PASSWORD PROTECTION */
+
+.enter-password-form input[type="password"] {
+	width: 275px !important;
+}
+
+/* REGISTRATION, LOGIN, MY ACCOUNT */
+
+.registration-page .fieldset:nth-child(2) select,
+.account-page .fieldset:nth-child(3) select {
+	width: 110px;
+}
+
+/* SHOPPING CART & CHECKOUT */
+
+.checkout-page .address-item {
+    width: 75%;
+}
+.order-review-data {
+	display: table;
+	width: 100%;
+	margin: 0 0 30px;
+}
+.order-review-data ul {
+	display: table-cell;
+}
+.order-details-area td {
+	float: none;
+	width: auto;
+}
+.order-review-data ul,
+.shipment-overview ul {
+    float: left;
+    width: 48%;
+    margin: 0 1% !important;
+}
+
+/* SEARCH PAGE & SITEMAP */
+
+.basic-search {
+    padding: 20px 20px 0;
+}
+
+}

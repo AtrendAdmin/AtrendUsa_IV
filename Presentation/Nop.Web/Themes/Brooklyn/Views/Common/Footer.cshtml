@@ -1,0 +1,128 @@
+﻿@model FooterModel
+@using Nop.Web.Models.Common;
+@using Nop.Core.Domain.Tax;
+@using Nop.Core.Infrastructure;
+@using Nop.Services.Configuration
+@using Nop.Core;
+
+@{
+    var storeId = EngineContext.Current.Resolve<IStoreContext>().CurrentStore.Id;
+    var footerLayout = EngineContext.Current.Resolve<ISettingService>().GetSettingByKey("brooklynthemesettings.footerlayout", "footer-1", storeId, true);
+    var removeDesignedBy = EngineContext.Current.Resolve<ISettingService>().GetSettingByKey("brooklynthemesettings.removedesignedby", false, storeId, true);
+    var removeCopyright = EngineContext.Current.Resolve<ISettingService>().GetSettingByKey("brooklynthemesettings.removecopyright", false, storeId, true);
+    bool isFooter1 = String.Compare(footerLayout, "footer-1", true) == 0;
+}
+
+<div class="footer @footerLayout">
+
+    @if (isFooter1)
+    {
+        <div class="footer-upper">
+        	@Html.Action("Social", "Common")
+        </div>
+    }
+
+    <div class="footer-middle">
+        <div class="footer-block footer-topic">
+            <div class="title">
+                <strong>@T("Footer.Information")</strong>
+            </div>
+            <div>
+                @T("SevenSpikes.Themes.Brooklyn.Footer.Information.Text")
+            </div>
+        </div>
+
+        <div class="footer-block footer-links">
+            <div class="title">
+                <strong>@T("Footer.MyAccount")</strong>
+            </div>
+            <ul class="list">
+                <li><a href="@Url.RouteUrl("CustomerOrders")">@T("Account.CustomerOrders")</a></li>
+                <li><a href="@Url.RouteUrl("CustomerAddresses")" class="">@T("Account.CustomerAddresses")</a></li>
+                @if (Model.ShoppingCartEnabled)
+                {
+                    <li><a href="@Url.RouteUrl("ShoppingCart")" class="ico-cart">@T("ShoppingCart")</a></li>
+                }
+                @if (Model.WishlistEnabled)
+                {
+                    <li><a href="@Url.RouteUrl("Wishlist")" class="ico-wishlist">@T("Wishlist")</a></li>
+                }
+                @foreach (var topic in Model.Topics.Where(x => x.IncludeInFooterColumn2).ToList())
+                {
+                    <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
+                }
+            </ul>
+        </div>
+
+        <div class="footer-block footer-links">
+            <div class="title">
+                <strong>@T("Footer.CustomerService")</strong>
+            </div>
+            <ul class="list">
+                <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
+                @foreach (var topic in Model.Topics.Where(x => x.IncludeInFooterColumn3).ToList())
+                {
+                    <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
+                }
+                @if (Model.SitemapEnabled)
+                {
+                    <li><a href="@Url.RouteUrl("Sitemap")">@T("Sitemap")</a></li>
+                }
+                @if (Model.AllowCustomersToApplyForVendorAccount)
+                {
+                    <li><a href="@Url.RouteUrl("ApplyVendorAccount")">@T("Vendors.ApplyAccount")</a></li>
+                }
+            </ul>
+        </div>
+
+        <div class="footer-block newsletter-block">
+            @if (!isFooter1)
+            {
+                <div class="title">
+                    <strong>@T("Footer.FollowUs")</strong>
+                </div>
+		
+            }
+            @Html.Action("NewsletterBox", "Newsletter")
+
+            @if (!isFooter1)
+            {
+                @Html.Action("Social", "Common")    
+            }
+
+        </div>
+    </div>
+    <div class="footer-lower">
+        <div class="footer-lower-center">
+            @if (!removeCopyright)
+            {
+                <div class="footer-powered-by">
+                    Powered by <a href="http://www.nopcommerce.com/">nopCommerce</a>
+                    @*Would you like to remove the "Powered by nopCommerce" link in the bottom of the footer?
+                        Find more info here http://www.nopcommerce.com/copyrightremoval.aspx*@
+                </div>
+            }
+            @if (!removeDesignedBy)
+            {
+                <div class="footer-designed-by">
+                    Designed by <a href="http://www.nop-templates.com/" target="_blank">Nop-Templates.com</a>
+                </div>
+            }
+            <div class="footer-disclaimer">
+                @T("Content.CopyrightNotice", DateTime.Now.Year, Model.StoreName)
+            </div>
+            @if (Model.DisplayTaxShippingInfoFooter)
+            {
+                var inclTax = EngineContext.Current.Resolve<IWorkContext>().TaxDisplayType == TaxDisplayType.IncludingTax;
+                <div class="footer-tax-shipping">
+                    @T(inclTax ? "Footer.TaxShipping.InclTax" : "Footer.TaxShipping.ExclTax", Url.RouteUrl("Topic", new { SeName = Html.GetTopicSeName("shippinginfo") }))
+                </div>
+            }
+            <div class="footer-store-theme">
+                @Html.Action("StoreThemeSelector", "Common")
+            </div>
+        </div>
+    </div>
+    @Html.Widget("footer")
+
+</div>

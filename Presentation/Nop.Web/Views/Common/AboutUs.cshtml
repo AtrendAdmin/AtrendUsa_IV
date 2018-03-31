@@ -1,0 +1,98 @@
+﻿@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+
+    Html.AddTitleParts(T("PageTitle.About").Text);
+    Html.AddMetaDescriptionParts(T("MegaDescription.About").Text);
+    Html.AddMetaKeywordParts(T("MegaKeywords.About").Text);
+}
+
+<div class="about-us">
+
+    @if (ViewBag.IsAboutUsPageAvailable)
+    {
+        @Html.Action("TopicBlock", "Topic", new { systemName = "AboutUs" })
+
+        <style>
+            .about-us h2,
+            .about-us h3 {
+                margin: 0 0 10px;
+            }
+        </style>
+    }
+    else
+    {
+        <div id="tabs">
+            <div class="side-2">
+                <div class="tabs-header">
+                    <ul>
+                        <li><a href=@T("#tabs-who-we-are")>Who We Are</a></li>
+                        <li><a href=@T("#tabs-what-we-do")>What We Do</a></li>
+                        <li><a href=@T("#tabs-where-we-are")>Where We Are</a></li>
+                    </ul>
+                </div>
+                <div class="about-us-image">
+                    <img src="/Content/Images/aboutus-image-WhoWeAre.png" />
+                </div>
+            </div>
+            <div class="center-2">
+                <div class="tabs-body">
+                    <div id="tabs-who-we-are">
+                        @Html.Action("TopicBlock", "Topic", new { systemName = "WhoWeAre" })
+                    </div>
+                    <div id="tabs-what-we-do">
+                        @Html.Action("TopicBlock", "Topic", new { systemName = "WhatWeDo" })
+                    </div>
+                    <div id="tabs-where-we-are">
+                        @Html.Action("TopicBlock", "Topic", new { systemName = "WhereWeAre" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            jQuery(function ($) {
+                $("#tabs").tabs({hide: 'fadeOut', show: 'fadeIn'}).addClass("ui-tabs-vertical ui-helper-clearfix");
+                $("#tabs li").removeClass("ui-corner-top").addClass("ui-corner-left");
+            });
+        </script>
+
+        <style>
+            .tabs-body h2,
+            .tabs-body h3 {
+                margin: 0 0 10px;
+            }
+            @@media (max-width: 1000px) {
+                .side-2 { padding-top: 20px; margin-bottom: 10px; }
+                .about-us-image { text-align: center; }
+            }
+        </style>
+    }
+</div>
+
+@if (ViewBag.WorkingThemeName == "Brooklyn")
+{
+    <style>
+        .ui-tabs-vertical .ui-tabs-nav li { width: 100%; }
+        .about-us p { margin: 0 0 10px; }
+    </style>
+}
+else if (ViewBag.WorkingThemeName == "Traction")
+{
+    <style>
+        .tabs-body h1,
+        .tabs-body h2,
+        .tabs-body h3,
+        .tabs-body h4 { font: normal 24px/36px 'eurostile'; }
+        .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 18em; border-bottom: none; margin: 0; }
+        .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px 1.2em 0; }
+        .ui-tabs-vertical .ui-tabs-nav li a { display:block; text-transform: uppercase; }
+        .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; }
+        .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; }
+        .about-us-image img { margin-top: 10px; }
+        @@media (max-width: 1000px) {
+            .ui-tabs-vertical .ui-tabs-nav { width: 100%; }
+            .ui-tabs-vertical .ui-tabs-nav li { text-align: center; }
+            .ui-tabs-vertical .ui-tabs-panel { padding-bottom: 30px; }
+        }
+    </style>
+}

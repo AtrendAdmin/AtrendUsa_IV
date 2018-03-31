@@ -1,0 +1,8 @@
+﻿Group: Misc
+FriendlyName: Support
+SystemName: AtrendUsa.Plugin.Misc.Support
+Version: 1.0
+SupportedVersions: 3.90
+Author: AtrendUsa
+DisplayOrder: 1
+FileName: AtrendUsa.Plugin.Misc.Support.dll

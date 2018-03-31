@@ -1,0 +1,8 @@
+﻿Group: Admin
+FriendlyName: Uploader
+SystemName: AtrendUsa.Plugin.Admin.Uploader
+Version: 1.0
+SupportedVersions: 3.40
+Author: Svarog team
+DisplayOrder: 1
+FileName: AtrendUsa.Plugin.Admin.Uploader.dll

@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/Shared/_Root.cshtml";
+}
+<div class="center-1-double">
+    @Html.Widget("main_column_before")
+    @RenderBody()
+    @Html.Widget("main_column_after")
+</div>
+<div class="double">
+    <div class="double-first">
+        @Html.Widget("main_double_first")
+    </div>
+    <div class="double-second">
+        @Html.Widget("main_double_second")
+    </div>
+</div>

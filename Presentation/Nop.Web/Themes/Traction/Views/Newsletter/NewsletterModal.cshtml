@@ -1,0 +1,75 @@
+﻿@model NewsletterModalModel
+@using Nop.Web.Models.Newsletter;
+
+<div id="modal">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <div class="modal fade" id="newsletter-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modal-close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <h2 class="modal-sign-up">Sign up for FREE SHIPPING</h2>
+                <p>Sign up to our newsletter and receive a coupon for free shipping.</p>
+                <p>Our newsletter offers insight into the audio industry as well as exclusive deals extended only to our current customers.</p>
+                <span>@T("Newsletter.Subscribe"):</span>
+                <div class="newsletter-email modal-newsletter-email">
+                    @Html.TextBoxFor(x => x.NewsletterEmail, new { id = "newsletter-email", @class = "with-margin" })
+                    @Html.ValidationMessageFor(x => x.NewsletterEmail)
+                </div>
+                <div class="modal-footer">
+                    <input type="button" value="@T("Newsletter.Button")" id="newsletter-subscribe-button" class="btn btn-default color-blue-modal-button" />
+                    <span id="subscribe-loading-progress" style="display: none;" class="please-wait">@T("Common.Wait...")</span>
+                </div>
+                <p>Atrend has been the premier speaker enclosure manufacturer for the 12 volt market for over 16 years.</p>
+                <p>Atrend now distributes the legendary Aapco Amplifier brand exclusively within the United States.</p>
+                <p>"WE'RE MORE THAN JUST A BOX." Thanks for signing up!</p>
+
+                <div id="newsletter-result-block" class="newsletter-result-block"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(window).load(function () {
+                if (sessionStorage.getItem('modalLoaded') == null) {
+                    $('#newsletter-modal').modal('show');
+                    sessionStorage.setItem('modalLoaded', 'true');
+                }                
+            });
+
+            $(document).ready(function () {
+                $('#newsletter-subscribe-button').click(function () {
+
+                    var email = $("#newsletter-email").val();
+                    var subscribeProgress = $("#subscribe-loading-progress");
+                    subscribeProgress.show();
+                    $.ajax({
+                        cache: false,
+                        type: "POST",
+                        url: "@(Url.RouteUrl("SubscribeNewsletter"))",
+                        data: { "email": email },
+                        success: function (data) {
+                            subscribeProgress.hide();
+                            $("#newsletter-result-block").html(data.Result);
+                            if (data.Success) {
+                                $('#newsletter-subscribe-block').hide();
+                                $('#newsletter-result-block').show();
+                                $('#modal').delay(2000).fadeOut("slow");
+                                $('.modal-backdrop').delay(2000).fadeOut("slow");
+                            }
+                            else {
+                                $('#newsletter-result-block').fadeIn("slow").delay(2000).fadeOut("slow");
+                            }
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert('Failed to subscribe.');
+                            subscribeProgress.hide();
+                        }
+                    });
+                    return false;
+                });
+            });
+        </script>
+    </div>
+</div>

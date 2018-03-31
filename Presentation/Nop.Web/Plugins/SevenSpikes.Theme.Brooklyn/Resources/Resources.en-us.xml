@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Language Name="English">
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Menu.MenuName">
+    <Value>Brooklyn</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Admin.SettingsSubmenu.Brooklyn">
+    <Value>Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="Sevenspikes.Themes.Admin.ManageResources.Brooklyn">
+    <Value>Manage Resources</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings">
+    <Value>Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings">
+    <Value>Brooklyn Theme Settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.Preset">
+    <Value>Preset</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.Preset.Hint">
+    <Value>Choose your color preset of the theme.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.HeaderLayout">
+    <Value>Header layout design</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.HeaderLayout.Hint">
+    <Value>Choose one of the two predefined header layout designs</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.FooterLayout">
+    <Value>Footer layout design</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.FooterLayout.Hint">
+    <Value>Choose one of the two predefined layout designs for the footer</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.CategoriesHoverEffect">
+    <Value>Featured Categories Hover Effect</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.CategoriesHoverEffect.Hint">
+    <Value>Choose one of the two predefined hover effects for the featured categories displayed on the home page</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.CatalogPagesItemBoxesPerRow">
+    <Value>Number of products per row</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.CatalogPagesItemBoxesPerRow.Hint">
+    <Value>Choose how many products will be displayed on one line on all catalog pages</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.AddToCartButtonStyle">
+    <Value>Add to cart button style</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.AddToCartButtonStyle.Hint">
+    <Value>Choose one of the two predefined designs for the add to cart button</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.ProductPageLayout">
+    <Value>Product page layout</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.ProductPageLayout.Hint">
+    <Value>Choose one of the two predefined layouts for the product page: one column or two columns design</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.MegaMenuWithPicturesLayout">
+    <Value>Mega Menu with pictures layout</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.MegaMenuWithPicturesLayout.Hint">
+    <Value>Choose one of the two predefined layouts for the mega menu when categories with pictures template is selected</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.HideSecondMainSliderOnMobile">
+    <Value>Hide second slider on home page on mobile displays</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Admin.Settings.ThemeSettings.HideSecondMainSliderOnMobile.Hint">
+    <Value>Choose to hide the second slider on smaller resolutions. This is in case that you have the two sliders on the home page added</Value>
+  </LocaleResource>
+
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Common.FeaturedCategories">
+    <Value>Featured Categories</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Footer.Subscribe.Text">
+    <Value>Subscribe for latest news</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Brooklyn.Footer.Information.Text">
+    <Value>Put your short company information here. You can edit this from the Language string resources admin panel</Value>
+  </LocaleResource>
+</Language>

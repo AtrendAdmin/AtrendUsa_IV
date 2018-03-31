@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SupportedWidgetZones>
+  <WidgetZone>traction_theme_logo</WidgetZone>
+  <WidgetZone>traction_new_products_footer</WidgetZone>
+  <WidgetZone>head_html_tag_after_css_files_traction</WidgetZone>
+  <WidgetZone>home_page_new_products</WidgetZone>
+</SupportedWidgetZones>

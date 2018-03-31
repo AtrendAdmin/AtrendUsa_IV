@@ -1,0 +1,26 @@
+﻿<div class="productTabs-header">
+    <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+        @*<li class="ui-state-default ui-corner-top @(ViewBag.activeTab == "returnAuthorizationRequest" ? "ui-tabs-active ui-state-active": "")" role="tab" tabindex="0" aria-controls="quickTab-raRequest" aria-labelledby="ui-id-1" aria-selected="true">
+            <a href="@Url.Action("ReturnAuthorizationRequest")" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">RA Request</a>
+        </li>*@ @*Commented by IV Santosh*@
+        @if (!string.Equals(ViewBag.storeName, "ZAPCO", StringComparison.CurrentCultureIgnoreCase))
+        {
+            <li class="ui-state-default ui-corner-top @(ViewBag.activeTab == "freightOrder" ? "ui-tabs-active ui-state-active" : "")" role="tab" tabindex="1" aria-controls="quickTab-freightOrderClaim" aria-labelledby="ui-id-2">
+                @*<a href="@Url.Action("FreightOrderClaim")" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Freight Order Claim</a>*@ @*Commented by IV Santosh*@
+                <a href="@Url.Action("FreightOrderClaim")" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Submit Claim</a> @*Added by IV Santosh*@
+            </li>
+        }
+        <li class="ui-state-default ui-corner-top @(ViewBag.activeTab == "download" ? "ui-tabs-active ui-state-active": "")" role="tab" tabindex="2" aria-controls="quickTab-download" aria-labelledby="ui-id-3">
+            <a href="@Url.Action("Download")" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">Download</a>
+        </li>
+        <li class="ui-state-default ui-corner-top @(ViewBag.activeTab == "warranty" ? "ui-tabs-active ui-state-active": "")" role="tab" tabindex="3" aria-controls="quickTab-waranty" aria-labelledby="ui-id-4">
+            <a href="@Url.Action("Warranty")" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-4">Warranty</a>
+        </li>
+        @if (ViewBag.availableServiceCentersTabVisibility)
+        {
+            <li class="ui-state-default ui-corner-top @(ViewBag.activeTab == "availableServiceCenters" ? "ui-tabs-active ui-state-active": "")" role="tab" tabindex="3" aria-controls="quickTab-waranty" aria-labelledby="ui-id-4">
+                <a href="@Url.Action("AvailableServiceCenters")" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-4">Available Service Centers</a>
+            </li>
+        }
+    </ul>
+</div>
