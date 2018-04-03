@@ -1,1 +1,0 @@
-﻿Once you have upgraded to nopCommerce 3.4 you need to go to the administration and uninstall and then install the Nop Ajax Filters plugin again.

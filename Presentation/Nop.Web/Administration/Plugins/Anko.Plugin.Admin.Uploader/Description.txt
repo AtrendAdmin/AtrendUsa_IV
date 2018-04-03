@@ -1,8 +1,0 @@
-﻿Group: Admin
-FriendlyName: Uploader
-SystemName: Anko.Plugin.Admin.Uploader
-Version: 1.0
-SupportedVersions: 3.40
-Author: ANKO team
-DisplayOrder: 1
-FileName: Anko.Plugin.Admin.Uploader.dll

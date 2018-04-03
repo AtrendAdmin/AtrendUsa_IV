@@ -1,2 +1,0 @@
-DataProvider: sqlserver
-DataConnectionString: Data Source=tcp:yk0w7aefmi.database.windows.net,1433;Initial Catalog=AtrendUSANopCommerce;Integrated Security=False;User ID=AtrendUsa_TestEnv@yk0w7aefmi;Password=4e|k~+Ws@w:P;MultipleActiveResultSets=True;Connect Timeout=30;Encrypt=True
