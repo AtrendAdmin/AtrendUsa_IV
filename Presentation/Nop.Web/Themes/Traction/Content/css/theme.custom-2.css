@@ -147,3 +147,8 @@ td.details a,
 .private-message-view-page .options input.button-1 {
   background-color: #cc0033 !important;
 }
+
+.home-page-category-grid .picture a:before,
+.sub-category-grid .picture a:before {
+    padding-top: 75%;
+}

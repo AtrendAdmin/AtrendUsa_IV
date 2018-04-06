@@ -104,8 +104,12 @@
     <Content Include="Content\Themes\AtrendUSA\file-upload-button.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Themes\AtrendUSA\select2.min.css" />
-    <Content Include="Content\Themes\AtrendUSA\select2.min.js" />
+    <Content Include="Content\Themes\AtrendUSA\select2.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Themes\AtrendUSA\select2.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Description.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

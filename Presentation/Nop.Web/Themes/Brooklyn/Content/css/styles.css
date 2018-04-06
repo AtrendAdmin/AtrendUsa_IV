@@ -5213,3 +5213,6 @@ label, label + * {
 .social-sharing li a {
     opacity: 1 !important;
 }
+
+/*26-01-18*/
+.master-wrapper-page .header{width:1170px !important}
