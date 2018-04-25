@@ -312,6 +312,7 @@
     <Compile Include="Factories\WidgetModelFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Infrastructure\Cache\ModelCacheEventConsumer.cs" />
     <Compile Include="Infrastructure\BackwardCompatibility2XRouteProvider.cs" />
@@ -477,6 +478,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\browscap.xml" />
+    <Content Include="App_Data\InstalledPlugins.txt" />
     <Content Include="App_Data\Install\Fast\create_required_data.sql" />
     <Content Include="App_Data\Install\Fast\create_sample_data.sql" />
     <Content Include="App_Data\Install\Fast\readme.txt" />
@@ -1068,7 +1070,9 @@
     <Content Include="Content\Images\Thumbs\placeholder.txt" />
     <Content Include="ErrorPage.htm" />
     <Content Include="FileNotFound.htm" />
-    <Content Include="Global.asax" />
+    <Content Include="Global.asax">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\public.ajaxcart.js" />
     <Content Include="Scripts\public.accordion.js" />
     <Content Include="Scripts\public.onepagecheckout.js" />
@@ -1166,12 +1170,15 @@
     </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web.Demo.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

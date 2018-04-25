@@ -30,6 +30,7 @@ namespace AtrendUsa.Plugin.Misc.Support.Services
         private readonly IEmailAccountService _emailAccountService;
         private readonly IStoreContext _storeContext;
         private readonly EmailAccountSettings _emailAccountSettings;
+        private string msgId = string.Empty; //Added By IV Santosh
 
         public SupportMessageService(
             ICountryService countryService,
@@ -55,8 +56,9 @@ namespace AtrendUsa.Plugin.Misc.Support.Services
             bodyTokens.Add(new Token("SupportModel.ModelNumber", model.ModelNumber));
             bodyTokens.Add(new Token("SupportModel.SerialNumber", model.SerialNumber));
             bodyTokens.Add(new Token("FreightOrderClaimModel.ExceptionType", model.ExceptionTypeName));
-            
+
             SendSupportEmail(model, "Support.FreightOrderClaim", bodyTokens);
+            SendSupportEmailToCustomer(model, "Support.FreightOrderClaimCustomerMsg", bodyTokens); //Added By IV Santosh
         }
 
         public void SendReturnAuthorizationRequestMessage(ReturnAuthorizationRequestModel model)
@@ -74,7 +76,10 @@ namespace AtrendUsa.Plugin.Misc.Support.Services
         private string GetSubject(MessageTemplate template, BaseSupportModel model)
         {
             var storeName = _storeContext.CurrentStore.Name;
-            var msgId = GetMessageIdentifier();
+            if (string.IsNullOrEmpty(msgId))//Added By IV Santosh
+            {
+                msgId = GetMessageIdentifier();//Old
+            }
 
             var subjectTokens = new List<Token>();
             subjectTokens.Add(new Token("Store.Name", storeName));
@@ -109,6 +114,38 @@ namespace AtrendUsa.Plugin.Misc.Support.Services
                 EmailAccountId = emailAccount.Id
             };
             AddAttachemts(email, model);
+
+            _queuedEmailService.InsertQueuedEmail(email);
+        }
+        /// <summary>
+        /// Sends a claim email to customer from marketing@atrendusa.com
+        /// </summary>
+        /// <param name="model">Claim support email</param>
+        /// <param name="messageTemplateName">Template name from Message Template from Management</param>
+        /// <param name="messageBodyTokens">Body tokes with data to fill with email message body</param>
+        private void SendSupportEmailToCustomer(BaseSupportModel model, string messageTemplateName, List<Token> messageBodyTokens)//Added by IV Santosh 
+        {
+            var emailAccount = GetEmailAccount();
+
+            var template = _messageTemplateService.GetMessageTemplateByName(messageTemplateName, _storeContext.CurrentStore.Id);
+            var subject = GetSubject(template, model);
+            messageBodyTokens.Add(new Token("Support.MessageNumber", msgId));
+            string messageBody = _tokenizer.Replace(template.Body, messageBodyTokens, true);
+
+            var email = new QueuedEmail
+            {
+                Priority = QueuedEmailPriority.High,
+                From = emailAccount.Email,
+                FromName = emailAccount.DisplayName,
+                To = model.Email,
+                ReplyTo = emailAccount.Email,
+                ReplyToName = emailAccount.DisplayName,
+                Subject = subject,
+                Body = messageBody,
+                CreatedOnUtc = DateTime.UtcNow,
+                EmailAccountId = emailAccount.Id
+            };
+            //AddAttachemts(email, model);
 
             _queuedEmailService.InsertQueuedEmail(email);
         }
