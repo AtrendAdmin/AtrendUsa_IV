@@ -75,7 +75,7 @@
 .header-menu > ul > li > span:after,
 .shops-item .shop-name:after,
 .shops-item .read-more {
-  background-color: #de524e;
+  background-color: #2a2a2a;
 }
 /* set same border color as bg */
 
@@ -97,12 +97,12 @@
 .ui-slider-handle,
 .mega-menu .dropdown.fullWidth,
 .post-navigation a:hover::before {
-  border-color: #de524e;
+  border-color: #2a2a2a;
 }
 /* set differen background color to this button */
 
 .header-2 .header-actions a.ico-cart {
-  background-color: #e67c79;
+  background-color: #444444;
 }
 /* color */
 
@@ -251,7 +251,7 @@ p .search-term-highlighter,
 .shops-item .show-directions,
 .shop-map-images .map-controls a,
 .shop-full-description a {
-  color: #de524e;
+  color: #2a2a2a;
 }
 .home-page-category-grid .picture a:before,
 .sub-category-grid .picture a:before {

@@ -664,7 +664,7 @@
     <Content Include="Content\Storefront\fonts\GillSansMT.ttf" />
     <Content Include="Content\Storefront\fonts\GillSansMT.woff" />
     <Content Include="Content\Storefront\fonts\GillSansMT.woff2" />
-    <None Include="Properties\PublishProfiles\Local.pubxml" />
+    <None Include="Properties\PublishProfiles\AtrendUsaPublished.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fineuploader\iframe.xss.response-4.2.2.js" />
     <Content Include="Scripts\fineuploader\jquery.fineuploader-4.2.2.js" />
@@ -1067,7 +1067,6 @@
     <Content Include="Content\Images\uploaded\placeholder.txt" />
     <Content Include="Content\install\style.css" />
     <Content Include="Content\install\style.rtl.css" />
-    <Content Include="Content\Images\Thumbs\placeholder.txt" />
     <Content Include="ErrorPage.htm" />
     <Content Include="FileNotFound.htm" />
     <Content Include="Global.asax">
@@ -1325,6 +1324,7 @@
     <Content Include="Views\Common\DealerLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\Images\Thumbs\" />
     <Folder Include="Plugins\bin\" />
   </ItemGroup>
   <ItemGroup>

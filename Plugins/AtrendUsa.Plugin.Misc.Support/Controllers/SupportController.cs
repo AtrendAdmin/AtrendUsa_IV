@@ -92,7 +92,7 @@ namespace AtrendUsa.Plugin.Misc.Support.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //[CaptchaValidator] //Commented by IV Santosh 
-        public ActionResult FreightOrderClaim(FreightOrderClaimModel model, bool captchaValid = true) //Added CaptchValid = False before CaptchValid IV Santosh
+        public ActionResult FreightOrderClaim(FreightOrderClaimModel model, bool captchaValid = false) //Added CaptchValid = False before CaptchValid IV Santosh
         {
             PrepareSupportModel(model);
             //ValidateCaptcha(captchaValid); //Commented by IV Santosh
