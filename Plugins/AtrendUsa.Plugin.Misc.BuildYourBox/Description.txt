@@ -1,0 +1,8 @@
+﻿Group: Misc
+FriendlyName: BuildYourBox
+SystemName: AtrendUsa.Plugin.Misc.BuildYourBox
+Version: 1.0
+SupportedVersions: 3.90
+Author: AtrendUsa
+DisplayOrder: 1
+FileName: AtrendUsa.Plugin.Misc.BuildYourBox.dll

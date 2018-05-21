@@ -17,5 +17,6 @@ namespace Nop.Core.Domain.Directory
         /// Gets or sets the name
         /// </summary>
         public string ModelNum { get; set; }
+        public int StoreId { get; set; }
     }
 }

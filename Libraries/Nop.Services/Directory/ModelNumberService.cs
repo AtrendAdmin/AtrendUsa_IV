@@ -1,6 +1,8 @@
-﻿using Nop.Core.Caching;
+﻿using Nop.Core;
+using Nop.Core.Caching;
 using Nop.Core.Data;
 using Nop.Core.Domain.Directory;
+using Nop.Core.Infrastructure;
 using Nop.Services.Localization;
 using System;
 using System.Collections.Generic;
@@ -66,12 +68,13 @@ namespace Nop.Services.Directory
         /// <returns>Countries</returns>
         public virtual IList<ModelNumber> GetAllModelNumbers(int languageId = 0, bool showHidden = false)
         {
+            var storeId = EngineContext.Current.Resolve<IStoreContext>().CurrentStore.Id;
             string key = string.Format(COUNTRIES_ALL_KEY, languageId, showHidden);
             var query = _modelnumberRepository.Table;
-            
+
             var ModelNumbers = query.ToList();
 
-            ModelNumbers = ModelNumbers
+            ModelNumbers = ModelNumbers.Where(c=>c.StoreId ==Convert.ToInt32(storeId))
                 .OrderBy(c => c.ModelNum)
                 .ToList();
             return ModelNumbers;
