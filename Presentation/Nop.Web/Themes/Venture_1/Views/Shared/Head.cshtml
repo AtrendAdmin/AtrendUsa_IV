@@ -1,0 +1,50 @@
+﻿@using Nop.Core
+@using Nop.Core.Infrastructure
+@using Nop.Web.Framework.UI
+
+@{
+    var supportRtl = EngineContext.Current.Resolve<IWorkContext>().WorkingLanguage.Rtl;
+
+    var browser = Request.Browser;
+    if (browser.Browser == "IE" && browser.MajorVersion == 9)
+    {
+        Html.AppendCssFileParts("~/Themes/Venture/Content/css/ie9-fix.css");
+    }
+
+    if ((browser.Browser == "InternetExplorer" || browser.Browser == "IE") && ((browser.MajorVersion == 10) || (browser.MajorVersion == 11)))
+    {
+        Html.AppendCssFileParts("~/Themes/Venture/Content/css/ie10-11-fix.css");
+    }
+
+    if (browser.Browser == "Safari")
+    {
+        Html.AppendCssFileParts("~/Themes/Venture/Content/CSS/safari-fix.css");
+    }
+
+    Html.AppendCssFileParts("~/Plugins/SevenSpikes.Core/Styles/perfect-scrollbar.min.css");
+
+    if (supportRtl)
+    {
+        Html.AppendCssFileParts("~/Themes/Venture/Content/CSS/1200.rtl.css");
+        Html.AppendCssFileParts("~/Themes/Venture/Content/CSS/768.rtl.css");
+        Html.AppendCssFileParts("~/Themes/Venture/Content/CSS/480.rtl.css");
+        Html.AppendCssFileParts("~/Themes/Venture/Content/CSS/mobile.rtl.css");
+        Html.AppendCssFileParts("~/Themes/Venture/Content/CSS/styles.rtl.css");
+    }
+    else
+    {
+        Html.AppendCssFileParts("~/Themes/Venture/Content/CSS/1200.css");
+        Html.AppendCssFileParts("~/Themes/Venture/Content/CSS/768.css");
+        Html.AppendCssFileParts("~/Themes/Venture/Content/CSS/480.css");
+        Html.AppendCssFileParts("~/Themes/Venture/Content/CSS/mobile.css");
+        Html.AppendCssFileParts("~/Themes/Venture/Content/CSS/styles.css");
+    }
+
+    Html.AddScriptParts("~/Plugins/SevenSpikes.Core/Scripts/perfect-scrollbar.min.js");
+    Html.AddScriptParts("~/Plugins/SevenSpikes.Core/Scripts/sevenspikes.core.min.js");
+    Html.AddScriptParts("~/Plugins/SevenSpikes.Core/Scripts/sevenspikes.theme.min.js");
+
+    Html.AddScriptParts("~/Plugins/SevenSpikes.Core/Scripts/cookiehelper.min.js");
+
+    Html.AddScriptParts("~/Themes/Venture/Content/scripts/venture.js");
+}

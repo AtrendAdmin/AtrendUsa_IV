@@ -156,6 +156,14 @@ namespace Nop.Web.Controllers
             return PartialView(model);
         }
 
+        [ChildActionOnly]
+        public virtual ActionResult HomepageCategoriesWithPosters() /*Added by IV Santosh*/
+        {
+            var model = _catalogModelFactory.PrepareHomepageCategoryModels();
+            if (!model.Any())
+                return Content("");
+            return PartialView(model);
+        }
         #endregion
 
         #region Manufacturers

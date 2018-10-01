@@ -5,7 +5,7 @@
 @{
     Layout = "~/Views/Shared/_ColumnsOne.cshtml";
 
-    Html.AddTitleParts("Freight Order Claim");
+    Html.AddTitleParts("Claim Form");
 
     //Html.AddCssFileParts("https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css");
     //Html.AddScriptParts("https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js");
@@ -55,14 +55,14 @@
                         </div>
                         <div class="topic-block-body">
                             <ul class="ul-disc">
-                                <li>Use this section to submit a freight claim for products received damaged upon delivery via freight courier (Fed-Ex, UPS, trucking company). For claim consideration it is necessary that you attach photo files before submitting that show damages of product.</li>
+                                <li>Use this section to submit a warranty, defect claim or freight claim (shipping damage as a result of transit). For claim consideration it is necessary that you attach photo files before submitting that show damages of product.</li>
                                 <li style="list-style:none;">&nbsp;</li>
                                 <li>Please also attach a copy of the proof of delivery receipt or Bill of Lading for pallet orders which was signed when your products or pallets were received. Important Note: please take pictures of product outer cartons / packaging that appear to have damage prior to opening the individual packages to inspect for internal product damages.</li>
                             </ul>
                         </div>
                     </div>
 
-                    using (Html.BeginForm("FreightOrderClaim", "Support", FormMethod.Post, new { enctype = "multipart/form-data", @class = "upload-form" }))
+                    using (Html.BeginForm("ClaimForm", "Support", FormMethod.Post, new { enctype = "multipart/form-data", @class = "upload-form" }))
                     {
                         @Html.AntiForgeryToken()
                         var validationSummary = Html.ValidationSummary(true);

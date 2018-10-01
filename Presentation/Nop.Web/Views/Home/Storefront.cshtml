@@ -8,7 +8,7 @@
 
     var storeId = EngineContext.Current.Resolve<IStoreContext>().CurrentStore.Id;
     var instagramUrl = EngineContext.Current.Resolve<ISettingService>().GetSettingByKey("tractionthemesettings.instagramurl", String.Empty, storeId, true);
-    
+
     Html.AppendCssFileParts("~/Content/Storefront/css/style.css");
 }
 
@@ -23,90 +23,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 
     @Html.NopCssFiles(Url, ResourceLocation.Head)
-	<style>
-.b-store{max-width:25%}
-.bstored:first-child{background-image:none}
-.bstored{background-image: url("Content/Storefront/images/borderline.png");
-background-repeat: no-repeat;padding-left: 35px;padding-top: 4px;height: auto;}
-.social-link {	margin-top: 30px;}
-	</style>
+    <style>
+        .b-store {
+            max-width: 18.75%;
+        }
+
+        .bstored:first-child {
+            background-image: none;
+        }
+
+        .bstored {
+            background-image: url("Content/Storefront/images/borderline.png");
+            background-repeat: no-repeat;
+            padding-left: 35px;
+            padding-top: 4px;
+            height: auto;
+        }
+
+        .social-link {
+            margin-top: 30px;
+        }
+
+        .b-wrap {
+            max-width: 1225px;
+        }
+    </style>
 </head>
 <body class="b-body">
-<div class="b-site-container">
-    <div class="b-content">
-        <div class="b-wrap">
-            <!--h1 class="b-title">INTRODUCING the ATREND FAMILY of BRANDS</h1-->
-            <a class="b-store b-store_main" href="@T("Storefront.StoreUrl.Atrend")">
-                <img src="~/Content/Storefront/images/atrend-new-logo.png" alt="Atrend">
-            </a>
-            
-            <div class="b-text"style="padding-top:25px;padding-bottom: 17px;">Atrend Family of Brands</div>
-            
-            <div class="b-row">
-                
-                @if (!String.IsNullOrEmpty(Convert.ToString(T("Storefront.StoreUrl.ozaudiousa"))))
-                {
-                    <a class="b-store bstored" href="http://localhost:85/">
-                        <img src="~/Content/Storefront/images/audio-logo.png" alt="ozaudiousa">
-                    </a>
-                }
+    <div class="b-site-container">
+        <div class="b-content">
+            <div class="b-wrap">
+                <!--h1 class="b-title">INTRODUCING the ATREND FAMILY of BRANDS</h1-->
+                <a class="b-store b-store_main" href="@T("Storefront.StoreUrl.Atrend")">
+                    <img src="~/Content/Storefront/images/atrend-new-logo.png" alt="Atrend">
+                </a>
 
-                @if (!String.IsNullOrEmpty(Convert.ToString(T("Storefront.StoreUrl.Surge"))))
-                {
-                    <a class="b-store bstored" href="@T("Storefront.StoreUrl.Surge")">
-                        <img src="~/Content/Storefront/images/surge-logo.png" alt="Surge">
-                    </a>
-                }
+                <div class="b-text" style="padding-top:25px;padding-bottom: 17px;">Atrend Family of Brands</div>
 
-                @if (!String.IsNullOrEmpty(Convert.ToString(T("Storefront.StoreUrl.Zapco"))))
-                {
-                    <a class="b-store bstored" href="@T("Storefront.StoreUrl.Zapco")">
-                        <img src="~/Content/Storefront/images/zapco-logo.png" alt="Zapco">
-                    </a>
-                }
+                <div class="b-row">
 
-                @if (!String.IsNullOrEmpty(Convert.ToString(T("Storefront.StoreUrl.stageclix"))))
-                {
-                    <a class="b-store bstored" href="http://www.stageclix.com/">
-                        <img src="~/Content/Storefront/images/stageclih-logo.png" alt="stageclix">
-                    </a>
-                }
+                    @if (!String.IsNullOrEmpty(Convert.ToString(T("Storefront.StoreUrl.ozaudiousa"))))
+                    {
+                        <a class="b-store bstored" href="http://localhost:86/">
+                            <img src="~/Content/Storefront/images/audio-logo.png" alt="ozaudiousa">
+                        </a>
+                    }
 
-                
-            </div>
-            <div class="social-link">
-            <hr class="blue-line-1" style="padding-top: 10px;max-width: 450px;">
-            <div class="join-text b-text" style="font-size:21px;">
-                join us online
-            </div>
-            <ul class="join-text b-soc-links">
-                @if (!String.IsNullOrEmpty(Model.FacebookLink))
-                {
-                    <li class="b-soc-links__item b-soc-links__item_facebook"><a href="@Model.FacebookLink"><span class="fa fa-facebook"></span></a></li>
-                }
-                    
-                @if (!String.IsNullOrEmpty(Model.TwitterLink))
-                {
-                    <li class="b-soc-links__item b-soc-links__item_twitter"><a href="@Model.TwitterLink"><span class="fa fa-twitter"></span></a></li>
-                }
+                    @if (!String.IsNullOrEmpty(Convert.ToString(T("Storefront.StoreUrl.Surge"))))
+                    {
+                        <a class="b-store bstored" href="@T("Storefront.StoreUrl.Surge")">
+                            <img src="~/Content/Storefront/images/surge-logo.png" alt="Surge">
+                        </a>
+                    }
 
-                @if (!String.IsNullOrEmpty(instagramUrl))
-                {
-                    <li class="b-soc-links__item b-soc-links__item_instagram"><a href="@instagramUrl"><span class="fa fa-instagram"></span></a></li>
-                }
-            </ul>
-            <div class="join-text b-text"  style="font-size:21px;">
-                / AtrendUSA
-            </div>
-            <hr class="blue-line-2" style="margin-top: 15px;max-width: 450px;">
+                    @*@if (!String.IsNullOrEmpty(Convert.ToString(T("Storefront.StoreUrl.Zapco"))))
+                            {
+                                <a class="b-store bstored" href="@T("Storefront.StoreUrl.Zapco")">
+                                    <img src="~/Content/Storefront/images/zapco-logo.png" alt="Zapco">
+                                </a>
+                        }*@
+
+                    @if (!String.IsNullOrEmpty(Convert.ToString(T("storefront.storeurl.bandaaudioparts"))))
+                    {
+                        <a class="b-store bstored" href="@T("storefront.storeurl.bandaaudioparts")">
+                            <img src="~/Content/Storefront/images/banda-logo.png" alt="Zapco">
+                        </a>
+                    }
+
+                    @if (!String.IsNullOrEmpty(Convert.ToString(T("Storefront.StoreUrl.stageclix"))))
+                    {
+                        <a class="b-store bstored" href="http://www.stageclix.com/">
+                            <img src="~/Content/Storefront/images/stageclih-logo.png" alt="stageclix">
+                        </a>
+                    }
+
+                    @if (!String.IsNullOrEmpty(Convert.ToString(T("storefront.storeurl.truetechnology"))))
+                    {
+                        <a class="b-store bstored" href="@T("storefront.storeurl.truetechnology")">
+                            <img src="~/Content/Storefront/images/truetechnology-logo.png" alt="Zapco">
+                        </a>
+                    }
+
+                </div>
+                <div class="social-link">
+                    <hr class="blue-line-1" style="padding-top: 10px;max-width: 450px;">
+                    <div class="join-text b-text" style="font-size:21px;">
+                        join us online
+                    </div>
+                    <ul class="join-text b-soc-links">
+                        @if (!String.IsNullOrEmpty(Model.FacebookLink))
+                        {
+                            <li class="b-soc-links__item b-soc-links__item_facebook"><a href="@Model.FacebookLink"><span class="fa fa-facebook"></span></a></li>
+                        }
+
+                        @if (!String.IsNullOrEmpty(Model.TwitterLink))
+                        {
+                            <li class="b-soc-links__item b-soc-links__item_twitter"><a href="@Model.TwitterLink"><span class="fa fa-twitter"></span></a></li>
+                        }
+
+                        @if (!String.IsNullOrEmpty(instagramUrl))
+                        {
+                            <li class="b-soc-links__item b-soc-links__item_instagram"><a href="@instagramUrl"><span class="fa fa-instagram"></span></a></li>
+                        }
+                    </ul>
+                    <div class="join-text b-text" style="font-size:21px;">
+                        / AtrendUSA
+                    </div>
+                    <hr class="blue-line-2" style="margin-top: 15px;max-width: 450px;">
+                </div>
             </div>
         </div>
+        <footer class="b-footer">
+            <div class="b-copyright">© @DateTime.Now.Year Atrend USA Inc. All rights reserved.</div>
+        </footer>
     </div>
-    <footer class="b-footer">
-        <div class="b-copyright">© @DateTime.Now.Year Atrend USA Inc. All rights reserved.</div>
-    </footer>
-</div>
-@Html.Widget("body_end_html_tag_before")
+    @Html.Widget("body_end_html_tag_before")
 
     <!-- Added by IV Santosh -->
     <!-- Start of HubSpot Embed Code -->

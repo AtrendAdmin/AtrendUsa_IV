@@ -2,6 +2,17 @@
 
 @model RichBlogImageModel
 
+@{
+    var supportRtl = this.ShouldUseRtlTheme();
+    var theme = (string)ViewBag.Theme;
+
+    Html.AddCssFileParts("~/Plugins/SevenSpikes.Nop.Plugins.RichBlog/Themes/" + theme + "/Content/RichBlog.css");
+    if (supportRtl)
+    {
+        Html.AddCssFileParts("~/Plugins/SevenSpikes.Nop.Plugins.RichBlog/Themes/" + theme + "/Content/RichBlog.rtl.css");
+    }
+}
+
 @if (!string.IsNullOrEmpty(Model.BlogPostUrl) && !string.IsNullOrEmpty(Model.BlogPostImageUrl))
 {
     <div class="rich-blog-image">

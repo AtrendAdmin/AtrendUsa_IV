@@ -21,10 +21,17 @@
         Html.AddScriptParts("~/Administration/Scripts/kendo/2014.1.318/kendo.userevents.min.js");
         Html.AddScriptParts("~/Administration/Scripts/kendo/2014.1.318/kendo.draganddrop.min.js");
         Html.AddScriptParts("~/Administration/Scripts/kendo/2014.1.318/kendo.window.min.js");
-        
+
         Html.AddScriptParts("~/Plugins/SevenSpikes.Nop.Plugins.AjaxFilters/Scripts/jquery.json-2.2.min.js");
         Html.AddScriptParts("~/Plugins/SevenSpikes.Nop.Plugins.AjaxFilters/Scripts/jquery.address-1.5.min.js");
         Html.AddScriptParts("~/Plugins/SevenSpikes.Core/Scripts/SevenSpikesExtensions.min.js");
+
+        if (Model.NopAjaxFiltersSettingsModel.EnableInfiniteScroll)
+        {
+            Html.AddScriptParts("~/Plugins/SevenSpikes.Nop.Plugins.AjaxFilters/Scripts/ReverseInfiniteScroll.min.js");
+        }
+
+        Html.AddScriptParts("~/Plugins/SevenSpikes.Nop.Plugins.AjaxFilters/Scripts/HistoryState.min.js");
         Html.AddScriptParts("~/Plugins/SevenSpikes.Nop.Plugins.AjaxFilters/Scripts/Filters.min.js");
     }
     else
@@ -39,6 +46,7 @@
     MvcHtmlString manufacturersFilter = MvcHtmlString.Empty;
     MvcHtmlString vendorsFilter = MvcHtmlString.Empty;
     MvcHtmlString onSaleFilter = MvcHtmlString.Empty;
+    MvcHtmlString inStockFilter = MvcHtmlString.Empty;
 
     if (Model.NopAjaxFiltersSettingsModel.EnablePriceRangeFilter)
     {
@@ -74,9 +82,14 @@
         onSaleFilter = Html.Action("GetOnSaleFilter", "OnSaleFilter7Spikes");
     }
 
+    if (Model.NopAjaxFiltersSettingsModel.EnableInStockFilter)
+    {
+        inStockFilter = Html.Action("GetInStockFilter", "InStockFilter7Spikes");
+    }
+
     bool noFilters = MvcHtmlString.IsNullOrEmpty(priceRangeFilter) && MvcHtmlString.IsNullOrEmpty(specificationsFilter)
         && MvcHtmlString.IsNullOrEmpty(attributesFilter) && MvcHtmlString.IsNullOrEmpty(manufacturersFilter)
-        && MvcHtmlString.IsNullOrEmpty(vendorsFilter) && MvcHtmlString.IsNullOrEmpty(onSaleFilter);
+        && MvcHtmlString.IsNullOrEmpty(vendorsFilter) && MvcHtmlString.IsNullOrEmpty(onSaleFilter) && MvcHtmlString.IsNullOrEmpty(inStockFilter);
 
     if (noFilters && Model.NopAjaxFiltersSettingsModel.DisableDropdownNavigationWithAjaxWhenThereAreNoFilters)
     {
@@ -135,6 +148,7 @@
      data-infinitescrollloadertext="@T("SevenSpikes.NopAjaxFilters.Client.Common.LoadingMoreProducts")"
      data-scrolltoelement="@isScrollToElementEnabled"
      data-scrolltoelementselector="@Model.NopAjaxFiltersSettingsModel.ElementToScrollAfterFiltrationSelector"
+     data-scrolltoelementadditionaloffset="@Model.NopAjaxFiltersSettingsModel.ScrolltoElementAfterFiltrationAdditionalOffset"
      data-showselectedfilterspanel="@Model.NopAjaxFiltersSettingsModel.ShowSelectedFiltersPanel"
      data-numberofreturnedproductsselector="@numberOfReturnedProductsSelector"
      data-selectedOptionsTargetSelector=".nopAjaxFilters7Spikes .filtersPanel:first"
@@ -151,6 +165,7 @@
         <div class="filtersPanel">
             @priceRangeFilter
             @onSaleFilter
+            @inStockFilter
             @specificationsFilter
             @attributesFilter
             @manufacturersFilter

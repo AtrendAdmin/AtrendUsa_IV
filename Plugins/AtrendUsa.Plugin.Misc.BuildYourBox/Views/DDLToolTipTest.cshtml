@@ -1,0 +1,76 @@
+﻿@using Nop.Web.Framework
+@using Nop.Web.Framework.Security.Captcha
+@using Nop.Web.Framework.UI
+
+@{
+
+    Html.AddTitleParts("DDL Tooltop Test");
+
+    //Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/Content/themes/atrendusa/select2.min.css"); /*Added By Santosh*/
+    //Html.AddScriptParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/Content/themes/atrendusa/select2.min.js"); /*Added By Santosh*/
+    <script src="http://localhost:85/Scripts/jquery-1.10.2.js"></script>
+    Html.AddScriptParts("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js");
+    <script src="http://localhost:85/Administration/Scripts/bootstrap/bootstrap.min.js"></script>
+
+
+    <link href="http://localhost:85/Administration/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/Content/themes/atrendusa/atrendusa.css");
+}
+
+
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+
+<div class="page contact-page support-page">
+    <div class="page-body">
+        <div class="productTabs-body">
+
+            @*<div class="topic-block">
+                    <div class="topic-block-title">
+                        <h2>Dropdown Tooltip test</h2>
+                    </div>
+                </div>*@
+
+
+
+            <div class="fieldset">
+                <div class="title">
+                    <strong>@T("AtrendUsa.Plugin.Misc.BuildYourBox.SubwooferDataSection")</strong>
+                </div>
+                <div class="form-fields">
+                    <div class="inputs" style="margin-top:150px;">
+                        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b><br/> <img src='http://localhost:85/Content/Images/Thumbs/0000384_10-dual-vented-blue-carbon-fiber.png' height=50 width=50/>">
+                            Tooltip with HTML
+                        </button>
+
+                        <select id="slct">
+                            <option value="value" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b><br/> <img src='http://localhost:85/Content/Images/Thumbs/0000384_10-dual-vented-blue-carbon-fiber.png' height=50 width=50/>">Spekers</option>
+                        </select>
+
+
+                    </div>
+                    <div class="form-fields">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Dropdown Example
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" data-toggle="tooltip" data-html="true" data-placement="right" title="<em>Tooltip</em> <u>with</u> <b>HTML</b><br/> <img src='http://localhost:85/Content/Images/Thumbs/0000384_10-dual-vented-blue-carbon-fiber.png' height=50 width=50/>">Speakers</a></li>
+                                <li><a href="#">CSS</a></li>
+                                <li><a href="#">JavaScript</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                <input type="submit" name="send-email" class="button-1" value="@T("AtrendUsa.Plugin.Misc.BuildYourBox.Button")" />
+            </div>
+
+        </div>
+    </div>
+</div>

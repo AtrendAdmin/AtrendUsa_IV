@@ -48,6 +48,12 @@
   <Setting Name="NopAjaxFiltersSettings.CloseOnSaleFilterBox">
     <Value>false</Value>
   </Setting>
+  <Setting Name="NopAjaxFiltersSettings.EnableInStockFilter">
+    <Value>false</Value>
+  </Setting>
+  <Setting Name="NopAjaxFiltersSettings.CloseInStockFilterBox">
+    <Value>false</Value>
+  </Setting>
   <Setting Name="NopAjaxFiltersSettings.EnableVendorsFilter">
     <Value>true</Value>
   </Setting>
@@ -119,5 +125,8 @@
   </Setting>
   <Setting Name="NopAjaxFiltersSettings.CloseFiltersPanelAfterFiltrationInMobile">
     <Value>true</Value>
+  </Setting>
+  <Setting Name="NopAjaxFiltersSettings.ScrolltoElementAfterFiltrationAdditionalOffset">
+    <Value>0</Value>
   </Setting>
 </Settings>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{E4ACA93B-D3DE-4557-B069-F1DB42925A4B}"
 EndProject
@@ -76,6 +76,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtrendUsa.Plugin.Misc.Support", "Plugins\AtrendUsa.Plugin.Misc.Support\AtrendUsa.Plugin.Misc.Support.csproj", "{0D1586B5-BF0A-4352-A56C-0ED6F22BB888}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nop.Plugin.Misc.MailChimp", "Plugins\Nop.Plugin.Misc.MailChimp\Nop.Plugin.Misc.MailChimp.csproj", "{E95F4072-E800-444D-A6E7-DE2BA8247C63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtrendUsa.Plugin.Misc.BuildYourBox", "Plugins\AtrendUsa.Plugin.Misc.BuildYourBox\AtrendUsa.Plugin.Misc.BuildYourBox.csproj", "{5EB41A4B-CBB4-4182-93F3-C86F3579C472}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -431,6 +433,18 @@ Global
 		{E95F4072-E800-444D-A6E7-DE2BA8247C63}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E95F4072-E800-444D-A6E7-DE2BA8247C63}.Release|x86.ActiveCfg = Release|Any CPU
 		{E95F4072-E800-444D-A6E7-DE2BA8247C63}.Release|x86.Build.0 = Release|Any CPU
+		{5EB41A4B-CBB4-4182-93F3-C86F3579C472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EB41A4B-CBB4-4182-93F3-C86F3579C472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EB41A4B-CBB4-4182-93F3-C86F3579C472}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5EB41A4B-CBB4-4182-93F3-C86F3579C472}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5EB41A4B-CBB4-4182-93F3-C86F3579C472}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5EB41A4B-CBB4-4182-93F3-C86F3579C472}.Debug|x86.Build.0 = Debug|Any CPU
+		{5EB41A4B-CBB4-4182-93F3-C86F3579C472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EB41A4B-CBB4-4182-93F3-C86F3579C472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EB41A4B-CBB4-4182-93F3-C86F3579C472}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5EB41A4B-CBB4-4182-93F3-C86F3579C472}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5EB41A4B-CBB4-4182-93F3-C86F3579C472}.Release|x86.ActiveCfg = Release|Any CPU
+		{5EB41A4B-CBB4-4182-93F3-C86F3579C472}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -469,6 +483,7 @@ Global
 		{493761CB-5190-4283-8C6C-A8CEB5450CAB} = {7881B112-7843-4542-B1F7-F99553FB9BB7}
 		{0D1586B5-BF0A-4352-A56C-0ED6F22BB888} = {7881B112-7843-4542-B1F7-F99553FB9BB7}
 		{E95F4072-E800-444D-A6E7-DE2BA8247C63} = {7881B112-7843-4542-B1F7-F99553FB9BB7}
+		{5EB41A4B-CBB4-4182-93F3-C86F3579C472} = {7881B112-7843-4542-B1F7-F99553FB9BB7}
 	EndGlobalSection
 	GlobalSection(NDepend) = preSolution
 		Project = ".\NopCommerce.ndproj"

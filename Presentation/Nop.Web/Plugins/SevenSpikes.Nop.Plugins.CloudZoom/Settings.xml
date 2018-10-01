@@ -56,5 +56,11 @@
   </Setting>
   <Setting Name="CloudZoomSettings.DefaultResponsiveBreakpointsForThumbnailsCarousel">
     <Value>[{"breakpoint":1001,"settings":{"arrows":false,"dots":true}},{"breakpoint":600,"settings":{"slidesToShow":4,"slidesToScroll":4,"arrows":false,"dots":true}},{"breakpoint":400,"settings":{"slidesToShow":3,"slidesToScroll":3,"arrows":false,"dots":true}}]</Value>
+  </Setting> 
+  <Setting Name="CloudZoomSettings.EnableSliderDots">
+    <Value>false</Value>
+  </Setting>  
+  <Setting Name="CloudZoomSettings.EnableSliderArrows">
+    <Value>true</Value>
   </Setting>
 </Settings>

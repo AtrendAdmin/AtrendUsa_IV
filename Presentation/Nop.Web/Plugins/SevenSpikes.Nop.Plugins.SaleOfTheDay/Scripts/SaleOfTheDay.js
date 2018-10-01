@@ -7,7 +7,7 @@
                 rtl: $('.sale-of-the-day-offer.support-rtl').length > 0,
                 loop: true,
                 margin: 0,
-                nav: false,
+                nav: true,
                 items: 1,
                 //autoHeight: true,
                 autoplay: false,

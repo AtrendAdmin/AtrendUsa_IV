@@ -29,7 +29,7 @@ namespace Nop.Web
         {
             routes.IgnoreRoute("favicon.ico");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
+                
             //register custom routes (plugins, etc)
             var routePublisher = EngineContext.Current.Resolve<IRoutePublisher>();
             routePublisher.RegisterRoutes(routes);
@@ -71,13 +71,13 @@ namespace Nop.Web
             //Registering some regular mvc stuff
             AreaRegistration.RegisterAllAreas();
             RegisterRoutes(RouteTable.Routes);
-            
+                  
             //fluent validation
             DataAnnotationsModelValidatorProvider.AddImplicitRequiredAttributeForValueTypes = false;
             ModelValidatorProviders.Providers.Add(new FluentValidationModelValidatorProvider(new NopValidatorFactory()));
 
             if (databaseInstalled)
-            {
+            {     
                 //start scheduled tasks
                 TaskManager.Instance.Initialize();
                 TaskManager.Instance.Start();
@@ -124,7 +124,7 @@ namespace Nop.Web
                 }
             }
 
-            if (!DataSettingsHelper.DatabaseIsInstalled())
+            if (!DataSettingsHelper.DatabaseIsInstalled())     
                 return;
 
             //miniprofiler

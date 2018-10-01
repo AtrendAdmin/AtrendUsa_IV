@@ -9,7 +9,7 @@ namespace Nop.Core
     /// </summary>
     /// <typeparam name="T">T</typeparam>
     [Serializable]
-    public class PagedList<T> : List<T>, IPagedList<T> 
+    public class PagedList<T> : List<T>, IPagedList<T>
     {
         /// <summary>
         /// Ctor
@@ -59,15 +59,18 @@ namespace Nop.Core
         /// <param name="totalCount">Total count</param>
         public PagedList(IEnumerable<T> source, int pageIndex, int pageSize, int totalCount)
         {
-            TotalCount = totalCount;
-            TotalPages = TotalCount / pageSize;
+            if (source.Count() > 0)
+            {
+                TotalCount = totalCount;
+                TotalPages = TotalCount / pageSize;
 
-            if (TotalCount % pageSize > 0)
-                TotalPages++;
+                if (TotalCount % pageSize > 0)
+                    TotalPages++;
 
-            this.PageSize = pageSize;
-            this.PageIndex = pageIndex;
-            this.AddRange(source);
+                this.PageSize = pageSize;
+                this.PageIndex = pageIndex;
+                this.AddRange(source);
+            }
         }
 
         public int PageIndex { get; private set; }

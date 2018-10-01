@@ -271,7 +271,8 @@
 
 .headerMenuParent {
 	display: inline-block;
-	width: 740px;
+	/*width: 740px;*/ /*Commented by IV Santosh*/
+    width:810px; /*Added by IV Santosh*/
 	margin: 0;
 	padding: 10px 0;
 	vertical-align: middle;

@@ -45,7 +45,8 @@
 }
 
 .support-page .fieldset {
-    margin: 0;
+    /*margin: 0;*/ /*Commented by IV Santosh*/
+    margin: auto; /*Added by IV Santosh*/
 }
 
 .b-upload-button {

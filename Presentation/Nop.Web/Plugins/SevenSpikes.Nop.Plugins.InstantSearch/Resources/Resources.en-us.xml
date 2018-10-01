@@ -117,6 +117,12 @@
   <LocaleResource Name="SevenSpikes.InstantSearch.Public.AllCategories">
     <Value>All</Value>
   </LocaleResource>
+  <LocaleResource Name="SevenSpikes.InstantSearch.Public.AllManufacturer">
+    <Value>All</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.InstantSearch.Public.AllVendor">
+    <Value>All</Value>
+  </LocaleResource>
   <LocaleResource Name="ActivityLog.EditInstantSearchSettings">
     <Value>Instant Search settings has been edited.</Value>
   </LocaleResource>

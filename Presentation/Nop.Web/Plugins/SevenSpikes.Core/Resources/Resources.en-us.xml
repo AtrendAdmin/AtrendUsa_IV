@@ -128,7 +128,13 @@
   <LocaleResource Name ="SevenSpikes.Plugins.Admin.InputStyles.Postfix.Percentage">
     <Value>%</Value>
   </LocaleResource>
-  
+
+  <LocaleResource Name="SevenSpikes.Themes.Admin.Settings.ThemeSettings.ShowCartQuantityMarker">
+    <Value>Show Shopping Cart Quantity Marker</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.Themes.Admin.Settings.ThemeSettings.ShowCartQuantityMarker.Hint">
+    <Value>Choose whether to show the shopping cart quantity marker.</Value>
+  </LocaleResource>
   <LocaleResource Name="SevenSpikes.Themes.Admin.Settings.CustomHeadStyles">
     <Value>Custom Head Styles</Value>
   </LocaleResource>

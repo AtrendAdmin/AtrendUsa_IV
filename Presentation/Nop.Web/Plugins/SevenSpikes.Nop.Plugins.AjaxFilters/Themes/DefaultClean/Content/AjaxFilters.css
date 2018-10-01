@@ -379,6 +379,23 @@
     clear: both;
 }
 
+.item-box.dummy-box:before {
+    content:'';
+    position: absolute;
+    top: 50%;
+    left: 50%;   
+    height: 32px;
+    width: 32px;
+    background: url('../../../images/ajaxLoader.gif') no-repeat 50% 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    z-index: 9999;
+}
+.item-box.dummy-box .product-item {
+    opacity: 0;
+}
+
 @media all and (min-width: 769px) {
     
     .number-of-returned-products.active {

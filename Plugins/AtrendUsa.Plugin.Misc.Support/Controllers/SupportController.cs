@@ -53,7 +53,8 @@ namespace AtrendUsa.Plugin.Misc.Support.Controllers
         public ActionResult Index()
         {
             //return RedirectToAction("ReturnAuthorizationRequest"); //Commented by IV Santosh
-            return RedirectToAction("FreightOrderClaim", "Support"); //Added by IV Santosh
+            //return RedirectToAction("FreightOrderClaim", "Support"); //Commented by IV Santosh
+            return RedirectToAction("ClaimForm", "Support"); //Added by IV Santosh
         }
 
         public ActionResult ReturnAuthorizationRequest()
@@ -82,6 +83,7 @@ namespace AtrendUsa.Plugin.Misc.Support.Controllers
             return View("~/Plugins/AtrendUsa.Plugin.Misc.Support/Views/ReturnAuthorizationRequest.cshtml", model);
         }
 
+        [ActionName("ClaimForm")]
         public ActionResult FreightOrderClaim()
         {
             var model = new FreightOrderClaimModel();
@@ -91,11 +93,12 @@ namespace AtrendUsa.Plugin.Misc.Support.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[CaptchaValidator] //Commented by IV Santosh 
+        [ActionName("ClaimForm")]
+        [CaptchaValidator] //Commented by IV Santosh 
         public ActionResult FreightOrderClaim(FreightOrderClaimModel model, bool captchaValid = false) //Added CaptchValid = False before CaptchValid IV Santosh
         {
             PrepareSupportModel(model);
-            //ValidateCaptcha(captchaValid); //Commented by IV Santosh
+            ValidateCaptcha(captchaValid); //Commented by IV Santosh
             ValidateAttachments(model);
 
             if (ModelState.IsValid)
@@ -137,8 +140,8 @@ namespace AtrendUsa.Plugin.Misc.Support.Controllers
 
         private void PrepareSupportModel(BaseSupportModel model)
         {
-            //model.DisplayCaptcha = _captchaSettings.Enabled; // Commented by IV Santosh
-            model.DisplayCaptcha = false; //Added by IV Santosh
+            model.DisplayCaptcha = _captchaSettings.Enabled; // Commented by IV Santosh
+            //model.DisplayCaptcha = false; //Added by IV Santosh
             model.StoreName = _storeContext.CurrentStore.Name;
             model.AllowedAttachmentsTypes = _allowedAttachmentTypes;
             model.MaxAllowedAttachmentsSize = _maxAttachmentsSize;

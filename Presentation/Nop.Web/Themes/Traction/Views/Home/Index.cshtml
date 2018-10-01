@@ -4,11 +4,12 @@
 
 @{
     Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+    //Layout = "~/Views/Shared/_ColumnsTwo.cshtml"; /*Added by IV Santosh*/
 
     //page class
     Html.AppendPageCssClassParts("html-home-page");
 
-    var isHomePageQuickTabsEnabled = EngineContext.Current.Resolve<TractionThemeSettings>().EnableProductGridsTabsOnHomePage;
+    var isHomePageQuickTabsEnabled = EngineContext.Current.Resolve<TractionThemeSettings>().EnableProductGridsTabsOnHomePage;    
 
     if (isHomePageQuickTabsEnabled)
     {
@@ -23,7 +24,7 @@
         @Html.Widget("home_page_top")
         @Html.Action("TopicBlock", "Topic", new { systemName = "HomePageText" })
         @Html.Widget("home_page_before_categories")
-        @Html.Action("HomepageCategories", "Catalog")
+        @Html.Action("HomepageCategories", "Catalog"); 
 
         @{
             var homePageProducts = Html.Action("HomepageProducts", "Product");
@@ -33,49 +34,49 @@
 
         @if (isHomePageQuickTabsEnabled)
         {
-        <div id="homePageQuickTabs" class="productTabs">
-            <div class="productTabs-header">
-                <ul>
+            <div id="homePageQuickTabs" class="productTabs">
+                <div class="productTabs-header">
+                    <ul>
+                        @if (!MvcHtmlString.IsNullOrEmpty(homePageProducts))
+                    {
+                            <li><a href="#quickTab-homepage-products">@T("HomePage.Products")</a></li>
+                        }
+                        @if (!MvcHtmlString.IsNullOrEmpty(homePageBestsellers))
+                    {
+                            <li><a href="#quickTab-homepage-bestsellers">@T("HomePage.Bestsellers")</a></li>
+                        }
+                        @if (!MvcHtmlString.IsNullOrEmpty(homePageNewProducts))
+                    {
+                            <li><a href="#quickTab-homepage-newproducts">@T("HomePage.NewProducts")</a></li>
+                        }
+                    </ul>
+                </div>
+                <div class="productTabs-body">
                     @if (!MvcHtmlString.IsNullOrEmpty(homePageProducts))
                     {
-                        <li><a href="#quickTab-homepage-products">@T("HomePage.Products")</a></li>
+                        <div id="quickTab-homepage-products">
+                            @Html.Raw(homePageProducts)
+                        </div>
                     }
                     @if (!MvcHtmlString.IsNullOrEmpty(homePageBestsellers))
                     {
-                    <li><a href="#quickTab-homepage-bestsellers">@T("HomePage.Bestsellers")</a></li>
+                        <div id="quickTab-homepage-bestsellers">
+                            @Html.Raw(homePageBestsellers)
+                        </div>
                     }
                     @if (!MvcHtmlString.IsNullOrEmpty(homePageNewProducts))
                     {
-                    <li><a href="#quickTab-homepage-newproducts">@T("HomePage.NewProducts")</a></li>
+                        <div id="quickTab-homepage-newproducts">
+                            @Html.Raw(homePageNewProducts)
+                        </div>
                     }
-                </ul>
+                </div>
             </div>
-            <div class="productTabs-body">
-                @if (!MvcHtmlString.IsNullOrEmpty(homePageProducts))
-                {
-                <div id="quickTab-homepage-products">
-                    @Html.Raw(homePageProducts)
-                </div>
-                }
-                @if (!MvcHtmlString.IsNullOrEmpty(homePageBestsellers))
-                {
-                <div id="quickTab-homepage-bestsellers">
-                    @Html.Raw(homePageBestsellers)
-                </div>
-                }
-                @if (!MvcHtmlString.IsNullOrEmpty(homePageNewProducts))
-                {
-                <div id="quickTab-homepage-newproducts">
-                    @Html.Raw(homePageNewProducts)
-                </div>
-                }
-            </div>
-        </div>
-        <script type="text/javascript">
-            jQuery(function ($) {
-                $("#homePageQuickTabs").tabs();
-            });
-        </script>
+            <script type="text/javascript">
+                jQuery(function ($) {
+                    $("#homePageQuickTabs").tabs();
+                });
+            </script>
         }
         else
         {

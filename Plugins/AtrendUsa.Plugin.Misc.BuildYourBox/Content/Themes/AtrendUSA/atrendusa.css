@@ -1,0 +1,128 @@
+﻿.support-page .inputs.reversed > * {
+    width: auto;
+    margin: 0 5px;
+    vertical-align: middle;
+}
+
+.support-page .exception-hint {
+    width: 350px;
+    max-width: 100%;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    white-space: normal;
+}
+
+.support-page .exception-hint ul {
+    list-style: disc;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.support-page .productTabs-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.support-page .message-error {
+    margin-bottom: 20px;
+}
+
+.support-page .topic-block-title {
+    text-align: center !important;
+}
+
+.support-page h1,
+.support-page h2,
+.support-page h3,
+.support-page h4 {
+    font: normal 24px/36px 'eurostile';
+}
+
+.support-page .inputs {
+    font-size: 12px;
+}
+
+.support-page .fieldset {
+    margin: 0;
+}
+
+.b-upload-button {
+    width: 350px;
+    display: inline-block;
+}
+
+.b-remove-upload {
+    color: #c03;
+}
+
+.b-remove-upload:hover {
+    color: inherit;
+}
+
+.b-files-to-upload li {
+    margin-bottom: 10px;
+}
+
+.b-upload-button .b-button {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    width: 150px;
+    margin: 0;
+}
+
+.b-upload-button .b-button input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    width: 1000px;
+}
+
+.uploaded .field-validation-error {
+    margin-top: 15px;
+}
+
+.service-centers-map iframe {
+    border: none;
+    width: 100%;
+    height: 300px;
+}
+
+/* Fix topic styles for Brooklyn theme (and for all themes) */
+.topic-block ul {
+    margin: 12px 0;
+    padding: 0 0 0 36px;
+}
+
+.topic-block p {
+    margin: 10px 0;
+}
+
+.topic-block .topic-block-title h2 {
+    margin: 0;
+}
+/* End of Fix */
+
+.support-page .field-hint {
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.support-page .ul-disc {
+    list-style: disc;
+    text-align: left;
+}
+
+.support-page .topic-block-body-center {
+    text-align: center;
+}

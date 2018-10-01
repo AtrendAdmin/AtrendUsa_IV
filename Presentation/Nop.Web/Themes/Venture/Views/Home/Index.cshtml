@@ -1,0 +1,61 @@
+﻿@using Nop.Core
+@using Nop.Core.Infrastructure
+@using Nop.Services.Configuration
+
+@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+
+    //page class
+    Html.AppendPageCssClassParts("html-home-page");
+
+    var settingService = EngineContext.Current.Resolve<ISettingService>();
+
+    var storeId = EngineContext.Current.Resolve<IStoreContext>().CurrentStore.Id;
+    var homePageProductBoxLayout = settingService.GetSettingByKey("venturethemesettings.homepageitemboxlayout", "layout-1", storeId, true);
+    var homePageProductBoxLayoutClass = "product-box-" + homePageProductBoxLayout;
+
+    var homePageFeaturedVideoLink = settingService.GetSettingByKey("venturethemesettings.homepagefeaturedvideolink", string.Empty, storeId, true);
+
+    var videoIframe = string.Empty;
+
+    if(!string.IsNullOrEmpty(homePageFeaturedVideoLink)) 
+    {
+        var uri = new Uri(homePageFeaturedVideoLink);
+        var query = HttpUtility.ParseQueryString(uri.Query);
+        var videoId = query["v"];
+
+        videoIframe = string.Format("<iframe src='https://www.youtube.com/embed/{0}?rel=0' frameborder='0' allowfullscreen></iframe>", videoId);
+    }
+}
+<div class="page home-page @homePageProductBoxLayoutClass">
+    <div class="page-body">
+        @Html.Widget("home_page_top")
+        @Html.Widget("venture_home_page_info_boxes")
+        @Html.Widget("home_page_before_categories")
+        @Html.Action("HomepageCategories", "Catalog")
+        @Html.Action("TopicBlock", "Topic", new { systemName = "HomePageText" })
+        @Html.Widget("home_page_before_products")
+        @Html.Action("HomepageProducts", "Product")
+        @Html.Widget("home_page_before_best_sellers")
+        @Html.Action("HomepageBestSellers", "Product")
+        @Html.Widget("home_page_before_news")
+        @Html.Action("HomePageNews", "News")
+        @Html.Widget("home_page_before_poll")
+        @Html.Action("HomePagePolls", "Poll")
+        @Html.Widget("home_page_bottom")
+        <div class="home-page-bottom-wrapper">
+            <div class="carousel-wrapper">
+                @Html.Widget("venture_home_page_bottom")
+            </div>
+            @if(!string.IsNullOrEmpty(videoIframe)) 
+            {
+            <div class="home-page-featured-video-wrapper">
+                <div class="home-page-video-title title">
+                    <strong>@T("SevenSpikes.Themes.Venture.Common.HomePageVideoTitle")</strong>
+                </div>
+                <div class="home-page-featured-video">@Html.Raw(videoIframe)</div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

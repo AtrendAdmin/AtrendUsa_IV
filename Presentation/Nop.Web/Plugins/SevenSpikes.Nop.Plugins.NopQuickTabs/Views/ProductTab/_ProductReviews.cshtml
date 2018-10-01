@@ -32,7 +32,7 @@
                     @Html.LabelFor(model => model.AddProductReview.Rating, new { }, ":")
                     <ul>
                         <li class="first">@T("Reviews.Fields.Rating.Bad")</li>
-                        <li>
+                        <li class="rating-options">
                             @Html.RadioButtonFor(model => model.AddProductReview.Rating, "1")
                             @Html.RadioButtonFor(model => model.AddProductReview.Rating, "2")
                             @Html.RadioButtonFor(model => model.AddProductReview.Rating, "3")

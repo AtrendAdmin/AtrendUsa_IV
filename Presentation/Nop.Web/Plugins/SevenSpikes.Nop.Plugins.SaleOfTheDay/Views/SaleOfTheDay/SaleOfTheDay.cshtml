@@ -36,7 +36,9 @@
 <div class="sale-of-the-day-offer @supportRtlClass">
     @foreach (var offer in Model.SaleOfTheDayOffers)
     {
-        <h3 class="title">@offer.Title</h3>
+        <div class="title">
+            <strong>@offer.Title</strong>
+        </div>
         <div class="grid @if (offer.Products.Count > 1){<text>owl-carousel</text>}">
             @foreach (var product in offer.Products)
             {
@@ -49,13 +51,43 @@
                                     <img alt="@product.ProductOverviewModel.DefaultPictureModel.AlternateText" src="@product.ProductOverviewModel.DefaultPictureModel.ImageUrl" title="@product.ProductOverviewModel.DefaultPictureModel.Title" />
                                 </a>
                             </div>
+                            @if (product.PictureModels != null && product.PictureModels.Count > 1)
+                            {
+                                <div class="picture-thumbs">
+                                    @foreach (var picture in product.PictureModels)
+                                    {
+                                        <a class="thumb-item" href="@picture.FullSizeImageUrl" title="@product.ProductOverviewModel.Name">
+                                            <img src="@picture.ImageUrl" alt="@picture.AlternateText" title="@picture.Title" />
+                                        </a>
+                                    }
+                                </div>
+
+                                <script type="text/javascript">
+
+                                $('.sale-of-the-day-offer').on('click', '.sale-of-the-day-product-@offer.Id-@product.ProductOverviewModel.Id .thumb-item', function (e) {
+                                    e.preventDefault();
+
+                                    var that = $(this);
+
+                                    var fullImageUrl = that.attr('href');
+                                    if (fullImageUrl == undefined || fullImageUrl == '') {
+                                        return;
+                                    }
+
+                                    $('.sale-of-the-day-product-@offer.Id-@product.ProductOverviewModel.Id').find(".item-picture img").each(function () {
+                                        $(this).attr('src', fullImageUrl);
+                                    });
+                                });
+
+                                </script>
+                            }
                         </div>
 
                         <div class="overview">
                             <div class="product-name">
-                                <h4>
+                                <h2 class="item-name">
                                     <a href="@Url.RouteUrl("Product", new { SeName = product.ProductOverviewModel.SeName })">@product.ProductOverviewModel.Name</a>
-                                </h4>
+                                </h2>
                             </div>
                             @if (!String.IsNullOrEmpty(product.ProductOverviewModel.ShortDescription))
                             {
@@ -64,7 +96,7 @@
                                 </div>
                             }
                             <!--countdown timer-->
-                            @*@if (Model.SaleOfTheDaySettings.ShowSpecialPriceCountdownTimer)
+                            @if (Model.SaleOfTheDaySettings.ShowSpecialPriceCountdownTimer)
                             {
                                 if (product.SpecialPriceEndDate.HasValue)
                                 {
@@ -89,7 +121,7 @@
                                         </div>
                                     </div>
                                 }
-                            }*@
+                            }
                             <!--price-->
                             <div class="prices">
                                 @if (!String.IsNullOrEmpty(product.ProductOverviewModel.ProductPrice.OldPrice))
@@ -111,36 +143,6 @@
                             <a href="@Url.RouteUrl("Product", new { SeName = product.ProductOverviewModel.SeName })" class="go-to-product-page">@T("SevenSpikes.SaleOfTheDay.Public.GoToProductPage")</a>
                         </div>
 
-                        @if (product.PictureModels != null && product.PictureModels.Count > 1)
-                        {
-                            <div class="picture-thumbs">
-                                @foreach (var picture in product.PictureModels)
-                                {
-                                    <a class="thumb-item" href="@picture.FullSizeImageUrl" title="@product.ProductOverviewModel.Name">
-                                        <img src="@picture.ImageUrl" alt="@picture.AlternateText" title="@picture.Title" />
-                                    </a>
-                                }
-                            </div>
-
-                            <script type="text/javascript">
-
-                                $('.sale-of-the-day-offer').on('click', '.sale-of-the-day-product-@offer.Id-@product.ProductOverviewModel.Id .thumb-popup-link', function (e) {
-                                    e.preventDefault();
-
-                                    var that = $(this);
-
-                                    var fullImageUrl = that.attr('href');
-                                    if (fullImageUrl == undefined || fullImageUrl == '') {
-                                        return;
-                                    }
-
-                                    $('.sale-of-the-day-product-@offer.Id-@product.ProductOverviewModel.Id').find(".item-picture img").each(function () {
-                                        $(this).attr('src', fullImageUrl);
-                                    });
-                                });
-
-                            </script>
-                        }
                         @*
                             @if (!String.IsNullOrEmpty(product.ProductOverviewModel.FullDescription))
                             {

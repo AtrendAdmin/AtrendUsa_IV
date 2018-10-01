@@ -1,0 +1,639 @@
+﻿@model AtrendUsa.Plugin.Misc.BuildYourBox.Models.BuildYourBoxModel
+@using Nop.Web.Framework
+@using Nop.Web.Framework.Security.Captcha
+@using Nop.Web.Framework.UI
+
+@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+
+    Html.AddTitleParts("Build Your Box");
+
+    //Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/Content/themes/atrendusa/select2.min.css"); /*Added By Santosh*/
+    //Html.AddScriptParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/Content/themes/atrendusa/select2.min.js"); /*Added By Santosh*/
+
+    //Tooltipster Themes
+    Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/Content/tooltipster-master/css/tooltipster.bundle.min.css");
+    Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/Content/tooltipster-master/css/plugins/tooltipster/sideTip/themes/tooltipster-sidetip-borderless.min.css");
+    Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/Content/tooltipster-master/css/plugins/tooltipster/sideTip/themes/tooltipster-sidetip-light.min.css");
+    Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/Content/tooltipster-master/css/plugins/tooltipster/sideTip/themes/tooltipster-sidetip-noir.min.css");
+    Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/Content/tooltipster-master/css/plugins/tooltipster/sideTip/themes/tooltipster-sidetip-punk.min.css");
+    Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/Content/tooltipster-master/css/plugins/tooltipster/sideTip/themes/tooltipster-sidetip-shadow.min.css");
+
+    Html.AddScriptParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/scripts/tooltipster-master/js/tooltipster.bundle.min.js");
+
+    @*<script src="~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/scripts/jquery-selectric/js/jquery.selectric.min.js"></script>
+        <link href= "~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/content/jquery-selectric/css/selectric.css" rel="stylesheet" type="text/css"/>*@
+
+Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/Content/themes/atrendusa/atrendusa.css");
+Html.AddScriptParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/Content/themes/atrendusa/file-upload-button.js");
+
+
+
+//Html.AddCssFileParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/Content/tooltipster-master/css/tooltipster.bundle.min.css");
+//Html.AddScriptParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/scripts/tooltipster-master/js/tooltipster.bundle.min.js");
+
+string strTerminalTypesIds = "";
+string strCarpetColorsIds = "";
+}
+
+<style type="text/css">
+    .tooltip_templates {
+        display: none;
+    }
+</style>
+
+<style type="text/css">
+    /*the container must be positioned relative:*/
+    .custom-select {
+        position: relative;
+        font-family: Arial;
+    }
+
+        .custom-select select {
+            display: none; /*hide original SELECT element:*/
+        }
+
+    .select-selected {
+        background-color: #f6f6f6;
+        width: 350px;
+        max-width: 100%;
+        vertical-align: middle;
+        float: right;
+        border: 1px solid #ccc;
+        position: relative;
+        top: 0;
+        right: 313px;
+    }
+        /*Changes by Sachchi*/
+        /*.select-selected {
+        background-color: #f6f6f6;
+        width: 100%;
+        max-width: 100%;
+        vertical-align: middle;
+        float: right;
+        border: 1px solid #ccc;
+        position: relative;
+        top: 0;
+        right: 0px;
+    }*/
+        /*style the arrow inside the select element:*/
+        .select-selected:after {
+            position: absolute;
+            content: "";
+            top: 14px;
+            right: 6px;
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-color: black transparent transparent transparent;
+        }
+        /*point the arrow upwards when the select box is open (active):*/
+        .select-selected.select-arrow-active:after {
+            border-color: transparent transparent #000 transparent;
+            top: 7px;
+            float: left;
+        }
+    /*style the items (options), including the selected item:*/
+    .select-items div, .select-selected {
+        color: black;
+        padding: 8px 9px;
+        /* border: 1px solid #ccc; */
+        /* border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent; */
+        cursor: pointer;
+        user-select: none;
+        /* float: left; */
+        background-color: #f6f6f6;
+    }
+    /*style items (options):*/
+    .select-items {
+        position: absolute;
+        background-color: #f6f6f6;
+        top: 100%;
+        left: 317px;
+        right: 0;
+        z-index: 1;
+        width: 350px;
+        float: left;
+        border: 1px solid #ccc;
+    }
+    /*Changes by Sachchi*/
+    /*.select-items {
+        position: absolute;
+        background-color: #f6f6f6;
+        top: 100%;
+        left: 0px;
+        right: 0;
+        z-index: 1;
+        width: 100%;
+        float: left;
+        border: 1px solid #ccc;
+    }*/
+    /*hide the items when the select box is closed:*/
+    .select-hide {
+        display: none;
+    }
+
+    .select-items div:hover, .same-as-selected {
+        background-color: #1e90ff;
+    }
+
+    .custom-select label {
+        float: left;
+    }
+
+    
+    
+    @@media (min-width: 768px) and (max-width: 980px) {
+        .select-selected {
+            right: 193px;
+        }
+
+        .select-items {
+            top: 55px;
+            left: 187px;
+        }
+    }
+
+    @@media (max-width: 767px) {
+        .select-selected {
+            right: 58px;
+        }
+
+        .select-items {
+            top: 20px;
+            left: 48px;
+        }
+    }
+
+    @@media (max-width:640px) {
+        .select-selected {
+            right: 135px;
+        }
+
+        .select-items {
+            top: 20px;
+            left: 123px;
+        }
+    }
+
+    @@media (max-width:480px) {
+        .select-selected {
+            right: 58px;
+        }
+
+        .select-items {
+            top: 20px;
+            left: 48px;
+        }
+    }
+
+    @@media (max-width:360px) {
+        .select-selected {
+            right: 0px;
+        }
+
+        .select-items {
+            top: 20px;
+            left: 0px;
+            width: 342px;
+        }
+    }
+
+
+    @@media (max-width:320px) {
+        .select-selected {
+            right: 0px;
+        }
+
+        .select-items {
+            top: 20px;
+            left: 0px;
+            width: 304px;
+        }
+    }
+</style>
+
+<script type="text/javascript">
+    window.ATTACHMENT_TYPES = [];
+    @foreach (var t in Model.AllowedAttachmentsTypes)
+    {
+        @:window.ATTACHMENT_TYPES.push("@t");
+                                                                                                                                                                                                                                                                }
+    window.MAX_ATTACHMENTS_SIZE = @Model.MaxAllowedAttachmentsSize;
+
+    $(document).ready(function() {
+        $('.tooltip').tooltipster({
+            side : "right",
+            contentCloning : "true",
+            animation : "swing",
+            theme: 'tooltipster-light'
+        });
+
+
+    });
+
+    //Manually validate CarpetColor and TerminalTypes dropdown
+    $(function () {
+        $("#BuildYourBoxFrm").submit(function (event) {
+            debugger;
+            //var carpetColorSleIndx = event.target[10].selectedIndex;
+            //var terminalTypeSleIndx = event.target[12].selectedIndex;
+            //$("#BuildYourBoxFrm").validate().element($(event.target[10]));
+            //$("#BuildYourBoxFrm").validate().element($(event.target[12]));
+            validateElement(event);
+            if ($(event.target[10]).valid() == false || $(event.target[12]).valid() == false) {
+                event.preventDefault();
+            }
+        });
+
+        //$('#BuildYourBoxFrm').validate({
+        //    ignore: "",
+        //});
+        debugger;
+        var validatorSettings = $.data($('form')[0], 'validator').settings;
+        validatorSettings.ignore = "";
+    });
+
+    function validateElement(event)
+    {
+        $("#BuildYourBoxFrm").validate().element($(event.target[10]));
+        $("#BuildYourBoxFrm").validate().element($(event.target[12]));
+    }
+</script>
+
+<div class="page contact-page support-page">
+    <div class="page-body">
+        <div class="productTabs-body">
+            @if (Model.SuccessfullySent)
+            {
+                <div class="result">
+                    @Model.Result
+                </div>
+            }
+            else
+            {
+                <div class="topic-block">
+                    <div class="topic-block-title">
+                        <h2>Build Your Box</h2>
+                    </div>
+                </div>
+
+                using (Html.BeginForm("YourBoxForm", "BuildYourBox", FormMethod.Post, new { enctype = "multipart/form-data", @class = "upload-form", id = "BuildYourBoxFrm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    var validationSummary = Html.ValidationSummary(true);
+                    if (!MvcHtmlString.IsNullOrEmpty(validationSummary))
+                    {
+                        <div class="message-error">@validationSummary</div>
+                    }
+                    <div class="fieldset">
+                        <div class="title">
+                            <strong>@T("AtrendUsa.Plugin.Misc.BuildYourBox.ContactAndSubInfo")</strong>
+                        </div>
+                        <div class="form-fields">
+                            <div class="inputs">
+                                @Html.LabelFor(m => m.Name, new { }, ":")
+                                @Html.EditorFor(m => m.Name, new { htmlAttributes = new { placeholder = "Enter Name" } })
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(m => m.Name)
+                            </div>
+                            <div class="inputs">
+                                @Html.LabelFor(m => m.Address, new { }, ":")
+                                @Html.EditorFor(m => m.Address, new { htmlAttributes = new { placeholder = "Enter Address" } })
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(m => m.Address)
+                            </div>
+                            <div class="inputs">
+                                @Html.LabelFor(m => m.PhoneNumber, new { }, ":")
+                                @Html.EditorFor(m => m.PhoneNumber, new { htmlAttributes = new { placeholder = "Enter Phone Number" } })
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(m => m.PhoneNumber)
+                            </div>
+                            <div class="inputs">
+                                @Html.LabelFor(m => m.Email, new { }, ":")
+                                @Html.EditorFor(m => m.Email, new { htmlAttributes = new { placeholder = "Enter Email" } })
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(m => m.Email)
+                            </div>
+                        </div>
+
+                        <div class="title">
+                            <strong>@T("AtrendUsa.Plugin.Misc.BuildYourBox.SubwooferDataSection")</strong>
+                        </div>
+                        <div class="form-fields">
+                            <div class="inputs">
+                                @Html.LabelFor(m => m.SubwooferManufacturer, new { }, ":")
+                                @Html.EditorFor(m => m.SubwooferManufacturer, new { htmlAttributes = new { placeholder = "Enter Subwoofer Manufacturer" } })
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(m => m.SubwooferManufacturer)
+                            </div>
+                            <div class="inputs">
+                                @Html.LabelFor(m => m.SubwooferModel, new { }, ":")
+                                @Html.EditorFor(m => m.SubwooferModel, new { htmlAttributes = new { placeholder = "Enter Subwoofer Model" } })
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(m => m.SubwooferModel)
+                            </div>
+                            <div class="inputs">
+                                @Html.LabelFor(m => m.NumberOfSubwoofers, new { }, ":")
+                                @Html.EditorFor(m => m.NumberOfSubwoofers, new { htmlAttributes = new { placeholder = "Enter Number Of Subwoofers" } })
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(m => m.NumberOfSubwoofers)
+                            </div>
+                        </div>
+                        <div class="title">
+                            <strong>@T("AtrendUsa.Plugin.Misc.BuildYourBox.VehicleDataSection")</strong>
+                        </div>
+                        <div class="form-fields">
+                            <div class="inputs">
+                                @Html.LabelFor(m => m.VehicleManufacturerOrModel, new { }, ":")
+                                @Html.EditorFor(m => m.VehicleManufacturerOrModel, new { htmlAttributes = new { placeholder = "Enter Vehicle Manufacturer/Model" } })
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(m => m.VehicleManufacturerOrModel)
+                            </div>
+                            <div class="inputs">
+                                @Html.LabelFor(m => m.VehicleYear, new { }, ":")
+                                @Html.EditorFor(m => m.VehicleYear, new { htmlAttributes = new { placeholder = "Enter Vehicle Year" } })
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(m => m.VehicleYear)
+                            </div>
+
+                            <div class="inputs uploaded">
+                                @*@Html.LabelFor(m => m.ImageOfVehicleTrunkArea, new { }, ":")*@
+                                <label for="ImageOfVehicleTrunkArea" style="white-space:initial;">Image of Vehicle Trunk Area (stand 1 foot back and take image):</label>
+                                <div class="b-upload-button">
+                                    <div class="button-1 b-button">
+                                        <span>Add File</span>
+                                        @Html.TextBoxFor(m => m.ImageOfVehicleTrunkArea, new { type = "file" })
+                                    </div>
+                                    <ul class="b-files-to-upload"></ul>
+                                </div>
+                                <span class="field-validation-error"></span>
+                                @Html.ValidationMessageFor(m => m.ImageOfVehicleTrunkArea)
+                            </div>
+
+
+                        </div>
+                        <div class="title">
+                            <strong>@T("AtrendUsa.Plugin.Misc.BuildYourBox.BoxSpecifications")</strong>
+                        </div>
+                        <div class="form-fields">
+                            <div class="inputs">
+                                @Html.LabelFor(m => m.WidthRequired, new { }, ":")
+                                @Html.EditorFor(m => m.WidthRequired, new { htmlAttributes = new { placeholder = "Enter Number Of Subwoofers" } })
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(m => m.WidthRequired)
+                            </div>
+                            <div class="inputs">
+                                @Html.LabelFor(m => m.HeightRequired, new { }, ":")
+                                @Html.EditorFor(m => m.HeightRequired, new { htmlAttributes = new { placeholder = "Enter Height Required" } })
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(m => m.HeightRequired)
+                            </div>
+                            <div class="inputs">
+                                @Html.LabelFor(m => m.DepthRequired, new { }, ":")
+                                @Html.EditorFor(m => m.DepthRequired, new { htmlAttributes = new { placeholder = "Enter Depth Required" } })
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(m => m.DepthRequired)
+                            </div>
+
+                            <div class="inputs">
+                                <div class="custom-select">
+                                    @Html.LabelFor(m => m.CarpetColorId, new { }, ":")
+                                    @Html.DropDownListFor(model => model.CarpetColorId, Model.CarpetColorWanted, new { @class = "carpet-color" })
+
+                                    <div class="tooltip_templates">
+                                        @foreach (var item in ViewBag.CarpetColors)
+                                        {
+                                            strCarpetColorsIds += Convert.ToString(item.Id) + ",";
+
+                                            <span id="tooltip_content_CC_@item.Id">
+                                                <img src="~/Content/BuildYourBox/CarpetColors/Images/@item.ImageURL" style="height:216px;width:216px;" />
+                                            </span>
+                                        }
+                                    </div>
+                                </div>
+
+                                @*@Html.RequiredHint()*@
+                                <span class="required" style="position: relative;top: 12px;left: 357px;">*</span>
+                                @Html.ValidationMessageFor(model => model.CarpetColorId, null, new { @style = "position: relative;top: 16px;left: 175px;width: 100 %;" })
+
+                                @*<span class="tooltip" title="This is my span's tooltip message!">Some text</span>*@
+                            </div>
+                            <div class="inputs">
+                                @Html.LabelFor(m => m.TerminalLocation, new { }, ":")
+                                @Html.EditorFor(m => m.TerminalLocation, new { htmlAttributes = new { placeholder = "Enter Terminal Location" } })
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(m => m.TerminalLocation)
+                            </div>
+                            <div class="inputs">
+                                <div class="custom-select">
+                                    @Html.LabelFor(m => m.TerminalTypeId, new { }, ":")
+                                    @Html.DropDownListFor(model => model.TerminalTypeId, Model.TerminalType)
+
+                                    <div class="tooltip_templates">
+                                        @foreach (var item in ViewBag.TerminalTypes)
+                                        {
+                                            strTerminalTypesIds += Convert.ToString(item.Id) + ",";
+
+                                            <span id="tooltip_content_TT_@item.Id">
+                                                <img src="~/Content/BuildYourBox/TerminalTypes/Images/@item.ImageURL" style="height:216px;width:216px;" />
+                                            </span>
+                                        }
+                                    </div>
+                                </div>
+
+                                @*@Html.RequiredHint()*@
+                                <span class="required" style="position: relative;top: 12px;left: 357px;">*</span>
+                                @Html.ValidationMessageFor(model => model.TerminalTypeId, null, new { @style = "position: relative;top: 16px;left: 175px;width: 100 %;" })
+                            </div>
+                            <div class="inputs">
+                                @Html.LabelFor(m => m.SealedOrVented, new { }, ":")
+                                @Html.EditorFor(m => m.SealedOrVented, new { htmlAttributes = new { placeholder = "Enter Sealed or Vented" } })
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(m => m.SealedOrVented)
+                            </div>
+                            <div class="inputs">
+                                @*@Html.LabelFor(m => m.MDFThicknessId, new { }, ":")
+                                    @Html.EnumDropDownListFor(m => m.MDFThicknessRequested, new { @class = "exception-type" })
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(m => m.MDFThicknessId)*@
+
+                                @Html.LabelFor(m => m.MDFThicknessId, new { }, ":")
+                                @Html.DropDownListFor(model => model.MDFThicknessId, Model.MDFThicknessRequested)
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(model => model.MDFThicknessId)
+                            </div>
+                            <div class="inputs">
+                                @Html.LabelFor(m => m.SquareOrAngledBox, new { }, ":")
+                                @Html.EditorFor(m => m.SquareOrAngledBox, new { htmlAttributes = new { placeholder = "Enter MDF Thickness Requested" } })
+                                @Html.RequiredHint()
+                                @Html.ValidationMessageFor(m => m.SquareOrAngledBox)
+                            </div>
+
+                            @*<div class="inputs">
+                                    @Html.LabelFor(m => m.MDFThicknessId, new { }, ":")
+                                    <select class="ddl" data-toggle="tooltip">
+                                        <option value="">Select Carpet Color</option>
+                                        <option value="1" onMouseOver="dispalyAltText();" data-image="/Content/BuildYourBox/CarpetColors/Images/1.jpg">Black Plush</option>
+                                        <option value="2" onMouseOver="dispalyAltText();" data-image="/Content/BuildYourBox/CarpetColors/Images/Atrend Accessories-Black Carpet.jpg">Black</option>
+                                        <option value="3" onMouseOver="dispalyAltText();" data-image="/Content/BuildYourBox/CarpetColors/Images/Atrend Accessories-Charcoal Carpet.jpg">Charcoal</option>
+                                    </select>
+
+                                    <select class="ddl" size="4" data-toggle="tooltip">
+                                        <option data-title="1" value="jedan" selected> jedan</option>
+                                        <option data-title="2" value="dva" onMouseOver="dispalyAltText();"> dva </option>
+                                        <option data-title="3" value="tri" onMouseOver="dispalyAltText();"> tri </option>
+                                        <option data-title="4" value="cetri" onMouseOver="dispalyAltText();">cetri</option>
+                                        <option data-title="5" value="pet" onMouseOver="dispalyAltText();">pet</option>
+                                    </select>
+                                    @Html.RequiredHint()
+                                    @Html.ValidationMessageFor(model => model.MDFThicknessId)
+                                </div>*@
+
+                            @if (Model.DisplayCaptcha)
+                            {
+                                <div class="captcha-box">
+                                    @Html.Raw(Html.GenerateCaptcha())
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+
+                    <div class="topic-block">
+                        @*<div class="topic-block-title">
+                                <h2>Submit Claim</h2>
+                            </div>*@
+                        <div class="topic-block-body">
+                            <ul class="ul-disc">
+                                <li>Before submitting please note we will email you back with a quote and time frame for production. In most cases you can expect your enclosure to ship within 4 -5 days. Payment will be collected once you have approved the design drawing.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="buttons">
+                        <input type="submit" name="send-email" class="button-1" value="@T("AtrendUsa.Plugin.Misc.BuildYourBox.Button")" />
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+@{
+    //Html.AddScriptParts("~/Plugins/AtrendUsa.Plugin.Misc.BuildYourBox/scripts/custom-select-options/select-option-style.js");
+}
+
+<script type="text/javascript">
+    //function dispalyAltText()
+    //{
+    //    alert('hiiiiiiiiiiii');
+    //}
+    //var ddl = $(".ddl")
+
+    //var ddl = $(".ddl");
+    //$(ddl).on('mouseover', "option",  function(e) {
+    //    alert('dsfbhgdh');
+    //    var el = $(e.target);
+    //    var desc = el.data("title");
+    //    ddl.tooltip('destroy');
+    //    ddl.tooltip({
+    //        placement: 'top',
+    //        title: desc
+    //    })
+    //	.tooltip('show');
+
+    //});
+
+    //$("#CarpetColorIdTest option").hover(function () {
+    //    alert('hiiii');
+    //});
+
+    var arrCarpetColorsIds =  '@(strCarpetColorsIds)'.split(",");
+    var arrTerminalTypesIds =  '@(strTerminalTypesIds)'.split(",");
+
+    var x, i, j, selElmnt, a, b, c;
+    /*look for any elements with the class "custom-select":*/
+    x = document.getElementsByClassName("custom-select");
+    for (i = 0; i < x.length; i++) {
+        selElmnt = x[i].getElementsByTagName("select")[0];
+        /*for each element, create a new DIV that will act as the selected item:*/
+        a = document.createElement("DIV");
+        a.setAttribute("class", "select-selected");
+        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+        x[i].appendChild(a);
+        /*for each element, create a new DIV that will contain the option list:*/
+        b = document.createElement("DIV");
+        b.setAttribute("class", "select-items select-hide");
+        for (j = 0; j < selElmnt.length; j++) {
+            /*for each option in the original select element,
+            create a new DIV that will act as an option item:*/
+            c = document.createElement("DIV");
+            c.innerHTML = selElmnt.options[j].innerHTML;
+            debugger;
+            if (i == 0 && j > 0) {
+                c.setAttribute("class", "tooltip");
+                c.setAttribute("data-tooltip-content", "#tooltip_content_CC_" + arrCarpetColorsIds[j-1]);
+            }
+            if(i == 1 && j > 0){
+                c.setAttribute("class", "tooltip");
+                c.setAttribute("data-tooltip-content", "#tooltip_content_TT_" + arrTerminalTypesIds[j-1]);
+            }
+
+            c.addEventListener("click", function(e) {
+                /*when an item is clicked, update the original select box,
+                and the selected item:*/
+                var y, i, k, s, h;
+                s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                h = this.parentNode.previousSibling;
+                for (i = 0; i < s.length; i++) {
+                    if (s.options[i].innerHTML == this.innerHTML) {
+                        s.selectedIndex = i;
+                        h.innerHTML = this.innerHTML;
+                        y = this.parentNode.getElementsByClassName("same-as-selected");
+                        for (k = 0; k < y.length; k++) {
+                            y[k].removeAttribute("class");
+                        }
+                        this.setAttribute("class", "tooltip same-as-selected");
+                        //this.setAttribute("data-tooltip-content", "#tooltip_content");
+                        break;
+                    }
+                }
+
+                h.click();
+            });
+            b.appendChild(c);
+        }
+        x[i].appendChild(b);
+        a.addEventListener("click", function(e) {
+            /*when the select box is clicked, close any other select boxes,
+            and open/close the current select box:*/
+            e.stopPropagation();
+            closeAllSelect(this);
+            this.nextSibling.classList.toggle("select-hide");
+            this.classList.toggle("select-arrow-active");
+        });
+    }
+    function closeAllSelect(elmnt) {
+        /*a function that will close all select boxes in the document,
+        except the current select box:*/
+        var x, y, i, arrNo = [];
+        x = document.getElementsByClassName("select-items");
+        y = document.getElementsByClassName("select-selected");
+        for (i = 0; i < y.length; i++) {
+            if (elmnt == y[i]) {
+                arrNo.push(i)
+            } else {
+                y[i].classList.remove("select-arrow-active");
+            }
+        }
+        for (i = 0; i < x.length; i++) {
+            if (arrNo.indexOf(i)) {
+                x[i].classList.add("select-hide");
+            }
+        }
+    }
+    /*if the user clicks anywhere outside the select box,
+    then close all select boxes:*/
+    document.addEventListener("click", closeAllSelect);
+</script>

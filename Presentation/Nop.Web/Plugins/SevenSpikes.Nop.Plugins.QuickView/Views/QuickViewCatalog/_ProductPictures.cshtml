@@ -6,8 +6,8 @@
 
 @if (isCloudZoomAvailable)
 {
-    const string defaultRelation = "appendSelector: '.quickViewWindow .gallery .picture', zoomPosition: 'inside', zoomOffsetX: 0, easing: 3, zoomFlyOut: false";
-    const string galleryRelation = "appendSelector: '.quickViewWindow .gallery .picture', zoomPosition: 'inside', zoomOffsetX: 0, easing: 3, zoomFlyOut: false, titleOpacity: 0,  useZoom: '#quick-view-zoom', image: '{0}', zoomImage: '{1}'";
+    const string defaultRelation = "appendSelector: '.quickViewWindow .gallery .picture', zoomPosition: 'inside', zoomOffsetX: 0, easing: 3, zoomFlyOut: false, disableZoom: 'auto'";
+    const string galleryRelation = "appendSelector: '.quickViewWindow .gallery .picture', zoomPosition: 'inside', zoomOffsetX: 0, easing: 3, zoomFlyOut: false, disableZoom: 'auto', titleOpacity: 0,  useZoom: '#quick-view-zoom', image: '{0}', zoomImage: '{1}'";
 
     var defaultSmallImageUrl = Model.ProductDetails.DefaultPictureModel.CustomProperties["SmallImageUrl"].ToString();
 
