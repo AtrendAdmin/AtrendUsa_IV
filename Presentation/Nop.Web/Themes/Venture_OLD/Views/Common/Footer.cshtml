@@ -1,0 +1,142 @@
+﻿@using Nop.Core
+@using Nop.Core.Domain.Tax
+@using Nop.Core.Infrastructure
+@using Nop.Services.Configuration
+@using Nop.Web.Models.Common
+
+@model FooterModel
+
+@{
+    var storeId = EngineContext.Current.Resolve<IStoreContext>().CurrentStore.Id;
+    var settingService = EngineContext.Current.Resolve<ISettingService>();
+    var removeCopyright = settingService.GetSettingByKey("venturethemesettings.removecopyright", false, storeId, true);
+    var removeDesignedBy = settingService.GetSettingByKey("venturethemesettings.removedesignedby", false, storeId, true);
+
+    var controllerName = System.Web.HttpContext.Current.Request.RequestContext.RouteData.GetRequiredString("controller");
+    var isHomePage = controllerName.Equals("home", StringComparison.InvariantCultureIgnoreCase);
+
+    var browser = Request.Browser;
+    bool isIe9 = false;
+    if (browser.Browser == "IE" && browser.MajorVersion == 9)
+    {
+        isIe9 = true;
+    }
+    var showFooterMap = EngineContext.Current.Resolve<ISettingService>().GetSettingByKey("venturethemesettings.enablefootermap", true, storeId, true);
+}
+
+@if (isHomePage)
+{
+    <div class="home-page-footer-banners">
+        @Html.Widget("venture_theme_footer_banner_1")
+        @Html.Widget("venture_theme_footer_banner_2")
+        @Html.Widget("venture_theme_footer_banner_3")
+    </div>
+}
+<div class="footer">
+    @if (showFooterMap && !isIe9)//google maps API doesn't work in ie9
+    {
+        <div class="footer-map-holder">
+            <div class="title">
+                <strong>@T("SevenSpikes.Themes.Venture.Common.FooterMap")</strong>
+            </div>
+            <div class="footer-map-wrapper">
+                @Html.Widget("venture_footer_map")
+            </div>
+        </div>
+    }
+    <div class="footer-upper">
+        <div class="footer-block find-us">
+            <div class="title">
+                <strong>@T("SevenSpikes.Themes.Venture.Common.FindUs")</strong>
+            </div>
+            <ul class="list footer-collapse">
+                <li class="address">
+                    <span>@T("SevenSpikes.Themes.Venture.Common.Address")</span>
+                </li>
+                <li class="e-mail">
+                    <span>@T("SevenSpikes.Themes.Venture.Common.EMail")</span>
+                </li>
+                <li class="mobile-phone">
+                    <span>@T("SevenSpikes.Themes.Venture.Common.MobilePhone")</span>
+                </li>
+                <li class="phone">
+                    <span>@T("SevenSpikes.Themes.Venture.Common.Phone")</span>
+                </li>
+            </ul>
+        </div>
+        <div class="footer-block information">
+            <div class="title">
+                <strong>@T("SevenSpikes.Themes.Venture.Common.Information")</strong>
+            </div>
+            <ul class="list footer-collapse">
+                <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
+                @foreach (var topic in Model.Topics.Where(x => x.IncludeInFooterColumn1).ToList())
+                {
+                    <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
+                }
+            </ul>
+        </div>
+        <div class="footer-block my-account">
+            <div class="title">
+                <strong>@T("SevenSpikes.Themes.Venture.Common.MyAccount")</strong>
+            </div>
+            <ul class="list footer-collapse">
+                <li><a href="@Url.RouteUrl("CustomerOrders")">@T("Account.CustomerOrders")</a></li>
+                <li><a href="@Url.RouteUrl("CustomerAddresses")">@T("Account.CustomerAddresses")</a></li>
+                @if (Model.RecentlyViewedProductsEnabled)
+                {
+                    <li><a href="@Url.RouteUrl("RecentlyViewedProducts")">@T("Products.RecentlyViewedProducts")</a></li>
+                }
+                @if (Model.SitemapEnabled)
+                {
+                    <li><a href="@Url.RouteUrl("Sitemap")">@T("Sitemap")</a></li>
+                }
+                @if (Model.AllowCustomersToApplyForVendorAccount)
+                {
+                    <li><a href="@Url.RouteUrl("ApplyVendorAccount")">@T("Vendors.ApplyAccount")</a></li>
+                }
+            </ul>
+        </div>
+        <div class="footer-block newsetter">
+            <div class="title">
+                <strong>@T("SevenSpikes.Themes.Venture.Common.Newsletter")</strong>
+            </div>
+            <div class="footer-collapse">
+                <p class="newsletter-subscribe-text">@T("SevenSpikes.Themes.Venture.Common.NewsletterSubscribeText")</p>
+                @Html.Action("NewsletterBox", "Newsletter")
+            </div>
+        </div>
+    </div>
+    <div class="footer-middle">
+        @Html.Action("Social", "Common")
+    </div>
+    <div class="footer-lower">
+        <div class="footer-disclaimer">
+            @T("Content.CopyrightNotice", DateTime.Now.Year, Model.StoreName)
+        </div>
+        @if(!removeCopyright)
+        { 
+            <div class="footer-powered-by">
+                Powered by <a href="http://www.nopcommerce.com/">nopCommerce</a>
+                @*Would you like to remove the "Powered by nopCommerce" link in the bottom of the footer?
+                    Find more info here http://www.nopcommerce.com/copyrightremoval.aspx*@
+            </div>
+        }
+        @if (!removeDesignedBy)
+        {
+            <div class="footer-designed-by"> 
+                Designed by <a href="http://www.nop-templates.com/" target="_blank">Nop-Templates.com</a>
+            </div>
+        }
+        @if (Model.DisplayTaxShippingInfoFooter)
+        {
+            var inclTax = EngineContext.Current.Resolve<IWorkContext>().TaxDisplayType == TaxDisplayType.IncludingTax;
+            <div class="footer-tax-shipping">
+                @T(inclTax ? "Footer.TaxShipping.InclTax" : "Footer.TaxShipping.ExclTax", Url.RouteUrl("Topic", new { SeName = Html.GetTopicSeName("shippinginfo") }))
+            </div>
+        }
+
+        @Html.Action("StoreThemeSelector", "Common")
+    </div>
+    @Html.Widget("footer")
+</div>

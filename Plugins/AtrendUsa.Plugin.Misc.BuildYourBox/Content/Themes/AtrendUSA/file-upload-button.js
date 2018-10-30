@@ -34,15 +34,15 @@
         $self.attr("id", id);
         $button.hide();
 
-        var newInput = $('<input />');
-        newInput.attr('type', 'file');
-        newInput.attr('name', name);
+        //var newInput = $('<input />');
+        //newInput.attr('type', 'file');
+        //newInput.attr('name', name);
 
-        var newButton = $('<div class="button-1 b-button">');
-        newButton.append('<span>Add File</span>');
-        newButton.append(newInput);
+        //var newButton = $('<div class="button-1 b-button">');
+        //newButton.append('<span>Add File</span>');
+        //newButton.append(newInput);
 
-        $container.append(newButton);
+        //$container.append(newButton);
         $container.find('.b-files-to-upload').append('<li>' + filename + ' <a href="#" class="b-remove-upload" data-file-id="' + id + '">(Remove)</a></li>');
     });
 

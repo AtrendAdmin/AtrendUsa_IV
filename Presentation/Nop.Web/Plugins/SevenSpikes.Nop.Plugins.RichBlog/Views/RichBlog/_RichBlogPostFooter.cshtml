@@ -2,6 +2,17 @@
 
 @model RichBlogPostFooterModel
 
+@{
+    var supportRtl = this.ShouldUseRtlTheme();
+    var theme = (string)ViewBag.Theme;
+
+    Html.AddCssFileParts("~/Plugins/SevenSpikes.Nop.Plugins.RichBlog/Themes/" + theme + "/Content/RichBlog.css");
+    if (supportRtl)
+    {
+        Html.AddCssFileParts("~/Plugins/SevenSpikes.Nop.Plugins.RichBlog/Themes/" + theme + "/Content/RichBlog.rtl.css");
+    }
+}
+
 <div class="post-footer">
     @if (Model.Categories.Count > 0 || (Model.RelatedBlogPosts.Count > 0 && ViewBag.IsBlogDetailsPage))
     {
@@ -62,7 +73,7 @@
              Model.RichBlogSettings.ShowPinterestShare || Model.RichBlogSettings.ShowLinkedInShare ||
              Model.RichBlogSettings.ShowGooglePlusShare)
         {
-            var shareUrl = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Nop.Core.IWebHelper>().GetStoreLocation() + Model.BlogPostSEName;
+            var shareUrl = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Nop.Core.IWebHelper>().GetStoreLocation() + Url.RouteUrl("BlogPost", new { SeName = Model.BlogPostSEName });
 
             <ul class="share-post" id="share-buttons">
                 @if (Model.RichBlogSettings.ShowFacebookShare)

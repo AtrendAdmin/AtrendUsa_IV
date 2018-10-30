@@ -94,11 +94,11 @@ namespace AtrendUsa.Plugin.Misc.Support.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("ClaimForm")]
-        //[CaptchaValidator] //Commented by IV Santosh 
+        [CaptchaValidator] //Commented by IV Santosh 
         public ActionResult FreightOrderClaim(FreightOrderClaimModel model, bool captchaValid = false) //Added CaptchValid = False before CaptchValid IV Santosh
         {
             PrepareSupportModel(model);
-            //ValidateCaptcha(captchaValid); //Commented by IV Santosh
+            ValidateCaptcha(captchaValid); //Commented by IV Santosh
             ValidateAttachments(model);
 
             if (ModelState.IsValid)
@@ -140,8 +140,8 @@ namespace AtrendUsa.Plugin.Misc.Support.Controllers
 
         private void PrepareSupportModel(BaseSupportModel model)
         {
-            //model.DisplayCaptcha = _captchaSettings.Enabled; // Commented by IV Santosh
-            model.DisplayCaptcha = false; //Added by IV Santosh
+            model.DisplayCaptcha = _captchaSettings.Enabled; // Commented by IV Santosh
+            //model.DisplayCaptcha = false; //Added by IV Santosh
             model.StoreName = _storeContext.CurrentStore.Name;
             model.AllowedAttachmentsTypes = _allowedAttachmentTypes;
             model.MaxAllowedAttachmentsSize = _maxAttachmentsSize;

@@ -40,13 +40,13 @@
                 checkoutUrl = Url.RouteUrl("Checkout");
             }
             <a class="viewBasketLink" href="@Url.RouteUrl("ShoppingCart")">@T("SevenSpikes.NopAjaxCart.ShoppingCartNotificationBoxViewYourBasket")</a>
-            <div>
+            <div class="checkoutButtonWrapper">
                 <input type="submit" class="button-1 productAddedToCartWindowCheckout" value="@T("Checkout.Button")" onclick="setLocation('@checkoutUrl');" />
             </div>
         }
         else
         {
-            <div>
+            <div class="shoppingCartButtonWrapper">
                 <input type="submit" class="button-1 productAddedToCartWindowCheckout" value="@T("ShoppingCart.Mini.ViewCart")" onclick="setLocation('@Url.RouteUrl("ShoppingCart")');" />
             </div>
         }

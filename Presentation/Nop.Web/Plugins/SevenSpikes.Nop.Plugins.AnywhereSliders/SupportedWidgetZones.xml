@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <SupportedWidgetZones>
   <WidgetZone>home_page_main_slider</WidgetZone>
+  <WidgetZone>home_page_right_banner_1</WidgetZone>  
   <WidgetZone>content_before</WidgetZone>
   <WidgetZone>content_after</WidgetZone>  
   <WidgetZone>main_column_before</WidgetZone>

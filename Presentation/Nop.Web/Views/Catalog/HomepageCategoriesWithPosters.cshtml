@@ -1,0 +1,113 @@
+﻿@model IList<CategoryModel>
+
+@using Nop.Web.Models.Catalog;
+
+<style type="text/css">
+    .sectionswlt {
+        float: left;
+        width: 100%;
+    }
+
+    .maindivesection {
+        width: 1280px;
+        margin: 0 auto;
+    }
+
+    .home-page-category-grid-left {
+        width: 27%;
+        margin: 0 10px 0 0;
+        float: left;
+    }
+
+    .picture .imgpages {
+        width: 100%;
+    }
+
+    .item-grid.wltpage {
+        width: 920px;
+        margin: 0px;
+        padding: 0px;
+        float: left;
+    }
+
+    .mgtposat {
+        margin-top: 20px;
+    }
+
+    @@media (min-width: 768px) and (max-width: 980px) {
+        .maindivesection {
+            width: 720px;
+            margin: 0 auto;
+        }
+
+        .home-page-category-grid-left {
+            width: 30%;
+        }
+
+        .picture .imgpages {
+            width: 100%;
+        }
+
+        .item-grid.wltpage {
+            width: 490px;
+        }
+    }
+</style>
+
+<div class="category-grid home-page-category-grid sectionswlt">
+    <div class="maindivesection">
+        <div class="category-grid home-page-category-grid-left">
+            <div class="item-grid-left">
+                <div class="item-box-left">
+                    <div class="category-item-left">
+                        <div class="picture">
+                            <a target="_blank" href='@Url.Content("https://www.atrendusa.com/Content/Images/uploaded/2018Catalog/Atrend-OEM-Poster_2018%20FINAL.pdf?__hstc=233546881.ea40ad81baefe0da9327bc967fb78458.1528727792392.1530113008046.1530117965485.25&__hssc=233546881.2.1530117965485&__hsfp=1379974738")'
+                               title="item.PictureModel.Title">
+                                <img class="imgpages" alt="OEM Poster" src='@Url.Content("https://info.atrendusa.com/hs-fs/hubfs/Capture222.png?t=1530304220308&width=279&height=219&name=Capture222.png")'
+                                     title="OEM Poster" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-box-left">
+                    <div class="category-item-left mgtposat">
+
+                        <div class="picture">
+                            <a target="_blank" href="@Url.Content("https://www.atrendusa.com/Content/Images/uploaded/2018Catalog/Atrend-VSP-Poster_2018-OFFICIAL%20Jan%201%202018.pdf?__hstc=233546881.ea40ad81baefe0da9327bc967fb78458.1528727792392.1530113008046.1530117965485.25&__hssc=233546881.1.1530117965485&__hsfp=1379974738")" title="item.PictureModel.Title">
+                                <img class="imgpages" alt="VPS Poster" src='@Url.Content("https://info.atrendusa.com/hs-fs/hubfs/Capture123.png?t=1530304220308&width=279&height=219&name=Capture123.png")'
+                                     title="VPS Poster" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        @if (Model.Count > 0)
+        {
+            <div class="category-grid">
+                <div class="item-grid wltpage" id="HomeCatItmgrd">
+                    @foreach (var item in Model)
+                    {
+                        <div class="item-box">
+                            <div class="category-item">
+                                <h2 class="title">
+                                    <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
+                                        @item.Name
+                                    </a>
+                                </h2>
+                                <div class="picture">
+                                    <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
+                                        <img alt="@item.PictureModel.AlternateText" src="@item.PictureModel.ImageUrl" title="@item.PictureModel.Title" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

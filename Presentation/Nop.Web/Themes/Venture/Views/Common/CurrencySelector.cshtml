@@ -1,0 +1,51 @@
+﻿@model CurrencySelectorModel
+@using Nop.Web.Models.Common;
+@using Nop.Core;
+@using Nop.Core.Infrastructure;
+@if (Model.AvailableCurrencies.Count > 1)
+{
+    <div class="currency-selector desktop">
+        @{
+            var webHelper = EngineContext.Current.Resolve<IWebHelper>();
+
+            var currencies = Model.AvailableCurrencies.Select(x => new SelectListItem
+            {
+                Text = x.Name,
+                Value = webHelper.ModifyQueryString(Url.RouteUrl("ChangeCurrency", new { customercurrency = x.Id }), "returnurl=" + HttpUtility.UrlEncode(HttpContext.Current.Request.RawUrl), null),
+                Selected = x.Id.Equals(Model.CurrentCurrencyId)
+            });
+
+            @Html.DropDownList("customerCurrency", currencies, new { onchange = "setLocation(this.value);" })
+        }
+    </div>
+
+    <div class="currency-selector mobile mobile-selector">
+        @{
+            var currentCurrency = Model.AvailableCurrencies.FirstOrDefault(x => x.Id.Equals(Model.CurrentCurrencyId));
+
+            <div class="current-currency-selector selector-title">@currentCurrency.Name</div>
+
+            <div class="currency-selector-options mobile-collapse">
+
+                @for (int i = 0; i < Model.AvailableCurrencies.Count; i++)
+                {
+                    var currentCurrencyIterator = Model.AvailableCurrencies[i];
+
+                    string selected = string.Empty;
+
+                    if (currentCurrencyIterator.Id == currentCurrency.Id)
+                    {
+                        selected = " checked=\"checked\"";
+                    }
+
+                    <div class="selector-options-item">
+                        <input type="radio" name="currency-selector" id="currency-@i" value="@webHelper.ModifyQueryString(Url.RouteUrl("ChangeCurrency", new { customercurrency = currentCurrencyIterator.Id }), "returnurl=" + HttpUtility.UrlEncode(HttpContext.Current.Request.RawUrl), null)" onclick="setLocation(this.value);" @Html.Raw(selected) />
+                        <label for="currency-@i">@currentCurrencyIterator.Name</label>
+                    </div>
+                }
+
+            </div>
+
+        }
+    </div>
+}

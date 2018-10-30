@@ -1,0 +1,21 @@
+﻿@using Nop.Web.Models.Catalog
+
+@model CategoryModel.SubCategoryModel
+
+@{
+    var controllerName = System.Web.HttpContext.Current.Request.RequestContext.RouteData.GetRequiredString("controller");
+    var actionName = System.Web.HttpContext.Current.Request.RequestContext.RouteData.GetRequiredString("action");
+}
+
+<div class="category-item">
+    <h2 class="title">
+        <a href="@Url.RouteUrl("Category", new { SeName = Model.SeName })" title="@Model.PictureModel.Title">
+            @Model.Name
+        </a>
+    </h2>
+    <div class="picture">
+        <a href="@Url.RouteUrl("Category", new { SeName = Model.SeName })" title="@Model.PictureModel.Title">
+            <img alt="@Model.PictureModel.AlternateText" src="@Model.PictureModel.ImageUrl" title="@Model.PictureModel.Title" />
+        </a>
+    </div>
+</div>

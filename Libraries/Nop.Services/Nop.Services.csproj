@@ -177,6 +177,14 @@
     <Compile Include="Blogs\BlogService.cs" />
     <Compile Include="Blogs\BlogExtensions.cs" />
     <Compile Include="Blogs\IBlogService.cs" />
+    <Compile Include="BuildYourBoxPlugin\BuildYourBoxService.cs" />
+    <Compile Include="BuildYourBoxPlugin\CarpetColorService.cs" />
+    <Compile Include="BuildYourBoxPlugin\IBuildYourBoxService.cs" />
+    <Compile Include="BuildYourBoxPlugin\ICarpetColorService.cs" />
+    <Compile Include="BuildYourBoxPlugin\IMDFThicknessService.cs" />
+    <Compile Include="BuildYourBoxPlugin\ITerminalTypeService.cs" />
+    <Compile Include="BuildYourBoxPlugin\MDFThicknessService.cs" />
+    <Compile Include="BuildYourBoxPlugin\TerminalTypeService.cs" />
     <Compile Include="Caching\ClearCacheTask.cs" />
     <Compile Include="Catalog\BackInStockSubscriptionService.cs" />
     <Compile Include="Catalog\Cache\PriceCacheEventConsumer.cs" />

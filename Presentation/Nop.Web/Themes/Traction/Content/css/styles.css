@@ -4263,6 +4263,20 @@ textarea {
     font-weight: bold;
 }
 
+.become-a-dealer { /*Added by IV Santosh*/
+    display: inline-block; 
+    font-size: 11px; 
+    /*padding-right: -15px;*/ 
+    margin-right: -10px !important;   
+}
+
+.become-a-dealer a { /*Added by IV Santosh*/
+    color: blue; 
+    font-size: 13px; 
+    font-weight: bold;
+    padding-right: 0;
+}
+
 /* Fix hover effect for catalog items in sidebar (980.css). It is a bug in Traction theme. */
 @media (min-width: 1001px) {
     body .block .list li:hover a:before { /* add "body" to increase priority */

@@ -49,7 +49,13 @@ namespace Nop.Services.Messages
             var message = new MailMessage();
             //from, to, reply to
             message.From = new MailAddress(fromAddress, fromName);
-            message.To.Add(new MailAddress(toAddress, toName));
+
+            foreach (var item in toAddress.Split(';'))//Added by IV Santosh
+            {
+                message.To.Add(new MailAddress(item, toName));// changed by Santosh IV
+            }
+
+
             if (!String.IsNullOrEmpty(replyTo))
             {
                 message.ReplyToList.Add(new MailAddress(replyTo, replyToName));

@@ -2,18 +2,29 @@
 
 @model RichBlogPrevNextModel
 
+@{
+    var supportRtl = this.ShouldUseRtlTheme();
+    var theme = (string)ViewBag.Theme;
+
+    Html.AddCssFileParts("~/Plugins/SevenSpikes.Nop.Plugins.RichBlog/Themes/" + theme + "/Content/RichBlog.css");
+    if (supportRtl)
+    {
+        Html.AddCssFileParts("~/Plugins/SevenSpikes.Nop.Plugins.RichBlog/Themes/" + theme + "/Content/RichBlog.rtl.css");
+    }
+}
+
 @if (!string.IsNullOrEmpty(Model.PreviousBlogPostTitle) || !string.IsNullOrEmpty(Model.NextBlogPostTitle))
 {
     <div class='post-navigation'>
         @if (!string.IsNullOrEmpty(Model.PreviousBlogPostTitle))
         {
-            <a href='@Model.PreviousBlogPostSeName' title='@Model.PreviousBlogPostTitle' class='prev'>@Model.PreviousBlogPostTitle</a>
+            <a href='@Url.RouteUrl("BlogPost", new { SeName = Model.PreviousBlogPostSeName })' title='@Model.PreviousBlogPostTitle' class='prev'>@Model.PreviousBlogPostTitle</a>
         }
 
 
         @if (!string.IsNullOrEmpty(Model.NextBlogPostTitle))
         {
-            <a href='@Model.NextBlogPostSeName' title='@Model.NextBlogPostTitle' class='next'>@Model.NextBlogPostTitle</a>
+            <a href='@Url.RouteUrl("BlogPost", new { SeName = Model.NextBlogPostSeName })' title='@Model.NextBlogPostTitle' class='next'>@Model.NextBlogPostTitle</a>
         }
     </div>
 }

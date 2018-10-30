@@ -154,7 +154,8 @@ ul.add-menu-item-tabs li {
 
 .menu li {
     margin-bottom: 0;
-    position: relative
+    position: relative;
+	list-style: none;
 }
 
 .menu-item-bar {
@@ -427,10 +428,6 @@ body.menu-max-depth-11 {
 } 
 .nav-menus-php .menu-item-edit-active .item-edit:before {
     content: "\f044";
-}
-
-.rtl .nav-menus-php .item-edit:before {
-    text-indent: 1px
 }
 
 .nav-menus-php .item-edit:focus {

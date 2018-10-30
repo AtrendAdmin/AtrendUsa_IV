@@ -10,7 +10,7 @@
     var withSubcategoriesClass = hasSubCategories ? "with-subcategories" : string.Empty;
 }
 
-<li class="@hasSublistClass @Model.Item.CssClass">
+<li class="@hasSublistClass with-dropdown-in-grid @Model.Item.CssClass">
     @if (areCategoriesInASingleItem)
     {
         <span class="@withSubcategoriesClass single-item-categories labelfornextplusbutton">@Model.Item.Title</span>
@@ -22,7 +22,7 @@
 
     @if (hasSubCategories)
     {
-        <div class="dropdown categories fullWidth boxes-@Model.Categories.Count">
+        <div class="dropdown categories fullWidth boxes-@Model.Item.NumberOfBoxesPerRow">
             <div class="row-wrapper">
                 @(Html.DataTable<MegaMenuCategoryModel>(Model.Categories, Model.Item.NumberOfBoxesPerRow, "row", "box",
                     @<text>
@@ -39,14 +39,14 @@
                         <ul class="subcategories">
                             @foreach (var subCategory in item.SubCategories)
                             {
-                                <li>
+                                <li class="subcategory-item">
                                     <a href="@Url.RouteUrl("Category", new {subCategory.CategoryModel.SeName})" title="@subCategory.CategoryModel.Name"><span>@subCategory.CategoryModel.Name</span></a>
                                 </li>
                             }
 
                             @if (item.ShouldShowViewAllLink)
                             {
-                                <li>
+                                <li class="subcategory-item all">
                                     <a class="view-all" href="@Url.RouteUrl("Category", new {item.CategoryModel.SeName})" title="@T("SevenSpikes.MegaMenu.ViewAllCategories")">
                                         <span>@T("SevenSpikes.MegaMenu.ViewAllCategories")</span>
                                     </a>

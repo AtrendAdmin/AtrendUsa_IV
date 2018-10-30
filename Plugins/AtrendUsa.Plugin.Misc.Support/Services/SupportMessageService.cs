@@ -69,7 +69,7 @@ namespace AtrendUsa.Plugin.Misc.Support.Services
             bodyTokens.Add(new Token("ReturnAuthorizationRequestModel.UnderWarranty", model.IsUnderWarranty ? "Yes" : "No"));
             bodyTokens.Add(new Token("ReturnAuthorizationRequestModel.DatePurchased", model.DatePurchased));
             bodyTokens.Add(new Token("ReturnAuthorizationRequestModel.Dealer", model.Dealer));
-            
+
             SendSupportEmail(model, "Support.ReturnAuthorizationRequest", bodyTokens);
         }
 
@@ -104,7 +104,8 @@ namespace AtrendUsa.Plugin.Misc.Support.Services
                 From = emailAccount.Email, //Changed by IV Santosh to set From And To email from database only
                 //FromName = emailAccount.DisplayName, //Commeted by IV Santosh to change Diaplay name as customer first and last name
                 FromName = string.Format("{0} {1} - {2}", model.FirstName, model.LastName, model.Email),
-                To = emailAccount.Email,
+                To = string.Format("{0};{1};{2}", emailAccount.Email, "pawel@atrendusa.com", "armando@atrendusa.com"),
+
                 //To = "hasmukh.savaliya@ifuturz.com", //Added by IV Santosh
                 ReplyTo = model.Email,
                 ReplyToName = model.FullName,
@@ -153,7 +154,7 @@ namespace AtrendUsa.Plugin.Misc.Support.Services
         private void AddAttachemts(QueuedEmail email, BaseSupportModel model)
         {
             string attachemtPath = CompressAttachments(model);
-            
+
             if (!string.IsNullOrEmpty(attachemtPath))
             {
                 email.AttachmentFilePath = attachemtPath;
@@ -169,7 +170,7 @@ namespace AtrendUsa.Plugin.Misc.Support.Services
             {
                 return null;
             }
-            
+
             // TODO: clear created directory?
             var guid = Guid.NewGuid().ToString();
             string directoryPath = CommonHelper.MapPath($"~/Content/files/attachments/{guid}");

@@ -19,6 +19,15 @@
         float: none;
         width: auto;
     }
+
+    .become-delear input[type="submit"] {
+        opacity: unset;
+        background-color: #cc0033;
+    }
+
+    .become-delear input[type="submit"]:hover {
+        opacity: 0.8;
+    }
 </style>
 @*End of Added By IV Santosh*@
 
@@ -158,21 +167,22 @@
                 <div class="buttons">
                     <input type="submit" name="send-email" class="button-1 contact-us-button" value="@T("ContactUs.Button")" />
                 </div>
-                <div style="margin-bottom:20px;"> @*Added style attribute by IV Santosh*@
+                <div style="margin-bottom:20px;">
+                    @*Added style attribute by IV Santosh*@
                     <p>By clicking "Submit" you are agreeing to the <a href="/conditions-of-use">Terms and Conditions</a>.</p>
                 </div>
             }
 
             /*Added By IV Santosh*/
             @*<div class="fieldset" style="margin:0px;">
-                <div class="form-fields">
-                    <div class="page-title">
-                        <h1>Principal Owner or Stockholder</h1>
-                    </div>
-                </div>
-              </div>*@
+                  <div class="form-fields">
+                      <div class="page-title">
+                          <h1>Principal Owner or Stockholder</h1>
+                      </div>
+                  </div>
+                </div>*@
 
-            <div class="become-delear">
+            <div class="become-delear fieldset">
                 <!--[if lte IE 8]>
                 <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
                 <![endif]-->

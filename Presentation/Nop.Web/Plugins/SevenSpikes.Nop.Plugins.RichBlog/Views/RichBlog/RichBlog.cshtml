@@ -29,20 +29,20 @@
                 <div class="post-primary">
                     @if (!string.IsNullOrWhiteSpace(post.HomePagePictureUrl))
                     {
-                        <a class="post-picture" href="@(string.Format("{0}{1}", Url.RouteUrl("HomePage"), post.SeName))">
+                        <a class="post-picture" href="@Url.RouteUrl("BlogPost", new { SeName = post.SeName })">
                             <img src="@post.HomePagePictureUrl" alt="@post.Title" title="@post.Title" />
                         </a>
                     }
-                    <a class="post-title" href="@(string.Format("{0}{1}", Url.RouteUrl("HomePage"), post.SeName))">@post.Title</a>
+                    <a class="post-title" href="@Url.RouteUrl("BlogPost", new { SeName = post.SeName })">@post.Title</a>
                 </div>
                 <div class="post-details">
                     <span class="post-date">@post.CreatedOn</span>
 
                     <div class="post-description">
-                        @Html.Raw(!String.IsNullOrEmpty(post.BodyOverview) ? post.BodyOverview : post.Body)
+                        @Html.Raw(!string.IsNullOrEmpty(post.BodyOverview) ? post.BodyOverview : post.Body)
                     </div>
 
-                    <a class="read-more" href="@(string.Format("{0}{1}", Url.RouteUrl("HomePage"), post.SeName))">@T("SevenSpikes.RichBlog.Public.ReadMore")</a>
+                    <a class="read-more" href="@Url.RouteUrl("BlogPost", new { SeName = post.SeName })">@T("SevenSpikes.RichBlog.Public.ReadMore")</a>
                 </div>
             </div>
         }

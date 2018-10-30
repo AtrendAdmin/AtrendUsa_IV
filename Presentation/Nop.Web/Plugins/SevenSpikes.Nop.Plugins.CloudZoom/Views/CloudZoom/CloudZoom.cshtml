@@ -28,7 +28,7 @@
 
     if (Model.SettingsModel.EnablePictureThumbnailsInCarousel)
     {
-                        
+
         int storeId = EngineContext.Current.Resolve<IStoreContext>().CurrentStore.Id;
         var settingService = EngineContext.Current.Resolve<ISettingService>();
 
@@ -51,8 +51,12 @@
         var settingKeyIsCarouselVertical = string.Format("CloudZoomSettings.IsPictureThumbnailsCarouselVertical-{0}", Model.Theme);
         var settingKeyForThemeResponsiveBreakpoints = string.Format("CloudZoomSettings.ResponsiveBreakpointsForThumbnailsCarousel-{0}", Model.Theme);
         var settingKeyNumberOfVisibleItemsInCarousel = string.Format("CloudZoomSettings.NumberOfPictureThumbnailsInCarousel-{0}", Model.Theme);
+        var settingKeyNumberOfScrollableItemsInCarousel = string.Format("CloudZoomSettings.NumberOfScrollablePictureThumbnailsInCarousel-{0}", Model.Theme);
 
         int numberOfPictureThumbnailsInCarousel = settingService.GetSettingByKey(settingKeyNumberOfVisibleItemsInCarousel, 5, storeId, true);
+        int numberOfScrollablePictureThumbnailsInCarousel = settingService.GetSettingByKey(settingKeyNumberOfScrollableItemsInCarousel, 5, storeId, true);
+        bool enableSliderArrows = settingService.GetSettingByKey("CloudZoomSettings.EnableSliderArrows", true, storeId, true);
+        bool enableSliderDots = settingService.GetSettingByKey("CloudZoomSettings.EnableSliderDots", false, storeId, true);
         bool isPictureThumbnailsCarouselVertical = settingService.GetSettingByKey(settingKeyIsCarouselVertical, false, storeId, true);
         string responsiveBreakpointsForThumbnails = settingService.GetSettingByKey(settingKeyForThemeResponsiveBreakpoints, "", storeId, true);
 
@@ -64,6 +68,9 @@
         <input type="hidden" class="cloudZoomPictureThumbnailsInCarouselData"
                data-vertical="@isPictureThumbnailsCarouselVertical.ToString().ToLowerInvariant()"
                data-numvisible="@numberOfPictureThumbnailsInCarousel"
+               data-numScrollable="@numberOfScrollablePictureThumbnailsInCarousel"
+               data-enable-slider-arrows="@enableSliderArrows.ToString().ToLowerInvariant()"
+               data-enable-slider-dots="@enableSliderDots.ToString().ToLowerInvariant()"
                data-size="@Model.Pictures.Count"
                data-rtl="@supportRtl.ToString().ToLowerInvariant()"
                data-responsive-breakpoints-for-thumbnails="@responsiveBreakpointsForThumbnails"

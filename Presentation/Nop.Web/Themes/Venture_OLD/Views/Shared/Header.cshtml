@@ -1,0 +1,143 @@
+﻿@using Nop.Core
+@using Nop.Core.Infrastructure
+@using Nop.Services.Configuration
+@using Nop.Services.Media
+
+@{
+    var settingService = EngineContext.Current.Resolve<ISettingService>();
+    var pictureService = EngineContext.Current.Resolve<IPictureService>();
+    var storeId = EngineContext.Current.Resolve<IStoreContext>().CurrentStore.Id;
+
+    var controllerName = HttpContext.Current.Request.RequestContext.RouteData.GetRequiredString("controller");
+    var isHomePage = controllerName.Equals("home", StringComparison.InvariantCultureIgnoreCase);
+
+    var homePageSlider = Html.Widget("home_page_main_slider");
+    var isHomePageSliderEnabled = string.Empty;
+
+    var menuDropdownLayout = settingService.GetSettingByKey("venturethemesettings.menudropdowncolor", "dark-layout", storeId, true);
+
+    var homePageSliderVideoLink = settingService.GetSettingByKey("venturethemesettings.homepageslidervideolink", string.Empty, storeId, true);
+    var homePageSliderVideoCoverPictureId = settingService.GetSettingByKey("venturethemesettings.homepageslidervideocoverpictureid", 0, storeId, true);
+
+
+    var homePageSliderVideoCover = Url.Content("~/Themes/Venture/Content/img/default-video-cover.png");
+    var homePageSliderVideoId = string.Empty;
+    var homePageSliderVideoPlatformUrl = string.Empty;
+    var homePageSliderVideoPlatformApiUrl = string.Empty;
+
+    if (!string.IsNullOrEmpty(homePageSliderVideoLink))
+    {
+        var uri = new Uri(homePageSliderVideoLink);
+
+        if (uri.Host.Contains("youtube"))
+        {
+            var query = HttpUtility.ParseQueryString(uri.Query);
+
+            homePageSliderVideoId = query["v"];
+            homePageSliderVideoPlatformUrl = "https://www.youtube.com/embed/";
+            homePageSliderVideoPlatformApiUrl = "https://www.youtube.com/iframe_api";
+        }
+        else if (uri.Host.Contains("vimeo"))
+        {
+            homePageSliderVideoId = uri.Segments[1];
+            homePageSliderVideoPlatformUrl = "https://player.vimeo.com/video/";
+            homePageSliderVideoPlatformApiUrl = "https://player.vimeo.com/api/player.js";
+        }
+
+        if (homePageSliderVideoCoverPictureId > 0)
+        {
+            var coverPictureUrl = pictureService.GetPictureUrl(homePageSliderVideoCoverPictureId);
+
+            if (!string.IsNullOrEmpty(coverPictureUrl))
+            {
+                homePageSliderVideoCover = coverPictureUrl;
+            }
+        }
+    }
+
+    if (isHomePage && (!MvcHtmlString.IsNullOrEmpty(homePageSlider) || !string.IsNullOrEmpty(homePageSliderVideoLink)))
+    {
+        isHomePageSliderEnabled = "slider-enabled";
+    }
+
+}
+<div class="header">
+    @Html.Widget("header")
+    <div class="header-upper">
+        <div class="header-selectors-wrapper">
+            @Html.Action("TaxTypeSelector", "Common")
+            @Html.Action("CurrencySelector", "Common")
+            @Html.Action("LanguageSelector", "Common")
+            @Html.Widget("header_selectors")
+        </div>
+    </div>
+    <div class="header-lower @isHomePageSliderEnabled">
+        <div class="header-left">
+            <div class="header-logo">
+                @Html.Action("Logo", "Common")
+            </div>
+        </div>
+        <div class="header-center">
+            <div class="header-menu @menuDropdownLayout">
+                <div class="close-menu">
+                    <div class="mobile-logo">
+                        @Html.Action("Logo", "Common")
+                    </div>
+                    <span>@T("SevenSpikes.Themes.Common.CloseMenu")</span>
+                </div>
+                @{
+                    var menuHtml = Html.Widget("theme_header_menu");
+                }
+                @if (!MvcHtmlString.IsNullOrEmpty(menuHtml))
+                {
+                    @menuHtml
+                }
+                else
+                {
+                    @Html.Action("TopMenu", "Catalog")
+                }
+                <div class="mobile-menu-items">
+                    @Html.Action("HeaderLinks", "Common")
+                </div>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="search-box store-search-box">
+                @Html.Action("SearchBox", "Catalog")
+                <div class="search-opener">@T("search")</div>
+            </div>
+            @Html.Action("HeaderLinks", "Common")
+            @Html.Action("FlyoutShoppingCart", "ShoppingCart")
+            @*<div class="desktop-cart">
+                <div class="shopping-cart-link">
+                    <a href="@url.routeurl("shoppingcart")">@t("shoppingcart")</a>
+                    @html.action("flyoutshoppingcart", "shoppingcart")
+                </div>
+            </div>*@
+        </div>
+    </div>
+</div>
+@if (isHomePage && string.IsNullOrEmpty(homePageSliderVideoLink))
+{
+    @homePageSlider;
+}
+else if (isHomePage && !string.IsNullOrEmpty(homePageSliderVideoLink))
+{
+    <div class="video-slider-wrapper">
+        <div id="video-player" class="video-player" data-id="@homePageSliderVideoId" data-platform-url="@homePageSliderVideoPlatformUrl">
+            <img src="@homePageSliderVideoCover" alt="Cover photo" />
+            <div class="video-overlay"></div>
+            <div class="play-button-wrapper">
+                <h3 class="video-button-title">@T("SevenSpikes.Themes.Venture.Common.VideoBannerTitle")</h3>
+                <h4 class="video-button-subtitle">@T("SevenSpikes.Themes.Venture.Common.VideoBannerSubtitle")</h4>
+                <div class="play">@T("SevenSpikes.Themes.Venture.Common.VideoBannerButton")</div>
+            </div>
+        </div>
+
+        <script src="@homePageSliderVideoPlatformApiUrl"></script>
+    </div>
+}
+@if (isHomePage)
+{
+    @Html.Widget("venture_theme_ajax_filters_pro")
+}

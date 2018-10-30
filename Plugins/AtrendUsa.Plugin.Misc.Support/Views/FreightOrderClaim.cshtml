@@ -21,6 +21,11 @@
 }
 
 
+
+
+
+
+
 <script>
     $(document).ready(function() {
         $("#dpModelNum").select2();
@@ -32,7 +37,7 @@
     @foreach (var t in Model.AllowedAttachmentsTypes)
     {
         @:window.ATTACHMENT_TYPES.push("@t");
-                                                                                    }
+            	}
     window.MAX_ATTACHMENTS_SIZE = @Model.MaxAllowedAttachmentsSize;
 </script>
 <div class="page contact-page support-page">
@@ -50,194 +55,232 @@
                 {
                     <div class="topic-block">
                         <div class="topic-block-title">
-                            @*<h2>Freight Order Claim</h2>*@ @*Commented by IV Santosh*@
-                            <h2>Submit Claim</h2> @*Added by IV Santosh*@
+                            <h2>Submit Claim</h2>
                         </div>
-                        <div class="topic-block-body">
-                            <ul class="ul-disc">
-                                <li>Use this section to submit a freight claim for products received damaged upon delivery via freight courier (Fed-Ex, UPS, trucking company). For claim consideration it is necessary that you attach photo files before submitting that show damages of product.</li>
-                                <li style="list-style:none;">&nbsp;</li>
-                                <li>Please also attach a copy of the proof of delivery receipt or Bill of Lading for pallet orders which was signed when your products or pallets were received. Important Note: please take pictures of product outer cartons / packaging that appear to have damage prior to opening the individual packages to inspect for internal product damages.</li>
-                            </ul>
-                        </div>
+                        @*<div class="topic-block-body">
+                                <ul class="ul-disc">
+                                    <li>Use this section to submit a warranty, defect claim or freight claim (shipping damage as a result of transit). For claim consideration it is necessary that you attach photo files before submitting that show damages of product.</li>
+                                    <li style="list-style:none;">&nbsp;</li>
+                                    <li>Please also attach a copy of the proof of delivery receipt or Bill of Lading for pallet orders which was signed when your products or pallets were received. Important Note: please take pictures of product outer cartons / packaging that appear to have damage prior to opening the individual packages to inspect for internal product damages.</li>
+                                </ul>
+                            </div>*@
                     </div>
 
-                    using (Html.BeginForm("FreightOrderClaim", "Support", FormMethod.Post, new { enctype = "multipart/form-data", @class = "upload-form" }))
+                    if (Model.StoreName == "Atrend USA")
                     {
-                        @Html.AntiForgeryToken()
-                        var validationSummary = Html.ValidationSummary(true);
-                        if (!MvcHtmlString.IsNullOrEmpty(validationSummary))
-                        {
-                            <div class="message-error">@validationSummary</div>
-                        }
-                        <div class="fieldset">
-                            <div class="title">
-                                <strong>@T("AtrendUsa.Plugin.Misc.Support.Address")</strong>
-                            </div>
-                            <div class="form-fields">
-                                <div class="inputs">
-                                    @Html.LabelFor(m => m.CompanyName, new { }, ":")
-                                    @Html.EditorFor(m => m.CompanyName, new { htmlAttributes = new { placeholder = "Enter your company name" } })
-                                    @Html.RequiredHint()
-                                    @Html.ValidationMessageFor(m => m.CompanyName)
-                                </div>
-                                <div class="inputs">
-                                    @Html.LabelFor(m => m.FirstName, new { }, ":")
-                                    @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { placeholder = "Enter your first name" } })
-                                    @Html.RequiredHint()
-                                    @Html.ValidationMessageFor(m => m.FirstName)
-                                </div>
-                                <div class="inputs">
-                                    @Html.LabelFor(m => m.LastName, new { }, ":")
-                                    @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { placeholder = "Enter your last name" } })
-                                    @Html.RequiredHint()
-                                    @Html.ValidationMessageFor(m => m.LastName)
-                                </div>
-                                <div class="inputs">
-                                    @Html.LabelFor(m => m.Email, new { }, ":")
-                                    @Html.EditorFor(m => m.Email, new { htmlAttributes = new { placeholder = "Enter your email" } })
-                                    @Html.RequiredHint()
-                                    @Html.ValidationMessageFor(m => m.Email)
-                                </div>
-                                <div class="inputs">
-                                    @Html.LabelFor(m => m.CountryId, new { }, ":")
-                                    @Html.DropDownListFor(model => model.CountryId, Model.AvailableCountries)
-                                    @Html.RequiredHint()
-                                    @Html.ValidationMessageFor(model => model.CountryId)
-                                </div>
-                                <div class="inputs">
-                                    @Html.LabelFor(m => m.StateProvince, new { }, ":")
-                                    @Html.EditorFor(m => m.StateProvince, new { htmlAttributes = new { placeholder = "Enter your state" } })
-                                    @Html.RequiredHint()
-                                    @Html.ValidationMessageFor(m => m.StateProvince)
-                                </div>
-                                <div class="inputs">
-                                    @Html.LabelFor(m => m.City, new { }, ":")
-                                    @Html.EditorFor(m => m.City, new { htmlAttributes = new { placeholder = "Enter your city" } })
-                                    @Html.RequiredHint()
-                                    @Html.ValidationMessageFor(m => m.City)
-                                </div>
-                                <div class="inputs">
-                                    @Html.LabelFor(m => m.AddressLine1, new { }, ":")
-                                    @Html.EditorFor(m => m.AddressLine1, new { htmlAttributes = new { placeholder = "Enter your address 1" } })
-                                    @Html.RequiredHint()
-                                    @Html.ValidationMessageFor(m => m.AddressLine1)
-                                </div>
-                                <div class="inputs">
-                                    @Html.LabelFor(m => m.AddressLine2, new { }, ":")
-                                    @Html.EditorFor(m => m.AddressLine2, new { htmlAttributes = new { placeholder = "Enter your address 2" } })
-                                    @Html.ValidationMessageFor(m => m.AddressLine2)
-                                </div>
-                                <div class="inputs">
-                                    @Html.LabelFor(m => m.PostalCode, new { }, ":")
-                                    @Html.EditorFor(m => m.PostalCode, new { htmlAttributes = new { placeholder = "Enter your zip" } })
-                                    @Html.RequiredHint()
-                                    @Html.ValidationMessageFor(m => m.PostalCode)
-                                </div>
-                                <div class="inputs">
-                                    @Html.LabelFor(m => m.Phone, new { }, ":")
-                                    @Html.EditorFor(m => m.Phone, new { htmlAttributes = new { placeholder = "Enter your phone number" } })
-                                    @Html.RequiredHint()
-                                    @Html.ValidationMessageFor(m => m.Phone)
-                                </div>
-                            </div>
-                        </div>
-                        <div class="fieldset">
-                            <div class="title">
-                                <strong>@T("AtrendUsa.Plugin.Misc.Support.Details")</strong>
-                            </div>
-                            <div class="form-fields">
-                                <div class="inputs">
-                                    @Html.LabelFor(m => m.ModelNumber, new { }, ":")
-                                    @*@Html.TextBoxFor(model => model.ModelNumber, new { placeholder = "Enter your model number" })
-                                        @Html.RequiredHint()
-                                        @Html.ValidationMessageFor(model => model.ModelNumber)*@
-                                    @Html.DropDownListFor(model => model.ModelNumberId, Model.AvailableModelNumbers,
-                                        new { @id = "dpModelNum", @class = "js-example-basic-multiple", @multiple = "multiple" })
-                                    @Html.RequiredHint()
-                                    @Html.ValidationMessageFor(model => model.ModelNumberId)
-
-                                </div>
-                                <div class="inputs">
-                                    @Html.LabelFor(m => m.SerialNumber, new { }, ":")
-                                    @Html.TextBoxFor(model => model.SerialNumber, new { placeholder = "Enter product serial number" })
-                                    @Html.ValidationMessageFor(model => model.SerialNumber)
-                                </div>
-                                <div class="inputs">
-                                    @Html.LabelFor(m => m.ExceptionType, new { }, ":")
-                                    @Html.EnumDropDownListFor(m => m.ExceptionType, "Select exception", new { @class = "exception-type" })
-                                    @Html.RequiredHint()
-                                    @Html.ValidationMessageFor(m => m.ExceptionType)
-                                </div>
-                                <div class="inputs exception-hint damaged-goods">
-                                    <ul>
-                                        <li>Notate all damages on the Bill of Lading prior to signing it.</li>
-                                        <li>Refuse all damaged goods to the delivering carrier.</li>
-                                        <li>Notify @Model.StoreName about damages and provide copy of signed bill of lading.</li>
-                                    </ul>
-                                </div>
-                                <div class="inputs exception-hint shortages">
-                                    <ul>
-                                        <li>A piece count is provided on our Bill of Lading. Please confirm piece count prior to signing Bill of Lading.</li>
-                                        <li>Notate all shortages on the Bill of Lading prior to signing it.</li>
-                                        <li>Notify @Model.StoreName about shortages and provide copy of signed bill of lading.</li>
-                                    </ul>
-                                </div>
-                                <div class="inputs exception-hint warranty-issues">
-                                    <ul>
-                                        <li>Fill in @Model.StoreName claim Form</li>
-                                        <li>Provide picture of product showing visible issue</li>
-                                    </ul>
-                                </div>
-                                <div class="inputs">
-                                    @Html.LabelFor(m => m.Problem, new { }, ":")
-                                    @Html.TextAreaFor(m => m.Problem)
-                                    @Html.RequiredHint()
-                                    @Html.ValidationMessageFor(m => m.Problem)
-                                </div>
-                                <div class="inputs uploaded">
-                                    @Html.LabelFor(m => m.UploadedDocuments, new { }, ":")
-                                    <div class="b-upload-button">
-                                        <div class="button-1 b-button">
-                                            <span>Add File</span>
-                                            @Html.TextBoxFor(m => m.UploadedDocuments, new { type = "file" })
-                                        </div>
-                                        <ul class="b-files-to-upload"></ul>
-                                    </div>
-                                    <span class="field-validation-error"></span>
-                                </div>
-                                @if (Model.DisplayCaptcha)
-                                {
-                                    <div class="captcha-box">
-                                        @Html.Raw(Html.GenerateCaptcha())
-                                    </div>
-                                }
-                            </div>
-                        </div>
-                        <div class="buttons">
-                            <input type="submit" name="send-email" class="button-1" value="@T("AtrendUsa.Plugin.Misc.Support.Button")" />
-                        </div>
+                        @*Added By IV Santosh*@
+                        <!--[if lte IE 8]>
+                        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                        <![endif]-->
+                        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
                         <script>
-                            $(".exception-type").on("change",
-                                function (event) {
-                                    var EXCEPTION_TYPES = {
-                                        0: "damaged-goods",
-                                        1: "shortages",
-                                        2: "warranty-issues",
-                                        3: "overages"
-                                    }
-                                    $('.exception-hint').hide();
-                                    var selectedValue = parseInt($(this).val());
-                                    var cls = EXCEPTION_TYPES[selectedValue];
-
-                                    if (cls) {
-                                        $('.' + cls).show();
-                                    }
-                                }).trigger('change');
+                            hbspt.forms.create({
+                                portalId: "4252505",
+                                formId: "fefc7c42-7355-4cb5-a029-3bd4bef43817"
+                            });
                         </script>
+                        @*End of Added By SA*@
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("ClaimForm", "Support", FormMethod.Post, new { enctype = "multipart/form-data", @class = "upload-form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            var validationSummary = Html.ValidationSummary(true);
+                            if (!MvcHtmlString.IsNullOrEmpty(validationSummary))
+                            {
+                                <div class="message-error">@validationSummary</div>
+                            }
+                            <div class="fieldset">
+                                <div class="title">
+                                    <strong>@T("AtrendUsa.Plugin.Misc.Support.Address")</strong>
+                                </div>
+                                <div class="form-fields">
+                                    <div class="inputs">
+                                        @Html.LabelFor(m => m.CompanyName, new { }, ":")
+                                        @Html.EditorFor(m => m.CompanyName, new { htmlAttributes = new { placeholder = "Enter your company name" } })
+                                        @Html.RequiredHint()
+                                        @Html.ValidationMessageFor(m => m.CompanyName)
+                                    </div>
+                                    <div class="inputs">
+                                        @Html.LabelFor(m => m.FirstName, new { }, ":")
+                                        @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { placeholder = "Enter your first name" } })
+                                        @Html.RequiredHint()
+                                        @Html.ValidationMessageFor(m => m.FirstName)
+                                    </div>
+                                    <div class="inputs">
+                                        @Html.LabelFor(m => m.LastName, new { }, ":")
+                                        @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { placeholder = "Enter your last name" } })
+                                        @Html.RequiredHint()
+                                        @Html.ValidationMessageFor(m => m.LastName)
+                                    </div>
+                                    <div class="inputs">
+                                        @Html.LabelFor(m => m.Email, new { }, ":")
+                                        @Html.EditorFor(m => m.Email, new { htmlAttributes = new { placeholder = "Enter your email" } })
+                                        @Html.RequiredHint()
+                                        @Html.ValidationMessageFor(m => m.Email)
+                                    </div>
+                                    <div class="inputs">
+                                        @Html.LabelFor(m => m.CountryId, new { }, ":")
+                                        @Html.DropDownListFor(model => model.CountryId, Model.AvailableCountries)
+                                        @Html.RequiredHint()
+                                        @Html.ValidationMessageFor(model => model.CountryId)
+                                    </div>
+                                    <div class="inputs">
+                                        @Html.LabelFor(m => m.StateProvince, new { }, ":")
+                                        @Html.EditorFor(m => m.StateProvince, new { htmlAttributes = new { placeholder = "Enter your state" } })
+                                        @Html.RequiredHint()
+                                        @Html.ValidationMessageFor(m => m.StateProvince)
+                                    </div>
+                                    <div class="inputs">
+                                        @Html.LabelFor(m => m.City, new { }, ":")
+                                        @Html.EditorFor(m => m.City, new { htmlAttributes = new { placeholder = "Enter your city" } })
+                                        @Html.RequiredHint()
+                                        @Html.ValidationMessageFor(m => m.City)
+                                    </div>
+                                    <div class="inputs">
+                                        @Html.LabelFor(m => m.AddressLine1, new { }, ":")
+                                        @Html.EditorFor(m => m.AddressLine1, new { htmlAttributes = new { placeholder = "Enter your address 1" } })
+                                        @Html.RequiredHint()
+                                        @Html.ValidationMessageFor(m => m.AddressLine1)
+                                    </div>
+                                    <div class="inputs">
+                                        @Html.LabelFor(m => m.AddressLine2, new { }, ":")
+                                        @Html.EditorFor(m => m.AddressLine2, new { htmlAttributes = new { placeholder = "Enter your address 2" } })
+                                        @Html.ValidationMessageFor(m => m.AddressLine2)
+                                    </div>
+                                    <div class="inputs">
+                                        @Html.LabelFor(m => m.PostalCode, new { }, ":")
+                                        @Html.EditorFor(m => m.PostalCode, new { htmlAttributes = new { placeholder = "Enter your zip" } })
+                                        @Html.RequiredHint()
+                                        @Html.ValidationMessageFor(m => m.PostalCode)
+                                    </div>
+                                    <div class="inputs">
+                                        @Html.LabelFor(m => m.Phone, new { }, ":")
+                                        @Html.EditorFor(m => m.Phone, new { htmlAttributes = new { placeholder = "Enter your phone number" } })
+                                        @Html.RequiredHint()
+                                        @Html.ValidationMessageFor(m => m.Phone)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fieldset">
+                                <div class="title">
+                                    <strong>@T("AtrendUsa.Plugin.Misc.Support.Details")</strong>
+                                </div>
+                                <div class="form-fields">
+                                    <div class="inputs">
+                                        @Html.LabelFor(m => m.ModelNumber, new { }, ":")
+                                        @Html.DropDownListFor(model => model.ModelNumberId, Model.AvailableModelNumbers,
+                                            new { @id = "dpModelNum", @class = "js-example-basic-multiple", @multiple = "multiple" })
+                                        @Html.RequiredHint()
+                                        @Html.ValidationMessageFor(model => model.ModelNumberId)
+
+                                    </div>
+                                    <div class="inputs">
+                                        @Html.LabelFor(m => m.SerialNumber, new { }, ":")
+                                        @Html.TextBoxFor(model => model.SerialNumber, new { placeholder = "Enter product serial number" })
+                                        @Html.ValidationMessageFor(model => model.SerialNumber)
+                                    </div>
+                                    <div class="inputs">
+                                        @Html.LabelFor(m => m.ExceptionType, new { }, ":")
+                                        @Html.EnumDropDownListFor(m => m.ExceptionType, "Select exception", new { @class = "exception-type" })
+                                        @Html.RequiredHint()
+                                        @Html.ValidationMessageFor(m => m.ExceptionType)
+                                    </div>
+                                    <div class="inputs exception-hint damaged-goods">
+                                        <ul>
+                                            <li>Notate all damages on the Bill of Lading prior to signing it.</li>
+                                            <li>Refuse all damaged goods to the delivering carrier.</li>
+                                            <li>Notify @Model.StoreName about damages and provide copy of signed bill of lading.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="inputs exception-hint shortages">
+                                        <ul>
+                                            <li>A piece count is provided on our Bill of Lading. Please confirm piece count prior to signing Bill of Lading.</li>
+                                            <li>Notate all shortages on the Bill of Lading prior to signing it.</li>
+                                            <li>Notify @Model.StoreName about shortages and provide copy of signed bill of lading.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="inputs exception-hint warranty-issues">
+                                        <ul>
+                                            <li>Fill in @Model.StoreName claim Form</li>
+                                            <li>Provide picture of product showing visible issue</li>
+                                        </ul>
+                                    </div>
+                                    <div class="inputs">
+                                        @Html.LabelFor(m => m.Problem, new { }, ":")
+                                        @Html.TextAreaFor(m => m.Problem)
+                                        @Html.RequiredHint()
+                                        @Html.ValidationMessageFor(m => m.Problem)
+                                    </div>
+                                    <div class="inputs uploaded">
+                                        @Html.LabelFor(m => m.UploadedDocuments, new { }, ":")
+                                        <div class="b-upload-button">
+                                            <div class="button-1 b-button">
+                                                <span>Add File</span>
+                                                @Html.TextBoxFor(m => m.UploadedDocuments, new { type = "file" })
+                                            </div>
+                                            <ul class="b-files-to-upload"></ul>
+                                        </div>
+                                        <span class="field-validation-error"></span>
+                                    </div>
+                                    @if (Model.DisplayCaptcha)
+                                    {
+                                        <div class="captcha-box">
+                                            @Html.Raw(Html.GenerateCaptcha())
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <input type="submit" name="send-email" class="button-1" value="@T("AtrendUsa.Plugin.Misc.Support.Button")" />
+                            </div>
+                            <script>
+                                $(".exception-type").on("change",
+                                    function (event) {
+                                        var EXCEPTION_TYPES = {
+                                            0: "damaged-goods",
+                                            1: "shortages",
+                                            2: "warranty-issues",
+                                            3: "overages"
+                                        }
+                                        $('.exception-hint').hide();
+                                        var selectedValue = parseInt($(this).val());
+                                        var cls = EXCEPTION_TYPES[selectedValue];
+
+                                        if (cls) {
+                                            $('.' + cls).show();
+                                        }
+                                    }).trigger('change');
+                            </script>
+                        }
                     }
                 }
             </div>
         </div>
     </div>
 </div>
+@*Added By SA*@
+<style type="text/css">
+    .hbspt-form fieldset {
+        margin: 0 auto !important;
+    }
+</style>
+
+<style type="text/css">
+    ul.hs-error-msgs.inputs-list li label {
+        text-align: center;
+        float: none;
+        width: auto;
+    }
+
+    .become-delear input[type="submit"] {
+        opacity: unset;
+        background-color: #cc0033;
+    }
+
+        .become-delear input[type="submit"]:hover {
+            opacity: 0.8;
+        }
+</style>
+@*End of Added By SA*@

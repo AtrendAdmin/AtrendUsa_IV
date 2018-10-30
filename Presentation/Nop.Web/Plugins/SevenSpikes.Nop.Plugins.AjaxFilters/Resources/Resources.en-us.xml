@@ -39,6 +39,9 @@
   <LocaleResource Name="SevenSpikes.NopAjaxFilters.Public.OnSale">
     <Value>On Sale</Value>
   </LocaleResource>
+  <LocaleResource Name="SevenSpikes.NopAjaxFilters.Public.InStock">
+    <Value>In Stock</Value>
+  </LocaleResource>
   <LocaleResource Name="SevenSpikes.NopAjaxFilters.Admin.CloseOnSaleFilterBox.Hint">
     <Value>Check if you want the OnSale filter boxes to be closed by default.</Value>
   </LocaleResource>
@@ -110,6 +113,18 @@
   </LocaleResource>
   <LocaleResource Name="SevenSpikes.NopAjaxFilters.Admin.EnableVendorsFilter.Hint">
     <Value>Enable filtering based on product vendors.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.NopAjaxFilters.Admin.EnableInStockFilter">
+    <Value>Enable In Stock Filter</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.NopAjaxFilters.Admin.EnableInStockFilter.Hint">
+    <Value>Enable filtering based on products which are in stock.</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.NopAjaxFilters.Admin.CloseInStockFilterBox">
+    <Value>Close In Stock Filter Boxes By Default</Value>
+  </LocaleResource>
+  <LocaleResource Name="SevenSpikes.NopAjaxFilters.Admin.CloseInStockFilterBox.Hint">
+    <Value>Check if you want the InStock filter boxes to be closed by default.</Value>
   </LocaleResource>
   <LocaleResource Name="SevenSpikes.NopAjaxFilters.Admin.FiltersUIMode">
     <Value>Filters UI Mode</Value>
