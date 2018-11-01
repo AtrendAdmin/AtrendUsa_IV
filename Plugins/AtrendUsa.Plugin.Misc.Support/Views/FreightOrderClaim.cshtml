@@ -20,16 +20,15 @@
     ViewBag.activeTab = "freightOrder";
 }
 
-
-
-
-
-
-
 <script>
     $(document).ready(function() {
         $("#dpModelNum").select2();
-        $('.js-example-basic-multiple').select2({placeholder: "Select Model Numbers",});});
+        $('.js-example-basic-multiple').select2({placeholder: "Select Model Numbers",});
+
+        $(".hbspt-form fieldset").attr('class', 'centered');
+    });
+
+
 </script>
 
 <script>
@@ -37,7 +36,7 @@
     @foreach (var t in Model.AllowedAttachmentsTypes)
     {
         @:window.ATTACHMENT_TYPES.push("@t");
-            	}
+                                                        	}
     window.MAX_ATTACHMENTS_SIZE = @Model.MaxAllowedAttachmentsSize;
 </script>
 <div class="page contact-page support-page">
@@ -72,14 +71,319 @@
                         <!--[if lte IE 8]>
                         <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
                         <![endif]-->
-                        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
-                        <script>
-                            hbspt.forms.create({
-                                portalId: "4252505",
-                                formId: "fefc7c42-7355-4cb5-a029-3bd4bef43817"
-                            });
-                        </script>
+                        @*<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+                            <script>
+                                    hbspt.forms.create({
+                                        portalId: "4252505",
+                                        formId: "fefc7c42-7355-4cb5-a029-3bd4bef43817",
+                                        target: ".Belch-GsCslXorYOWty1Ll0kVO",
+                                        css: ""
+                                    });
+                            </script>*@
                         @*End of Added By SA*@
+
+                        <style type="text/css">
+                            @@import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i");
+                            @@import url("https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+                            @@import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i");
+                            @@import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i");
+                            @@import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i");
+
+
+                            input.hs-input.error, div.field.error input, div.field.error textarea, div.field.error .chzn-choices, textarea.hs-input.error, select.hs-input.error {
+                                border-color: #c87872 !important;
+                            }
+
+                            #g-recaptcha-response {
+                                width: 250px !important;
+                                height: 40px !important;
+                                border: 1px solid rgb(193, 193, 193) !important;
+                                margin: 10px 25px !important;
+                                padding: 0px !important;
+                                resize: none !important;
+                                display: none !important;
+                            }
+
+                            .hs-form-required {
+                                color: red !important;
+                            }
+
+                            .hs-error-msgs label {
+                                color: #f2545b;
+                            }
+
+                            .embed-form-super-wrapper .hs-form {
+                                max-width: 500px;
+                                margin: auto;
+                            }
+
+                                .embed-form-super-wrapper .hs-form input[type=date], .embed-form-super-wrapper .hs-form input[type=datetime], .embed-form-super-wrapper .hs-form input[type=datetime-local], .embed-form-super-wrapper .hs-form input[type=email], .embed-form-super-wrapper .hs-form input[type=month], .embed-form-super-wrapper .hs-form input[type=number], .embed-form-super-wrapper .hs-form input[type=password], .embed-form-super-wrapper .hs-form input[type=range], .embed-form-super-wrapper .hs-form input[type=search], .embed-form-super-wrapper .hs-form input[type=tel], .embed-form-super-wrapper .hs-form input[type=text], .embed-form-super-wrapper .hs-form input[type=time], .embed-form-super-wrapper .hs-form input[type=url], .embed-form-super-wrapper .hs-form input[type=week], .embed-form-super-wrapper .hs-form fieldset.form-columns-1 textarea.hs-input, .embed-form-super-wrapper .hs-form fieldset.form-columns-1 .input select, .embed-form-super-wrapper .hs-form .input textarea, .embed-form-super-wrapper .hs-form .hs-input textarea, .embed-form-super-wrapper .hs-form textarea, .embed-form-super-wrapper .hs-form .input select, .embed-form-super-wrapper .hs-form .hs-input select, .embed-form-super-wrapper .hs-form select {
+                                    border: 1px solid #d6d6d6;
+                                    width: 100%;
+                                    padding: 9px 14px;
+                                    -webkit-box-sizing: border-box;
+                                    -moz-box-sizing: border-box;
+                                    box-sizing: border-box;
+                                }
+
+                                .embed-form-super-wrapper .hs-form ul {
+                                    list-style-type: none;
+                                    margin-left: 0;
+                                    padding-left: 0;
+                                }
+
+                                .embed-form-super-wrapper .hs-form fieldset.form-columns-1 .hs-input {
+                                    width: 95% !important;
+                                }
+
+                                .embed-form-super-wrapper .hs-form fieldset.form-columns-1 input[type="checkbox"], .embed-form-super-wrapper .hs-form fieldset.form-columns-1 input[type="radio"] {
+                                    width: auto !important;
+                                    margin-right: 15px !important;
+                                    margin-top: -2px;
+                                }
+
+                                .embed-form-super-wrapper .hs-form label {
+                                    color: #606060;
+                                }
+
+                                .embed-form-super-wrapper .hs-form fieldset {
+                                    max-width: 100% !important;
+                                }
+
+                                    .embed-form-super-wrapper .hs-form fieldset.form-columns-3 .hs-form-field {
+                                        width: 33.333% !important;
+                                    }
+
+                                .embed-form-super-wrapper .hs-form fieldset {
+                                    margin-bottom: 0 !important;
+                                }
+
+                                .embed-form-super-wrapper .hs-form .hs-form-field {
+                                    margin-bottom: 15px;
+                                }
+
+                                .embed-form-super-wrapper .hs-form label {
+                                    font-weight: normal;
+                                    letter-spacing: 1px;
+                                }
+
+                                .embed-form-super-wrapper .hs-form ul li {
+                                    margin-top: 4px;
+                                    margin-bottom: 4px !important;
+                                    float: left;
+                                    width: 100%;
+                                }
+
+                                .embed-form-super-wrapper .hs-form fieldset textarea.hs-input {
+                                    min-height: 200px;
+                                }
+
+                                .embed-form-super-wrapper .hs-form select {
+                                    -webkit-appearance: none;
+                                    -moz-appearance: none;
+                                    appearance: none;
+                                    padding: 5px;
+                                    border-radius: 0;
+                                }
+
+                                .embed-form-super-wrapper .hs-form button, .embed-form-super-wrapper .hs-form input[type=button], .embed-form-super-wrapper .hs-form input[type=reset], .embed-form-super-wrapper .hs-form input[type=submit] {
+                                    border: none !important;
+                                    background-color: #c03 !important;
+                                    padding: 10px 20px !important;
+                                    font: normal 15px 'eurostile' !important;
+                                    color: #fff !important;
+                                }
+
+                                .embed-form-super-wrapper .hs-form fieldset.form-columns-2 .hs-form-field {
+                                    width: 50%;
+                                    -moz-box-sizing: border-box;
+                                    -webkit-box-sizing: border-box;
+                                    box-sizing: border-box;
+                                }
+
+                                .embed-form-super-wrapper .hs-form fieldset.form-columns-3 .hs-form-field, .embed-form-super-wrapper .hs-form fieldset.form-columns-2 .hs-form-field {
+                                    float: left;
+                                    -moz-box-sizing: border-box;
+                                    -webkit-box-sizing: border-box;
+                                    box-sizing: border-box;
+                                }
+
+                                .embed-form-super-wrapper .hs-form fieldset .hs-form-field {
+                                    /*padding: 0 10px;*/
+                                    -moz-box-sizing: border-box;
+                                    -webkit-box-sizing: border-box;
+                                    box-sizing: border-box;
+                                }
+
+                            .hs_cos_wrapper.form-title {
+                                display: none;
+                            }
+
+                            @@media screen and (max-width:400px) {
+                                .embed-form-super-wrapper .hs-form fieldset.form-columns-3 .hs-form-field {
+                                    width: 100% !important;
+                                }
+                            }
+
+                            .embed-form-super-wrapper {
+                                -moz-box-sizing: border-box;
+                                -webkit-box-sizing: border-box;
+                                box-sizing: border-box;
+                                width: 86%;
+                                background: #ffffff;
+                                /*border-top-width: 1px;
+                                border-bottom-width: 1px;
+                                border-left-width: 1px;
+                                border-right-width: 1px;
+                                border-radius: 16px !important;*/
+                                -moz-border-radius: 16px !important;
+                                -webkit-border-radius: 16px !important;
+                                /*border-color: #bababa !important;
+                                border-style: solid !important;*/
+                                padding-top: 53px !important;
+                                padding-bottom: 53px !important;
+                                padding-left: 49px !important;
+                                padding-right: 49px !important;
+                                margin: 0 auto;
+                            }
+
+                                .embed-form-super-wrapper .hs-form label, .embed-form-super-wrapper .hs-form label span {
+                                    font-size: 14px !important;
+                                    width: 130px !important;
+                                    text-align: right !important;
+                                    float: none !important;
+                                    width: auto !important;
+                                    font-weight: 500 !important;
+                                    text-align: left !important;
+                                    line-height: 20px !important;
+                                    padding-top: 0 !important;
+                                    margin-bottom: 4px !important;
+                                    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+                                }
+
+                                .embed-form-super-wrapper .hs-form label {
+                                    width: 100% !important;
+                                    float: left !important;
+                                    text-align: left !important;
+                                    padding-left: 0px !important;
+                                    padding-right: 0px !important;
+                                    padding-top: 0px !important;
+                                    padding-bottom: 0px !important;
+                                }
+
+                                .embed-form-super-wrapper .hs-form input[type=date], .embed-form-super-wrapper .hs-form input[type=datetime], .embed-form-super-wrapper .hs-form input[type=datetime-local], .embed-form-super-wrapper .hs-form input[type=email], .embed-form-super-wrapper .hs-form input[type=month], input[type=number], .embed-form-super-wrapper .hs-form input[type=password], .embed-form-super-wrapper .hs-form input[type=range], .embed-form-super-wrapper .hs-form input[type=search], .embed-form-super-wrapper .hs-form input[type=tel], .embed-form-super-wrapper .hs-form input[type=text], .embed-form-super-wrapper .hs-form input[type=time], .embed-form-super-wrapper .hs-form input[type=url], .embed-form-super-wrapper .hs-form input[type=week], .embed-form-super-wrapper .hs-form .input textarea, .embed-form-super-wrapper .hs-form .hs-input textarea, .embed-form-super-wrapper .hs-form textarea, .embed-form-super-wrapper .hs-form .input select, .embed-form-super-wrapper .hs-form .hs-input select, .embed-form-super-wrapper .hs-form select {
+                                    display: inline-block !important;
+                                    width: 90% !important;
+                                    max-width: 500px !important;
+                                    height: 40px !important;
+                                    padding: 9px 10px !important;
+                                    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+                                    font-size: 16px !important;
+                                    font-weight: normal !important;
+                                    line-height: 22px !important;
+                                    color: #33475b !important;
+                                    background-color: #f5f8fa !important;
+                                    border: 1px solid #cbd6e2 !important;
+                                    box-sizing: border-box !important;
+                                }
+
+                                    .embed-form-super-wrapper .hs-form input::-webkit-input-placeholder, .embed-form-super-wrapper .hs-form select::-webkit-input-placeholder {
+                                        color: #a1a1a1 !important;
+                                        text-align: left !important;
+                                    }
+
+                                    .embed-form-super-wrapper .hs-form input::-moz-placeholder, .embed-form-super-wrapper .hs-form select::-moz-placeholder {
+                                        color: #a1a1a1 !important;
+                                        text-align: left !important;
+                                    }
+
+                                    .embed-form-super-wrapper .hs-form input:-ms-input-placeholder, .embed-form-super-wrapper .hs-form select:-ms-input-placeholder {
+                                        color: #a1a1a1 !important;
+                                        text-align: left !important;
+                                    }
+
+                                    .embed-form-super-wrapper .hs-form input:-moz-placeholder, .embed-form-super-wrapper .hs-form select:-moz-placeholder {
+                                        color: #a1a1a1 !important;
+                                        text-align: left !important;
+                                    }
+
+                                .embed-form-super-wrapper .hs-form button, .embed-form-super-wrapper .hs-form input[type=button], .embed-form-super-wrapper .hs-form input[type=reset], .embed-form-super-wrapper .hs-form input[type=submit] {
+                                    border: none !important;
+                                    background-color: #c03 !important;
+                                    padding: 10px 20px !important;
+                                    font: normal 15px 'eurostile' !important;
+                                    color: #fff !important;
+                                }
+
+                                .embed-form-super-wrapper .hs-form .hs-submit {
+                                    display: inline-block;
+                                    width: 100%;
+                                }
+
+                                    .embed-form-super-wrapper .hs-form .hs-submit .actions {
+                                        width: 100% !important;
+                                        float: left !important;
+                                        clear: both !important;
+                                        text-align: left !important;
+                                        box-sizing: border-box;
+                                        -moz-box-sizing: border-box;
+                                        -webkit-box-sizing: border-box;
+                                        padding-left: 11px !important;
+                                        padding-right: 17px !important;
+                                    }
+
+                            @@media screen and (max-width:767px) {
+                                .embed-form-super-wrapper .hs-form .form-columns-2 > div.hs-form-field, .embed-form-super-wrapper .hs-form .form-columns-3 > div.hs-form-field, .embed-form-super-wrapper .hs-form .form-columns-4 > div.hs-form-field {
+                                    width: 100% !important;
+                                }
+                            }
+
+                            .embed-form-super-wrapper .hs-richtext {
+                                margin-bottom: 10px;
+                                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+                                line-height: 24px;
+                                font-size: 14px;
+                                color: #33475b;
+                            }
+
+                            .embed-form-super-wrapper .hs-form .hs-submit .actions {
+                                text-align: center !important;
+                            }
+
+                            .embed-form-super-wrapper .hs-form .hs-error-msgs label, .embed-form-super-wrapper .hs-form .hs-error-msgs label span {
+                                display: block !important;
+                                float: none !important;
+                                width: auto !important;
+                                padding: 0 !important;
+                                line-height: 18px !important;
+                                text-align: left !important;
+                                white-space: normal !important;
+                                font-weight: normal !important;
+                                color: red !important;
+                            }
+
+                            .embed-form-super-wrapper .hs-form button:hover, .embed-form-super-wrapper .hs-form input[type=button]:hover, .embed-form-super-wrapper .hs-form input[type=reset]:hover, .embed-form-super-wrapper .hs-form input[type=submit]:hover {
+                                background: #cc0033 !important;
+                            }
+
+                            .grecaptcha-badge {
+                                width: auto !important;
+                                height: auto !important;
+                                box-shadow: none !important;
+                            }
+
+                            .embed-form-super-wrapper .hs-form input[type="checkbox"] {
+                                margin-right: 10px;
+                                margin-top: -2px;
+                            }
+
+                            .center-the-form form, .center-the-form form input {
+                                text-align: center;
+                            }
+                        </style>
+                        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+                        <script>hbspt.forms.create({ portalId: "4252505", css: "", target: ".Belch-GsCslXorYOWty1Ll0kVO", formId: "fefc7c42-7355-4cb5-a029-3bd4bef43817", css: "" });</script>
+                        <div class="embed-form-super-wrapper Belch-GsCslXorYOWty1Ll0kVO"></div>
                     }
                     else
                     {
@@ -261,11 +565,6 @@
     </div>
 </div>
 @*Added By SA*@
-<style type="text/css">
-    .hbspt-form fieldset {
-        margin: 0 auto !important;
-    }
-</style>
 
 <style type="text/css">
     ul.hs-error-msgs.inputs-list li label {
