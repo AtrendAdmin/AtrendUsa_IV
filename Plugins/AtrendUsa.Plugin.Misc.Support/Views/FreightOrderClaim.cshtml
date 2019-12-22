@@ -21,9 +21,9 @@
 }
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $("#dpModelNum").select2();
-        $('.js-example-basic-multiple').select2({placeholder: "Select Model Numbers",});
+        $('.js-example-basic-multiple').select2({ placeholder: "Select Model Numbers", });
 
         $(".hbspt-form fieldset").attr('class', 'centered');
     });
@@ -65,7 +65,7 @@
                             </div>*@
                     </div>
 
-                    if (Model.StoreName == "Atrend USA")
+                    if (Convert.ToString(Model.StoreName).ToLower() == "atrend usa" || Convert.ToString(Model.StoreName).ToLower() == "ozaudio usa" || Convert.ToString(Model.StoreName).ToLower() == "banda audio parts usa")
                     {
                         @*Added By IV Santosh*@
                         <!--[if lte IE 8]>
@@ -381,8 +381,24 @@
                                 text-align: center;
                             }
                         </style>
+
+                        <!--[if lte IE 8]>
+                        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                        <![endif]-->
                         <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
-                        <script>hbspt.forms.create({ portalId: "4252505", css: "", target: ".Belch-GsCslXorYOWty1Ll0kVO", formId: "fefc7c42-7355-4cb5-a029-3bd4bef43817", css: "" });</script>
+                        <script>
+                            hbspt.forms.create({
+                                portalId: "4252505",
+                                css: "", 
+                                target: ".Belch-GsCslXorYOWty1Ll0kVO",
+                                formId: "fefc7c42-7355-4cb5-a029-3bd4bef43817"
+                            });
+                        </script>
+                        
+                        //OLD SCRIPT
+                        @*<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+                            <script>hbspt.forms.create({ portalId: "4252505", css: "", target: ".Belch-GsCslXorYOWty1Ll0kVO", formId: "fefc7c42-7355-4cb5-a029-3bd4bef43817", css: "" });</script>*@
+                        
                         <div class="embed-form-super-wrapper Belch-GsCslXorYOWty1Ll0kVO"></div>
                     }
                     else
